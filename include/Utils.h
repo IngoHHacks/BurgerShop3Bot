@@ -48,6 +48,10 @@ public:
     static void RecursivePrint(DWORD address, int depth, int items);
 
     static Gdiplus::Image *GetImageFromPath(std::wstring path);
+
+    static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam);
+
+    static HWND FindWindowByProcessId(DWORD processId);
 };
 
 #endif //MEMREAD_UTILS_H

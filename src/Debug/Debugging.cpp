@@ -68,6 +68,8 @@ void Debugging::DebugLoop() {
     }
     CloseHandle(snapshot);
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
+    HWND windowHandle = Utils::FindWindowByProcessId(pid);
+    MoveWindow(windowHandle, 0, 0, 800, 600, TRUE);
     GameState::SetHandle(hProcess);
     BreakpointManager bpManager(hProcess);
     std::thread workerThread(WorkerThread, hProcess);
