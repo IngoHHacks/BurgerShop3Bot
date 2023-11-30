@@ -4,7 +4,10 @@
 #include <Managers.h>
 #include <Utils.h>
 
-
+/**
+ * Prints the integer values starting at the address of this MemoryProbe.
+ * @param length The number of integers to print.
+ */
 void MemoryProbe::PrintInts(int length) {
     std::vector<int> values(length);
 	if (!Utils::ReadBufferToProcessMemory(GameState::GetHandle(), address, &values, values.size() * sizeof(int))) {
@@ -17,6 +20,10 @@ void MemoryProbe::PrintInts(int length) {
     std::cout << std::endl;
 }
 
+/**
+ * Prints the byte values starting at the address of this MemoryProbe.
+ * @param length The number of bytes to print.
+ */
 void MemoryProbe::PrintBytes(int length) {
     std::vector<BYTE> values(length);
 	if (!Utils::ReadBufferToProcessMemory(GameState::GetHandle(), address, &values, values.size() * sizeof(BYTE))) {
@@ -29,6 +36,10 @@ void MemoryProbe::PrintBytes(int length) {
     std::cout << std::endl;
 }
 
+/**
+ * Prints the float values starting at the address of this MemoryProbe.
+ * @param length The number of floats to print.
+ */
 void MemoryProbe::PrintFloats(int length) {
 	std::vector<float> values(length);
 	if (!Utils::ReadBufferToProcessMemory(GameState::GetHandle(), address, &values, values.size() * sizeof(float))) {
@@ -41,7 +52,11 @@ void MemoryProbe::PrintFloats(int length) {
     std::cout << std::endl;
 }
 
-bool SingleItem::isValid(HANDLE hProcess) {
+/**
+ * Checks if the address still points to a valid simple item.
+ * @param hProcess The handle to the process.
+ */
+bool SimpleItem::isValid(HANDLE hProcess) {
     int value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address, &value, sizeof(value))) {
         return false;
@@ -57,7 +72,12 @@ bool SingleItem::isValid(HANDLE hProcess) {
     return actualValue == 1317794187;
 }
 
-int SingleItem::GetItemId(HANDLE hProcess) {
+/**
+ * Gets the item id of this item.
+ * @param hProcess The handle to the process.
+ * @return The item id.
+ */
+int SimpleItem::GetItemId(HANDLE hProcess) {
     int value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x2C, &value, sizeof(value))) {
         return -1;
@@ -65,7 +85,12 @@ int SingleItem::GetItemId(HANDLE hProcess) {
     return value;
 }
 
-int SingleItem::GetIngredientId(HANDLE hProcess) {
+/**
+ * Gets the ingredient id of this item.
+ * @param hProcess The handle to the process.
+ * @return The ingredient id.
+ */
+int SimpleItem::GetIngredientId(HANDLE hProcess) {
     int value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x30, &value, sizeof(value))) {
         return -1;
@@ -73,7 +98,12 @@ int SingleItem::GetIngredientId(HANDLE hProcess) {
     return value;
 }
 
-int SingleItem::GetConveyorIndex(HANDLE hProcess) {
+/**
+ * Gets the conveyor index of this item.
+ * @param hProcess The handle to the process.
+ * @return The conveyor index.
+ */
+int SimpleItem::GetConveyorIndex(HANDLE hProcess) {
     int value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x38, &value, sizeof(value))) {
         return -1;
@@ -81,17 +111,32 @@ int SingleItem::GetConveyorIndex(HANDLE hProcess) {
     return value;
 }
 
-std::string SingleItem::GetName(HANDLE hProcess) {
+/**
+ * Gets the name of this item.
+ * @param hProcess The handle to the process.
+ * @return The name of this item.
+ */
+std::string SimpleItem::GetName(HANDLE hProcess) {
     int id = GetItemId(hProcess);
     return ItemManager::GetItemName(id);
 }
 
-std::string SingleItem::GetIngredientName(HANDLE hProcess) {
+/**
+ * Gets the ingredient name of this item.
+ * @param hProcess The handle to the process.
+ * @return The ingredient name of this item.
+ */
+std::string SimpleItem::GetIngredientName(HANDLE hProcess) {
     int id = GetIngredientId(hProcess);
     return ItemManager::GetItemName(id);
 }
 
-float SingleItem::GetX(HANDLE hProcess) {
+/**
+ * Gets the x coordinate of this item.
+ * @param hProcess The handle to the process.
+ * @return The x coordinate.
+ */
+float SimpleItem::GetX(HANDLE hProcess) {
     float value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x24, &value, sizeof(value))) {
         return -1;
@@ -99,7 +144,12 @@ float SingleItem::GetX(HANDLE hProcess) {
     return value;
 }
 
-float SingleItem::GetY(HANDLE hProcess) {
+/**
+ * Gets the y coordinate of this item.
+ * @param hProcess The handle to the process.
+ * @return The y coordinate.
+ */
+float SimpleItem::GetY(HANDLE hProcess) {
     float value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x28, &value, sizeof(value))) {
         return -1;
@@ -107,11 +157,21 @@ float SingleItem::GetY(HANDLE hProcess) {
     return value;
 }
 
-int SingleItem::GetLayer(HANDLE hProcess) {
+/**
+ * Gets the layer of this item.
+ * @param hProcess The handle to the process.
+ * @return The layer.
+ */
+int SimpleItem::GetLayer(HANDLE hProcess) {
     return ItemManager::GetItemData(GetItemId(hProcess)).layer;
 }
 
-void SingleItem::SetItemId(HANDLE hProcess, int value) {
+/**
+ * Sets the item id of this item.
+ * @param hProcess The handle to the process.
+ * @param value The new item id.
+ */
+void SimpleItem::SetItemId(HANDLE hProcess, int value) {
     if (value < 0 || value >= ItemManager::GetNumItems()) {
         return;
     }
@@ -120,7 +180,12 @@ void SingleItem::SetItemId(HANDLE hProcess, int value) {
     }
 }
 
-void SingleItem::SetIngredientId(HANDLE hProcess, int value) {
+/**
+ * Sets the ingredient id of this item.
+ * @param hProcess The handle to the process.
+ * @param value The new ingredient id.
+ */
+void SimpleItem::SetIngredientId(HANDLE hProcess, int value) {
     if (value < 0 || value >= ItemManager::GetNumItems()) {
         return;
     }
@@ -129,7 +194,11 @@ void SingleItem::SetIngredientId(HANDLE hProcess, int value) {
     }
 }
 
-bool SingleItem::HasChanged() {
+/**
+ * Determines if this item has changed since the last call to this function.
+ * @return @c true if this item has changed, @c false otherwise.
+ */
+bool SimpleItem::HasChanged() {
     int newHash = 0;
     newHash += GetItemId(GameState::GetHandle());
     newHash += GetIngredientId(GameState::GetHandle());
@@ -143,7 +212,11 @@ bool SingleItem::HasChanged() {
     return false;
 }
 
-bool MultiItem::isValid(HANDLE hProcess) {
+/**
+ * Checks if the address still points to a valid complex item.
+ * @param hProcess The handle to the process.
+ */
+bool ComplexItem::isValid(HANDLE hProcess) {
     int values[32];
     if (!Utils::ReadBufferToProcessMemory(hProcess, address, &values, sizeof(values))) {
         return false;
@@ -160,7 +233,12 @@ bool MultiItem::isValid(HANDLE hProcess) {
     return actualValue == 113766795;
 }
 
-std::list<SingleItem> MultiItem::GetItems(HANDLE hProcess) {
+/**
+ * Gets the sub-items of this complex item.
+ * @param hProcess The handle to the process.
+ * @return The sub-items.
+ */
+std::list<SimpleItem> ComplexItem::GetItems(HANDLE hProcess) {
     int values[32];
     if (!Utils::ReadBufferToProcessMemory(hProcess, address, &values, sizeof(values))) {
         return {};
@@ -185,14 +263,19 @@ std::list<SingleItem> MultiItem::GetItems(HANDLE hProcess) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         return {};
     }
-    std::list<SingleItem> subItems;
+    std::list<SimpleItem> subItems;
     for (int i = 0; i < size; i++) {
-        subItems.push_back(SingleItem(itemAddresses[i]));
+        subItems.push_back(SimpleItem(itemAddresses[i]));
     }
     return subItems;
 }
 
-int MultiItem::GetConveyorIndex(HANDLE hProcess) {
+/**
+ * Gets the conveyor index of this item.
+ * @param hProcess The handle to the process.
+ * @return The conveyor index.
+ */
+int ComplexItem::GetConveyorIndex(HANDLE hProcess) {
     int value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x38, &value, sizeof(value))) {
         return -1;
@@ -200,7 +283,12 @@ int MultiItem::GetConveyorIndex(HANDLE hProcess) {
     return value;
 }
 
-float MultiItem::GetX(HANDLE hProcess) {
+/**
+ * Gets the x coordinate of this item.
+ * @param hProcess The handle to the process.
+ * @return The x coordinate.
+ */
+float ComplexItem::GetX(HANDLE hProcess) {
     float value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x24, &value, sizeof(value))) {
         return -1;
@@ -208,7 +296,12 @@ float MultiItem::GetX(HANDLE hProcess) {
     return value;
 }
 
-float MultiItem::GetY(HANDLE hProcess) {
+/**
+ * Gets the y coordinate of this item.
+ * @param hProcess The handle to the process.
+ * @return The y coordinate.
+ */
+float ComplexItem::GetY(HANDLE hProcess) {
     float value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x28, &value, sizeof(value))) {
         return -1;
@@ -216,10 +309,14 @@ float MultiItem::GetY(HANDLE hProcess) {
     return value;
 }
 
-bool MultiItem::HasChanged() {
+/**
+ * Determines if this item has changed since the last call to this function.
+ * @return @c true if this item has changed, @c false otherwise.
+ */
+bool ComplexItem::HasChanged() {
     int newHash = 0;
-    std::list<SingleItem> items = GetItems(GameState::GetHandle());
-    for (SingleItem item: items) {
+    std::list<SimpleItem> items = GetItems(GameState::GetHandle());
+    for (SimpleItem item: items) {
         newHash += item.GetItemId(GameState::GetHandle());
         newHash += item.GetIngredientId(GameState::GetHandle());
         newHash += item.GetConveyorIndex(GameState::GetHandle());
@@ -235,6 +332,10 @@ bool MultiItem::HasChanged() {
     return false;
 }
 
+/**
+ * Gets the item this ItemInfo points to.
+ * @return The item.
+ */
 std::unique_ptr<ItemBase> ItemInfo::GetItem() {
     if (mItem == 0) {
         return nullptr;
@@ -256,13 +357,17 @@ std::unique_ptr<ItemBase> ItemInfo::GetItem() {
         return nullptr;
     }
     if (actualValue == 1317794187) {
-        return std::make_unique<SingleItem>(mItem);
+        return std::make_unique<SimpleItem>(mItem);
     } else if (actualValue == 113766795) {
-        return std::make_unique<MultiItem>(mItem);
+        return std::make_unique<ComplexItem>(mItem);
     }
     return nullptr;
 }
 
+/**
+ * Checks if the address still points to a valid customer.
+ * @param hProcess The handle to the process.
+ */
 bool Customer::isValid(HANDLE hProcess) {
     int value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address, &value, sizeof(value))) {
@@ -279,6 +384,12 @@ bool Customer::isValid(HANDLE hProcess) {
     return actualValue == 113766795;
 }
 
+/**
+ * Gets the id of this customer.
+ * @param hProcess The handle to the process.
+ * @return The id.
+ * @note This isn't very useful, as the id always increments by 1 for each customer and seemingly never resets.
+ */
 int Customer::GetId(HANDLE hProcess) {
     int value;
     if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x488, &value, sizeof(value))) {
@@ -288,6 +399,11 @@ int Customer::GetId(HANDLE hProcess) {
     return value;
 }
 
+/**
+ * Gets the items ordered by this customer.
+ * @param hProcess The handle to the process.
+ * @return The items.
+ */
 std::list<ItemInfo> Customer::GetItems(HANDLE hProcess) {
     std::list<ItemInfo> items;
     DWORD vectorAddress;

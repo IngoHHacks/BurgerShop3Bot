@@ -39,9 +39,9 @@ public:
     explicit ItemBase(DWORD address) : MemoryProbe(address) {}
 };
 
-class SingleItem : public ItemBase {
+class SimpleItem : public ItemBase {
 public:
-    explicit SingleItem(DWORD address) : ItemBase(address) {}
+    explicit SimpleItem(DWORD address) : ItemBase(address) {}
 
     bool isValid(HANDLE hProcess);
 
@@ -68,13 +68,13 @@ public:
     bool HasChanged();
 };
 
-class MultiItem : public ItemBase {
+class ComplexItem : public ItemBase {
 public:
-    explicit MultiItem(DWORD address) : ItemBase(address) {}
+    explicit ComplexItem(DWORD address) : ItemBase(address) {}
 
     bool isValid(HANDLE hProcess);
 
-    std::list<SingleItem> GetItems(HANDLE hProcess);
+    std::list<SimpleItem> GetItems(HANDLE hProcess);
 
     int GetConveyorIndex(HANDLE hProcess);
 

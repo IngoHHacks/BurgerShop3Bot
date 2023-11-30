@@ -53,7 +53,7 @@ public:
 
     static void Update();
 
-    static bool CheckDirty();
+    static bool CheckItemsDirty();
 
     static std::list<std::unique_ptr<ItemBase>> conveyorItems;
 private:
@@ -72,7 +72,7 @@ public:
     static std::vector<std::string> itemNames;
     static std::unordered_map<int, ItemData> itemData;
 
-    static bool LoadItems(const std::string &filename);
+    static bool LoadItemNames(const std::string &filename);
 
     static bool LoadData(const std::string &folder);
 

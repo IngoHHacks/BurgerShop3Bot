@@ -41,9 +41,9 @@ public:
 
     static bool TryFindFood(HANDLE hProcess, DWORD startAddress, int depth, int width, std::list<std::string> &path);
 
-    static bool IsSentinelNode(HANDLE hProcess, DWORD address, const Node &node);
+    static bool IsNotItem(HANDLE hProcess, DWORD address, const Node &node);
 
-    static void GetItems(std::list<Node> nodeList, HANDLE hProcess);
+    static void ApplyConveyorItems(std::list<Node> nodeList, HANDLE hProcess);
 
     static void RecursivePrint(DWORD address, int depth, int items);
 

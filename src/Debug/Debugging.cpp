@@ -160,7 +160,7 @@ void Debugging::DebugLoop() {
             if (Utils::GetWow64ThreadContext(hThread, context)) {
                 DWORD startAddress = context.Edx;
                 std::list<Node> nodeList = Utils::TraverseAndCollectNodes(hProcess, startAddress);
-                Utils::GetItems(nodeList, hProcess);
+                Utils::ApplyConveyorItems(nodeList, hProcess);
 
             }
             CloseHandle(hThread);
@@ -190,7 +190,7 @@ void Debugging::DebugLoop() {
             if (Utils::GetWow64ThreadContext(hThread, context)) {
                 DWORD startAddress = context.Edi + 0x0000010C;
                 std::list<Node> nodeList = Utils::TraverseAndCollectNodes(hProcess, startAddress);
-                Utils::GetItems(nodeList, hProcess);
+                Utils::ApplyConveyorItems(nodeList, hProcess);
             }
             CloseHandle(hThread);
         }

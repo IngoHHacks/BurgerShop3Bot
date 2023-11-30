@@ -14,6 +14,8 @@ namespace fs = std::filesystem;
 
 #pragma comment (lib, "Gdiplus.lib")
 
+// Image drawing functions
+
 void DrawImage(HDC hdc, Image *image, int x, int y, int width, int height) {
     Graphics graphics(hdc);
     graphics.DrawImage(image, x, y, width, height);
@@ -34,27 +36,31 @@ void DrawItem(HDC pHdc, int itemId, int x, int y) {
     DrawImage(pHdc, image, x - xOffset, y - yOffset, width, height);
 }
 
+// Window message handling
+
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
     switch (message) {
         case WM_PAINT: {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hwnd, &ps);
+            // Draw background
             HBRUSH hBrush = CreateSolidBrush(RGB(255, 220, 200));
             FillRect(hdc, &ps.rcPaint, hBrush);
             DeleteObject(hBrush);
+            // Draw conveyor items
             TextOut(hdc, 10, 10, "Conveyor Items:", 15);
             GameState::SortConveyorItems();
             std::list<std::unique_ptr<ItemBase>> itemList = GameState::GetConveyorItems();
             for (const std::unique_ptr<ItemBase> &item: itemList) {
-                if (SingleItem * singleItem = dynamic_cast<SingleItem *>(item.get())) {
-                    if (!singleItem->isValid(GameState::GetHandle())) {
+                if (SimpleItem * simpleItem = dynamic_cast<SimpleItem *>(item.get())) {
+                    if (!simpleItem->isValid(GameState::GetHandle())) {
                         continue;
                     }
-                    int id = singleItem->GetItemId(GameState::GetHandle());
-                    float itemX = singleItem->GetX(GameState::GetHandle());
-                    float itemY = singleItem->GetY(GameState::GetHandle());
+                    int id = simpleItem->GetItemId(GameState::GetHandle());
+                    float itemX = simpleItem->GetX(GameState::GetHandle());
+                    float itemY = simpleItem->GetY(GameState::GetHandle());
                     DrawItem(hdc, id, itemX, itemY);
-                } else if (MultiItem * multiItem = dynamic_cast<MultiItem *>(item.get())) {
+                } else if (ComplexItem * multiItem = dynamic_cast<ComplexItem *>(item.get())) {
                     if (!multiItem->isValid(GameState::GetHandle())) {
                         continue;
                     }
@@ -62,11 +68,11 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
                     float itemY = multiItem->GetY(GameState::GetHandle());
                     int j = 0;
                     // Sort sub items by layer
-                    std::list<SingleItem> subItems = multiItem->GetItems(GameState::GetHandle());
-                    subItems.sort([](SingleItem &a, SingleItem &b) {
+                    std::list<SimpleItem> subItems = multiItem->GetItems(GameState::GetHandle());
+                    subItems.sort([](SimpleItem &a, SimpleItem &b) {
                         return a.GetLayer(GameState::GetHandle()) < b.GetLayer(GameState::GetHandle());
                     });
-                    for (SingleItem subItem: multiItem->GetItems(GameState::GetHandle())) {
+                    for (SimpleItem subItem: multiItem->GetItems(GameState::GetHandle())) {
                         if (!subItem.isValid(GameState::GetHandle())) {
                             break;
                         }
@@ -78,7 +84,6 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
                     }
                 }
             }
-
             // Draw customers
             std::vector<Customer> customers = GameState::GetCustomers();
             for (int i = customers.size() - 1; i >= 0; i--) {
@@ -89,20 +94,21 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
                 }
                 int id = customer.GetId(GameState::GetHandle());
                 std::list<ItemInfo> items = customer.GetItems(GameState::GetHandle());
+                // Draw items ordered by customer
                 for (ItemInfo item: items) {
                     if (item.mItem == 0) {
                         break;
                     }
                     std::unique_ptr<ItemBase> itemBase = item.GetItem();
-                    if (SingleItem * singleItem = dynamic_cast<SingleItem *>(itemBase.get())) {
-                        if (!singleItem->isValid(GameState::GetHandle())) {
+                    if (SimpleItem * simpleItem = dynamic_cast<SimpleItem *>(itemBase.get())) {
+                        if (!simpleItem->isValid(GameState::GetHandle())) {
                             break;
                         }
-                        int itemId = singleItem->GetItemId(GameState::GetHandle());
-                        float itemX = singleItem->GetX(GameState::GetHandle());
-                        float itemY = singleItem->GetY(GameState::GetHandle());
+                        int itemId = simpleItem->GetItemId(GameState::GetHandle());
+                        float itemX = simpleItem->GetX(GameState::GetHandle());
+                        float itemY = simpleItem->GetY(GameState::GetHandle());
                         DrawItem(hdc, itemId, 100 + 200 * i + itemX, 400 + itemY);
-                    } else if (MultiItem * multiItem = dynamic_cast<MultiItem *>(itemBase.get())) {
+                    } else if (ComplexItem * multiItem = dynamic_cast<ComplexItem *>(itemBase.get())) {
                         if (!multiItem->isValid(GameState::GetHandle())) {
                             break;
                         }
@@ -110,11 +116,11 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
                         float itemY = multiItem->GetY(GameState::GetHandle());
                         int j = 0;
                         // Sort sub items by layer
-                        std::list<SingleItem> subItems = multiItem->GetItems(GameState::GetHandle());
-                        subItems.sort([](SingleItem &a, SingleItem &b) {
+                        std::list<SimpleItem> subItems = multiItem->GetItems(GameState::GetHandle());
+                        subItems.sort([](SimpleItem &a, SimpleItem &b) {
                             return a.GetLayer(GameState::GetHandle()) < b.GetLayer(GameState::GetHandle());
                         });
-                        for (SingleItem subItem: multiItem->GetItems(GameState::GetHandle())) {
+                        for (SimpleItem subItem: multiItem->GetItems(GameState::GetHandle())) {
                             if (!subItem.isValid(GameState::GetHandle())) {
                                 break;
                             }
@@ -140,6 +146,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
 }
 
 LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
+    // If Ctrl is held, scroll wheel will change first item's id.
     if (nCode >= 0) {
         if (wParam == WM_MOUSEWHEEL) {
             MSLLHOOKSTRUCT *pMouseStruct = (MSLLHOOKSTRUCT *) lParam;
@@ -156,6 +163,7 @@ LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
     return CallNextHookEx(NULL, nCode, wParam, lParam);
 }
 
+// Main function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
 
     std::cout << "Starting BS3 Memory Reader" << std::endl;
@@ -168,6 +176,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     }
 
     std::thread debugThread(Debugging::DebugLoop);
+
+    // Initialize GDI+ for drawing images to a window
 
     GdiplusStartupInput gdiplusStartupInput;
     ULONG_PTR gdiplusToken;
@@ -200,6 +210,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         return -1;
     }
 
+    // Main loop
+
     MSG msg;
     long timeMillis = 0;
     bool running = true;
@@ -209,8 +221,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             DispatchMessage(&msg);
         } else {
             long currentTimeMillis = GetTickCount();
+            // Update every 33ms if dirty
             if (currentTimeMillis - timeMillis > 33) {
-                if (GameState::CheckDirty()) {
+                if (GameState::CheckItemsDirty()) {
                     timeMillis = currentTimeMillis;
                     InvalidateRect(hwnd, NULL, TRUE);
                     UpdateWindow(hwnd);

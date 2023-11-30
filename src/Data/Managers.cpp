@@ -24,41 +24,71 @@ HANDLE GameState::handle = NULL;
 std::mutex GameState::conveyorItemsMutex;
 std::mutex GameState::customersMutex;
 
+/**
+ * Returns the BurgerBot percentage.
+ * @return The BurgerBot percentage.
+ */
 float GameState::GetBBPercent() {
     return bbPercent;
 }
 
+/**
+ * Returns the number of conveyor items.
+ * @return The number of conveyor items.
+ */
 float GameState::GetNumConveyorItems() {
     return numConveyorItems;
 }
 
+/**
+ * Returns a copy of the conveyor items.
+ * @return A copy of the conveyor items.
+ * @note This function is thread-safe, but locks the conveyor items mutex.
+ */
 std::list<std::unique_ptr<ItemBase>> GameState::GetConveyorItems() {
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
     std::list<std::unique_ptr<ItemBase>> items;
     for (const std::unique_ptr<ItemBase> &item: conveyorItems) {
-        if (SingleItem * singleItem = dynamic_cast<SingleItem *>(item.get())) {
-            items.push_back(std::make_unique<SingleItem>(*singleItem));
-        } else if (MultiItem * multiItem = dynamic_cast<MultiItem *>(item.get())) {
-            items.push_back(std::make_unique<MultiItem>(*multiItem));
+        if (SimpleItem * singleItem = dynamic_cast<SimpleItem *>(item.get())) {
+            items.push_back(std::make_unique<SimpleItem>(*singleItem));
+        } else if (ComplexItem * multiItem = dynamic_cast<ComplexItem *>(item.get())) {
+            items.push_back(std::make_unique<ComplexItem>(*multiItem));
         }
     }
     return items;
 }
 
+/**
+ * Returns a copy of the customers.
+ * @return A copy of the customers.
+ * @note This function is thread-safe, but locks the customers mutex.
+ */
 std::vector<Customer> GameState::GetCustomers() {
     std::lock_guard<std::mutex> lock(customersMutex);
     std::vector<Customer> customersCopy(customers);
     return customersCopy;
 }
 
+/**
+ * Returns whether the game state changed.
+ * @return Whether the game state changed.
+ */
 bool GameState::IsDirty() {
     return dirty;
 }
 
+/**
+ * Returns the handle to the game process.
+ * @return The handle to the game process.
+ */
 HANDLE GameState::GetHandle() {
     return handle;
 }
 
+/**
+ * Sets the BurgerBot percentage.
+ * @param value The new BurgerBot percentage.
+ */
 void GameState::SetBBPercent(float value) {
     if (bbPercent != value) {
         bbPercent = value;
@@ -66,6 +96,10 @@ void GameState::SetBBPercent(float value) {
     }
 }
 
+/**
+ * Sets the number of conveyor items.
+ * @param value The new number of conveyor items.
+ */
 void GameState::SetNumConveyorItems(int value) {
     if (numConveyorItems != value) {
         numConveyorItems = value;
@@ -73,6 +107,11 @@ void GameState::SetNumConveyorItems(int value) {
     }
 }
 
+/**
+ * Sets the conveyor items.
+ * @param value The new conveyor items.
+ * @note This function is thread-safe, but locks the conveyor items mutex.
+ */
 void GameState::SetConveyorItems(std::list<std::unique_ptr<ItemBase>> value) {
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
     conveyorItems = std::move(value);
@@ -80,22 +119,33 @@ void GameState::SetConveyorItems(std::list<std::unique_ptr<ItemBase>> value) {
     needsSorting = true;
 }
 
+/**
+ * Sets the handle to the game process.
+ * @param pHandle The new handle to the game process.
+ */
 void GameState::SetHandle(HANDLE pHandle) {
+    if (handle != nullptr) {
+        std::cout << "Warning: Overwriting game handle." << std::endl;
+    }
     handle = pHandle;
 }
 
+/**
+ * Sorts the conveyor items by conveyor index.
+ * @note This function is thread-safe, but locks the conveyor items mutex.
+ */
 void GameState::SortConveyorItems() {
     if (!needsSorting) {
         return;
     }
     conveyorItems.sort([](const std::unique_ptr<ItemBase> &a, const std::unique_ptr<ItemBase> &b) {
-        if (SingleItem * singleItemA = dynamic_cast<SingleItem *>(a.get())) {
-            if (SingleItem * singleItemB = dynamic_cast<SingleItem *>(b.get())) {
+        if (SimpleItem * singleItemA = dynamic_cast<SimpleItem *>(a.get())) {
+            if (SimpleItem * singleItemB = dynamic_cast<SimpleItem *>(b.get())) {
                 return singleItemA->GetConveyorIndex(GameState::handle) <
                        singleItemB->GetConveyorIndex(GameState::handle);
             }
-        } else if (MultiItem * multiItemA = dynamic_cast<MultiItem *>(a.get())) {
-            if (MultiItem * multiItemB = dynamic_cast<MultiItem *>(b.get())) {
+        } else if (ComplexItem * multiItemA = dynamic_cast<ComplexItem *>(a.get())) {
+            if (ComplexItem * multiItemB = dynamic_cast<ComplexItem *>(b.get())) {
                 return multiItemA->GetConveyorIndex(GameState::handle) <
                        multiItemB->GetConveyorIndex(GameState::handle);
             }
@@ -105,13 +155,22 @@ void GameState::SortConveyorItems() {
     needsSorting = false;
 }
 
+/**
+ * Adds a customer.
+ * @param customer The customer to add.
+ * @note This function is thread-safe, but locks the customers mutex.
+ */
 void GameState::AddCustomer(Customer customer) {
     std::lock_guard<std::mutex> lock(customersMutex);
     customers.push_back(customer);
     dirty = true;
 }
 
-
+/**
+ * Removes a customer.
+ * @param index The index of the customer to remove.
+ * @note This function is thread-safe, but locks the customers mutex.
+ */
 void GameState::RemoveCustomer(int index) {
     std::lock_guard<std::mutex> lock(customersMutex);
     if (index >= 0 && index < customers.size()) {
@@ -120,12 +179,16 @@ void GameState::RemoveCustomer(int index) {
     }
 }
 
+/**
+ * Increments the first item on the conveyor.
+ * @note This function is thread-safe, but locks the conveyor items mutex.
+ */
 void GameState::IncrementFirstItem() {
     SortConveyorItems();
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
     if (!GameState::conveyorItems.empty()) {
         ItemBase *item = GameState::conveyorItems.front().get();
-        if (SingleItem * singleItem = dynamic_cast<SingleItem *>(item)) {
+        if (SimpleItem * singleItem = dynamic_cast<SimpleItem *>(item)) {
             int id = singleItem->GetItemId(GameState::GetHandle());
             singleItem->SetItemId(GameState::GetHandle(), id + 1);
             singleItem->SetIngredientId(GameState::GetHandle(), id + 1);
@@ -133,12 +196,16 @@ void GameState::IncrementFirstItem() {
     }
 }
 
+/**
+ * Decrements the first item on the conveyor.
+ * @note This function is thread-safe, but locks the conveyor items mutex.
+ */
 void GameState::DecrementFirstItem() {
     SortConveyorItems();
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
     if (!GameState::conveyorItems.empty()) {
         ItemBase *item = GameState::conveyorItems.front().get();
-        if (SingleItem * singleItem = dynamic_cast<SingleItem *>(item)) {
+        if (SimpleItem * singleItem = dynamic_cast<SimpleItem *>(item)) {
             int id = singleItem->GetItemId(GameState::GetHandle());
             singleItem->SetItemId(GameState::GetHandle(), id - 1);
             singleItem->SetIngredientId(GameState::GetHandle(), id - 1);
@@ -146,20 +213,28 @@ void GameState::DecrementFirstItem() {
     }
 }
 
+/**
+ * Unsets the dirty flag.
+ */
 void GameState::Update() {
     if (dirty) {
         dirty = false;
     }
 }
 
-bool GameState::CheckDirty() {
+/**
+ * Checks whether any of the items have changed. Also sets the dirty flag if any of the items have changed.
+ * @return Whether any of the items have changed.
+ * @note This function is thread-safe, but locks the conveyor items mutex.
+ */
+bool GameState::CheckItemsDirty() {
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
     for (const std::unique_ptr<ItemBase> &item: conveyorItems) {
-        if (SingleItem * singleItem = dynamic_cast<SingleItem *>(item.get())) {
+        if (SimpleItem * singleItem = dynamic_cast<SimpleItem *>(item.get())) {
             if (singleItem->HasChanged()) {
                 dirty = true;
             }
-        } else if (MultiItem * multiItem = dynamic_cast<MultiItem *>(item.get())) {
+        } else if (ComplexItem * multiItem = dynamic_cast<ComplexItem *>(item.get())) {
             if (multiItem->HasChanged()) {
                 dirty = true;
             }
@@ -168,6 +243,12 @@ bool GameState::CheckDirty() {
     return dirty;
 }
 
+/**
+ * Sets a breakpoint at the specified address.
+ * @param address The address to set the breakpoint at.
+ * @param callback The callback to call when the breakpoint is hit.
+ * @return Whether the breakpoint was set successfully.
+ */
 bool BreakpointManager::SetBreakpoint(LPVOID address, std::function<void(const DEBUG_EVENT &, HANDLE)> callback) {
     Breakpoint bp;
     bp.address = address;
@@ -193,6 +274,11 @@ bool BreakpointManager::SetBreakpoint(LPVOID address, std::function<void(const D
     return true;
 }
 
+/**
+ * Handles a breakpoint.
+ * @param debugEvent The debug event.
+ * @return Whether the breakpoint was handled successfully.
+ */
 bool BreakpointManager::HandleBreakpoint(const DEBUG_EVENT &debugEvent) {
     LPVOID address = (LPVOID) debugEvent.u.Exception.ExceptionRecord.ExceptionAddress;
     auto it = breakpoints.find(address);
@@ -231,6 +317,10 @@ bool BreakpointManager::HandleBreakpoint(const DEBUG_EVENT &debugEvent) {
     return true;
 }
 
+/**
+ * @internal
+ * Reinstates the last breakpoint.
+ */
 void BreakpointManager::ReinstateBreakpoint() {
     if (lastBreakpoint && lastBreakpoint->isActive) {
         BYTE int3 = 0xCC;
@@ -239,6 +329,10 @@ void BreakpointManager::ReinstateBreakpoint() {
     }
 }
 
+/**
+ * @internal
+ * Clears the single-step flag.
+ */
 void BreakpointManager::ClearSingleStep() {
     CONTEXT context;
     ZeroMemory(&context, sizeof(CONTEXT));
@@ -248,7 +342,12 @@ void BreakpointManager::ClearSingleStep() {
     SetThreadContext(threadHandle, &context);
 }
 
-bool ItemManager::LoadItems(const std::string &filename) {
+/**
+ * Loads the item names from the specified file.
+ * @param filename The filename to load the item names from.
+ * @return Whether the item names were loaded successfully.
+ */
+bool ItemManager::LoadItemNames(const std::string &filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         std::cout << "Error: Could not open file." << std::endl;
@@ -262,6 +361,11 @@ bool ItemManager::LoadItems(const std::string &filename) {
     return true;
 }
 
+/**
+ * Loads the item data from the specified folder.
+ * @param folder The folder to load the item data from.
+ * @return Whether the item data was loaded successfully.
+ */
 bool ItemManager::LoadData(const std::string &folder) {
     for (const auto &entry: std::filesystem::directory_iterator(folder)) {
         std::string filename = entry.path().filename().string();
@@ -322,6 +426,11 @@ bool ItemManager::LoadData(const std::string &folder) {
     return true;
 }
 
+/**
+ * Returns the name of the item with the specified ID.
+ * @param id The ID of the item.
+ * @return The name of the item with the specified ID.
+ */
 std::string ItemManager::GetItemName(int id) {
     if (id < 0 || id >= itemNames.size()) {
         return "Unknown";
@@ -329,6 +438,11 @@ std::string ItemManager::GetItemName(int id) {
     return itemNames[id];
 }
 
+/**
+ * Returns the data of the item with the specified ID.
+ * @param id The ID of the item.
+ * @return The data of the item with the specified ID.
+ */
 ItemData ItemManager::GetItemData(int id) {
     if (id < 0 || id >= itemData.size()) {
         return ItemData();
@@ -336,12 +450,20 @@ ItemData ItemManager::GetItemData(int id) {
     return itemData[id];
 }
 
+/**
+ * Returns the number of items.
+ * @return The number of items.
+ */
 int ItemManager::GetNumItems() {
     return itemNames.size();
 }
 
+/**
+ * Loads the item names and data.
+ * @return Whether the item names and data were loaded successfully.
+ */
 bool ItemManager::LoadContent() {
-    if (!ItemManager::LoadItems("resources/bsfood.txt")) {
+    if (!ItemManager::LoadItemNames("resources/bsfood.txt")) {
         return false;
     }
     if (!ItemManager::LoadData("resources/itemdata")) {
