@@ -1,0 +1,4 @@
+index: 14
+type: Celery
+ox: 21
+oy: 16

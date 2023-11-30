@@ -1,0 +1,3 @@
+index: 634
+type: Meatball_Parmesan
+corner: (1, 0)

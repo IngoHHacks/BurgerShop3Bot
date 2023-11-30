@@ -1,0 +1,4 @@
+index: 648
+type: Pizza_Pepperoni_Cooked
+corner: (10, 6)
+layer: 5

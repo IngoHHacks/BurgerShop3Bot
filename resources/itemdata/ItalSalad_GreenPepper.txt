@@ -1,0 +1,4 @@
+index: 689
+type: ItalSalad_GreenPepper
+corner: (-2, -5)
+layer: 7

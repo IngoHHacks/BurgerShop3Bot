@@ -1,0 +1,5 @@
+index: 454
+type: MexTomatoRice
+layer: 14
+ox: 20
+oy: 19

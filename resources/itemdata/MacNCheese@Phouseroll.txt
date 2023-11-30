@@ -1,0 +1,5 @@
+parent: 624
+index: 63
+type: PhouseRoll
+absx: 4
+absy: 6

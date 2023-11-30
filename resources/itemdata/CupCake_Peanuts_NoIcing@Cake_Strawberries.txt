@@ -1,0 +1,4 @@
+parent: 496
+index: 457
+type: Cake_Strawberries
+corner: (0, -10)

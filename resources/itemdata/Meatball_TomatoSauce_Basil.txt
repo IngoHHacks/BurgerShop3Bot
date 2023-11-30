@@ -1,0 +1,3 @@
+index: 635
+type: Meatball_TomatoSauce_Basil
+corner: (1, -3)

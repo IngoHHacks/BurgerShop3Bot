@@ -1,0 +1,5 @@
+index: 20
+type: TeaCup
+ox: 12
+oy: 23
+layer: 2

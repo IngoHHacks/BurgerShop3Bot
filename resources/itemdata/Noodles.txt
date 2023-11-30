@@ -1,0 +1,4 @@
+index: 134
+type: Noodles
+ox: 30
+oy: 16

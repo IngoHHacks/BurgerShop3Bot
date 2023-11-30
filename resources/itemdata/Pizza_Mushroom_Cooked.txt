@@ -1,0 +1,4 @@
+index: 647
+type: Pizza_Mushroom_Cooked
+corner: (10, 6)
+layer: 8

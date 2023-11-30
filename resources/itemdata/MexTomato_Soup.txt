@@ -1,0 +1,4 @@
+index: 410
+type: MexTomato_Soup
+corner: (31, -2)
+layer: 5

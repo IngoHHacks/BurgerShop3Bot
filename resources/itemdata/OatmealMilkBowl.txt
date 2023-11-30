@@ -1,0 +1,6 @@
+index: 274
+type: OatmealMilkBowl
+height: 21
+layer: 0
+ox: 27
+oy: 34

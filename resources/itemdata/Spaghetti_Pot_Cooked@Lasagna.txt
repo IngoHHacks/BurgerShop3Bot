@@ -1,0 +1,4 @@
+parent: 600
+index: 131
+type: Lasagna
+corner: (21, -7)

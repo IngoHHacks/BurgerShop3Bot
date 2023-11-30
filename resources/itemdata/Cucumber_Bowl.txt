@@ -1,0 +1,5 @@
+index: 711
+type: Cucumber_Bowl
+ox: 0
+oy: 0
+corner: (1, -5)

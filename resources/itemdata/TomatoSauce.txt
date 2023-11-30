@@ -1,0 +1,5 @@
+index: 48
+type: TomatoSauce
+ox: 15
+oy: 36
+layer: 1

@@ -1,0 +1,4 @@
+index: 28
+type: SmallSideCont
+ox: 20
+oy: 39

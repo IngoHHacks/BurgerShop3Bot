@@ -1,0 +1,5 @@
+index: 491
+type: CupCake_Sprinkles
+absx: 3
+absy: -8
+layer: 3

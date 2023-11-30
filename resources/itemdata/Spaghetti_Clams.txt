@@ -1,0 +1,3 @@
+index: 605
+type: Spaghetti_Clams
+corner: (9, -10)

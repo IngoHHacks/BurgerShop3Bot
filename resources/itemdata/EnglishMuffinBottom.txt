@@ -1,0 +1,5 @@
+index: 320
+type: EnglishMuffinBottom
+ox: 18
+oy: 12
+height: 9

@@ -1,0 +1,5 @@
+index: 655
+type: Pizza_Meatball
+ox: 7
+oy: 11
+layer: 7

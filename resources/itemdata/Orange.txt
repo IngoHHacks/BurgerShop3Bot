@@ -1,0 +1,4 @@
+index: 143
+type: Orange
+ox: 8
+oy: 17

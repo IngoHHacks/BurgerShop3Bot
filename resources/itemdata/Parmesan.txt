@@ -1,0 +1,4 @@
+index: 130
+type: Parmesan
+ox: 13
+oy: 37

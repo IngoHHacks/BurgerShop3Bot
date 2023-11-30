@@ -1,0 +1,7 @@
+index: 2
+type: ChickenPatty
+adjusty: -2
+ox: 25
+oy: 12
+height: 8
+layer: 4

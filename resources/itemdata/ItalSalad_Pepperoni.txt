@@ -1,0 +1,4 @@
+index: 693
+type: ItalSalad_Pepperoni
+corner: (30, -4)
+layer: 9

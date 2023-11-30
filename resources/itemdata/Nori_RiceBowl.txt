@@ -1,0 +1,3 @@
+index: 782
+type: Nori_RiceBowl
+corner: (-3, -9)

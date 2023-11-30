@@ -1,0 +1,6 @@
+index: 257
+type: MilkMug
+ox: 17
+oy: 34
+height: 26
+layer: 1

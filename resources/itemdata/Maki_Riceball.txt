@@ -1,0 +1,4 @@
+index: 722
+type: Maki_Riceball
+ox: 15
+oy: 16

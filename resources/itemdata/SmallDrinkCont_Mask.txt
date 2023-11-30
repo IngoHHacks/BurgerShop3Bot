@@ -1,0 +1,5 @@
+index: 333
+type: SmallDrinkCont_Mask
+layer: 10
+ox: 23
+oy: 48

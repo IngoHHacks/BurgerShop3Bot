@@ -1,0 +1,6 @@
+index: 118
+type: IceCreamCone
+ox: 12
+oy: 28
+height: 23
+layer: 0

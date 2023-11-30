@@ -1,0 +1,3 @@
+index: 778
+type: GreenOnions_RiceBowl
+corner: (5, 5)

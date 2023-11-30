@@ -1,0 +1,3 @@
+index: 804
+type: Noodles_NoodleBowl_Overhang
+corner: (3, 10)

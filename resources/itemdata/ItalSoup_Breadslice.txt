@@ -1,0 +1,5 @@
+index: 696
+type: ItalSoup_Breadslice
+absx: 31
+absy: -12
+layer: 3

@@ -1,0 +1,7 @@
+index: 470
+type: IceCream_Sprinkles
+absx: 0
+absy: 0
+layer: 4
+ox: 18
+oy: 8

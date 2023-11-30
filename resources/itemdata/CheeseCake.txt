@@ -1,0 +1,5 @@
+index: 81
+type: CheeseCake
+ox: 24
+oy: 22
+height: 16

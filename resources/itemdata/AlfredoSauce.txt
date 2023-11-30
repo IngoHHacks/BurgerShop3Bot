@@ -1,0 +1,4 @@
+index: 43
+type: AlfredoSauce
+ox: 12
+oy: 39

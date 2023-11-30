@@ -1,0 +1,5 @@
+parent: 342
+index: 199
+type: MexFishGrilled
+adjustx: 0
+adjusty: -3

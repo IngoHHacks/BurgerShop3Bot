@@ -1,0 +1,5 @@
+index: 546
+type: Donut_PinkIcing
+absx: 0
+absy: -2
+layer: 3

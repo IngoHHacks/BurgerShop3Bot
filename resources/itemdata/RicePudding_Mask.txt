@@ -1,0 +1,3 @@
+index: 817
+type: RicePudding_Mask
+corner: (2, 0)

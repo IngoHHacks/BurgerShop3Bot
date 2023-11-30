@@ -1,0 +1,3 @@
+index: 794
+type: Hotsauce_ThickNoodleBowl
+corner: (16, -8)

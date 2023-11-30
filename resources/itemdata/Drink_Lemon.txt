@@ -1,0 +1,5 @@
+index: 339
+type: Drink_Lemon
+ox: 5
+oy: 30
+corner: (-8, 5)

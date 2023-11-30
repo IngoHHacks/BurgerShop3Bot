@@ -1,0 +1,3 @@
+index: 768
+type: Nori_Ramen
+corner: (-3, -9)

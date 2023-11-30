@@ -1,0 +1,5 @@
+index: 57
+type: EnglishMuffinRaw
+ox: 27
+oy: 20
+height: 10

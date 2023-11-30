@@ -1,0 +1,3 @@
+index: 621
+type: Fettuccine_Mussels_Parmesan
+corner: (9, -12)

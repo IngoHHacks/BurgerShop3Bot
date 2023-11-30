@@ -1,0 +1,4 @@
+parent: 687
+index: 280
+type: ProvoloneCheese
+corner: (21, -1)

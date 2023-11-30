@@ -1,0 +1,6 @@
+index: 65
+type: Shrimp
+ox: 22
+oy: 17
+absx: 1
+absy: 24

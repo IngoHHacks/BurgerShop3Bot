@@ -1,0 +1,7 @@
+index: 115
+type: VanillaIceCream
+adjustx: -1
+ox: 12
+oy: 18
+height: 10
+layer: 1

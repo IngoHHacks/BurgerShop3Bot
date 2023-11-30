@@ -1,0 +1,4 @@
+index: 121
+type: TreeCutter
+ox: 27
+oy: 17

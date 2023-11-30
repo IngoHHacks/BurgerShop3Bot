@@ -1,0 +1,4 @@
+index: 525
+type: ChocCookieMan_Raw
+ox: 27
+oy: 13

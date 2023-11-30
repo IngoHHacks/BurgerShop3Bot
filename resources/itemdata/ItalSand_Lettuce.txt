@@ -1,0 +1,7 @@
+index: 664
+type: ItalSand_Lettuce
+ox: 31
+oy: 10
+absx: 12
+absy: 14
+layer: 7

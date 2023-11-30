@@ -1,0 +1,5 @@
+index: 590
+type: CheeseCake_ChocolateSauce
+ox: 5
+oy: 8
+corner: (20, -7)

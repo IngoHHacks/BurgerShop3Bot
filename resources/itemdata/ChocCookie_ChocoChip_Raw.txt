@@ -1,0 +1,5 @@
+index: 515
+type: ChocCookie_ChocoChip_Raw
+ox: 12
+oy: 12
+layer: -1

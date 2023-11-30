@@ -1,0 +1,6 @@
+index: 166
+type: TortillaSoup
+ox: 27
+oy: 31
+corner: (3, 3)
+layer: 1

@@ -1,0 +1,4 @@
+index: 560
+type: ChocolateMilkshake
+absx: 3
+absy: 14

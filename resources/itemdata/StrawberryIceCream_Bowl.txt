@@ -1,0 +1,7 @@
+index: 249
+type: StrawberryIceCream_Bowl
+adjusty: -4
+ox: 12
+oy: 15
+absx: 0
+absy: -14

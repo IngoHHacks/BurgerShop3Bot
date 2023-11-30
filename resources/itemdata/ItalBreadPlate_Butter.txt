@@ -1,0 +1,5 @@
+index: 687
+type: ItalBreadPlate_Butter
+ox: 7
+oy: 6
+layer: 13

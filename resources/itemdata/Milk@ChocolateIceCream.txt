@@ -1,0 +1,5 @@
+parent: 178
+index: 116
+type: ChocolateIceCream
+absx: 4
+absy: 12

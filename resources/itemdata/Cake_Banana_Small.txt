@@ -1,0 +1,6 @@
+index: 466
+type: Cake_Banana_Small
+ox: 12
+oy: 16
+height: 8
+layer: 5

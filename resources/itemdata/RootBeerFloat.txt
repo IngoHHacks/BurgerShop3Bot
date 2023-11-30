@@ -1,0 +1,7 @@
+index: 569
+type: RootBeerFloat
+ox: 17
+oy: 54
+absx: 3
+absy: 14
+layer: 2

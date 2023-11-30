@@ -1,0 +1,5 @@
+parent: 853
+index: 104
+type: MexOlives
+corner: (5, -7)
+layer: 10

@@ -1,0 +1,5 @@
+index: 433
+type: Quesadilla_Raw_Bottom
+ox: 39
+oy: 14
+height: 15

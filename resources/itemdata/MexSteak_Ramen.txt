@@ -1,0 +1,3 @@
+index: 766
+type: MexSteak_Ramen
+corner: (5, -9)

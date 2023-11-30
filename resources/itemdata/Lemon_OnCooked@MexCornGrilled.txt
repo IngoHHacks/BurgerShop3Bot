@@ -1,0 +1,5 @@
+parent: 342
+index: 198
+type: MexCornGrilled
+adjustx: 0
+adjusty: -5

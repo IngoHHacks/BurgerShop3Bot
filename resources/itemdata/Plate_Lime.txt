@@ -1,0 +1,4 @@
+index: 453
+type: Plate_Lime
+ox: 15
+oy: 13

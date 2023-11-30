@@ -1,0 +1,7 @@
+index: 296
+type: GreenOnions_Potato
+ox: 18
+oy: 8
+absx: 6
+absy: 0
+layer: 11

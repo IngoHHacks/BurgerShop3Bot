@@ -1,0 +1,5 @@
+parent: 848
+index: 155
+type: Soysauce
+absx: 20
+absy: 15

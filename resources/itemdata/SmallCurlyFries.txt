@@ -1,0 +1,4 @@
+index: 254
+type: SmallCurlyFries
+ox: 20
+oy: 39

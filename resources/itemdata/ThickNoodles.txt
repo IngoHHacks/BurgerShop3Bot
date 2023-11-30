@@ -1,0 +1,4 @@
+index: 135
+type: ThickNoodles
+ox: 30
+oy: 16

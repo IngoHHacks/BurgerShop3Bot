@@ -1,0 +1,4 @@
+index: 224
+type: MacaroniCooked
+ox: 32
+oy: 32

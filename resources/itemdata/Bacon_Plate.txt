@@ -1,0 +1,7 @@
+index: 327
+type: Bacon_Plate
+adjustx: 27
+adjusty: 6
+ox: 27
+oy: 22
+layer: 4

@@ -1,0 +1,4 @@
+parent: 496
+index: 456
+type: Cake_Banana
+corner: (2, -10)

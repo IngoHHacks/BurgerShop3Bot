@@ -1,0 +1,3 @@
+index: 796
+type: Noodles_ThickNoodleBowl
+corner: (1, -6)

@@ -1,0 +1,7 @@
+index: 387
+type: BurritoChicken3
+adjustx: 3
+adjusty: 15
+ox: 23
+oy: 19
+layer: 4

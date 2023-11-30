@@ -1,0 +1,4 @@
+parent: 809
+index: 801
+type: ChickenWing_NoodleBowl
+corner: (34, -4)

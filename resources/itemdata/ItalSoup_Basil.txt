@@ -1,0 +1,5 @@
+index: 697
+type: ItalSoup_Basil
+absx: 10
+absy: 4
+layer: 2

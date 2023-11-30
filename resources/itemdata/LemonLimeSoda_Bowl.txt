@@ -1,0 +1,7 @@
+index: 247
+type: LemonLimeSoda_Bowl
+ox: 27
+oy: 31
+absx: 3
+absy: 3
+layer: 1

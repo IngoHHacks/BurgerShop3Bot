@@ -1,0 +1,3 @@
+index: 770
+type: Tofu_Ramen
+corner: (8, -7)

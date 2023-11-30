@@ -1,0 +1,4 @@
+index: 228
+type: EggCooked
+ox: 16
+oy: 14

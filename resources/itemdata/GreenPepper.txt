@@ -1,0 +1,4 @@
+index: 140
+type: GreenPepper
+ox: 20
+oy: 10

@@ -1,0 +1,3 @@
+index: 765
+type: Jalapenos_Ramen
+corner: (27, -4)

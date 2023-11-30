@@ -1,0 +1,5 @@
+index: 813
+type: Pudding_Tapioca
+ox: 25
+oy: 11
+corner: (2, -1)

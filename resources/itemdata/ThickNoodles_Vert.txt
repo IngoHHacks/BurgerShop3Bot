@@ -1,0 +1,5 @@
+index: 760
+type: ThickNoodles_Vert
+ox: 22
+oy: 39
+corner: (4, -25)

@@ -1,0 +1,3 @@
+index: 698
+type: Ramekin_TomatoSauce
+corner: (2, 2)

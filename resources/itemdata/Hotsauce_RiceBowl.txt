@@ -1,0 +1,3 @@
+index: 779
+type: Hotsauce_RiceBowl
+corner: (17, -9)

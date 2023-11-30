@@ -1,0 +1,5 @@
+index: 263
+type: Boba_LargeCup
+ox: 14
+oy: 21
+corner: (3, 35)

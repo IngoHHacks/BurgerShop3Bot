@@ -1,0 +1,4 @@
+index: 59
+type: FruityOs
+ox: 21
+oy: 48

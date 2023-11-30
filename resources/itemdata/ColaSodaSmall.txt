@@ -1,0 +1,7 @@
+index: 330
+type: ColaSodaSmall
+ox: 23
+oy: 48
+absx: 11
+absy: 18
+layer: 2

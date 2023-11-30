@@ -1,0 +1,5 @@
+index: 662
+type: ItalSand_Chicken
+absx: 8
+absy: 15
+layer: 4

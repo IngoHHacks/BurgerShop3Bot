@@ -1,0 +1,3 @@
+index: 641
+type: TomatoSauce_Plate
+corner: (11, 3)

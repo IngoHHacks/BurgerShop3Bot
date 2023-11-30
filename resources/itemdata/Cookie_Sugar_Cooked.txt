@@ -1,0 +1,4 @@
+index: 502
+type: Cookie_Sugar_Cooked
+ox: 17
+oy: 10

@@ -1,0 +1,4 @@
+index: 241
+type: LargeRootBeer
+ox: 17
+oy: 54

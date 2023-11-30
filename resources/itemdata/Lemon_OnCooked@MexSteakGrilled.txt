@@ -1,0 +1,4 @@
+parent: 342
+index: 203
+type: MexSteakGrilled
+adjusty: -5

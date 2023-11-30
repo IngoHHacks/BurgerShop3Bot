@@ -1,0 +1,5 @@
+parent: 433
+index: 99
+type: MexCheese
+adjusty: 3
+height: 0

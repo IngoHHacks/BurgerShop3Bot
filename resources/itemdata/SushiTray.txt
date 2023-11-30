@@ -1,0 +1,5 @@
+index: 156
+type: SushiTray
+ox: 30
+oy: 11
+height: 5

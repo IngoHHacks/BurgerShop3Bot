@@ -1,0 +1,3 @@
+index: 783
+type: Rice_RiceBowl
+corner: (1, -5)

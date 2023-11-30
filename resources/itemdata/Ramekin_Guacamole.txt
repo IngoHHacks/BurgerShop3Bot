@@ -1,0 +1,3 @@
+index: 704
+type: Ramekin_Guacamole
+corner: (2, 2)

@@ -1,0 +1,5 @@
+index: 340
+type: Drink_Lime
+absx: -8
+absy: 6
+layer: 3

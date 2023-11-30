@@ -1,0 +1,5 @@
+parent: 497
+index: 457
+type: Cake_Strawberries
+absx: 10
+absy: -4

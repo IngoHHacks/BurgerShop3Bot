@@ -1,0 +1,5 @@
+index: 159
+type: Wasabi
+ox: 10
+oy: 13
+height: 5

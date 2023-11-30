@@ -1,0 +1,8 @@
+index: 467
+type: Cake_Strawberries_Small
+ox: 18
+oy: 18
+absx: 5
+absy: -10
+height: 7
+layer: 40

@@ -1,0 +1,8 @@
+index: 85
+type: Tiramisu
+adjustx: 1
+adjusty: -2
+ox: 24
+oy: 26
+height: 22
+layer: 1

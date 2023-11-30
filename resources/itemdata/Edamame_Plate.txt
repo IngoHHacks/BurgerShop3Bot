@@ -1,0 +1,4 @@
+index: 749
+type: Edamame_Plate
+ox: 14
+oy: 15

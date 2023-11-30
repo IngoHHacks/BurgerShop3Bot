@@ -1,0 +1,7 @@
+index: 55
+type: SausagePatty
+adjusty: -1
+ox: 18
+oy: 11
+height: 6
+layer: 2

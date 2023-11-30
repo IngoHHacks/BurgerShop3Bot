@@ -1,0 +1,3 @@
+index: 264
+type: Boba_LargeTea
+corner: (4, 30)

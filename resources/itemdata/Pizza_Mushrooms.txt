@@ -1,0 +1,4 @@
+index: 651
+type: Pizza_Mushrooms
+corner: (9, 5)
+layer: 8

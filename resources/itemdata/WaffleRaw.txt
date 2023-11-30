@@ -1,0 +1,6 @@
+index: 51
+type: WaffleRaw
+ox: 26
+oy: 16
+height: 6
+layer: 8

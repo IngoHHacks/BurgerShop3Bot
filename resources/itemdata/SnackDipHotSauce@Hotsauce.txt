@@ -1,0 +1,5 @@
+parent: 848
+index: 150
+type: Hotsauce
+absx: 20
+absy: 15

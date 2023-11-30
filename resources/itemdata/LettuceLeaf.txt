@@ -1,0 +1,4 @@
+index: 849
+type: LettuceLeaf
+ox: 23
+oy: 10

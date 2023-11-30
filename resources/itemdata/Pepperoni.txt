@@ -1,0 +1,4 @@
+index: 141
+type: Pepperoni
+ox: 23
+oy: 13

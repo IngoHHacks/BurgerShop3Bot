@@ -1,0 +1,4 @@
+index: 487
+type: OldSundae_HotFudge
+ox: 17
+oy: 21

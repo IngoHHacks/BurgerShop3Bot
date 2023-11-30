@@ -1,0 +1,7 @@
+index: 734
+type: Nigiri_Whitefish
+ox: 17
+oy: 9
+absx: 0
+absy: -3
+height: 8

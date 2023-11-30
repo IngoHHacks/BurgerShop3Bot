@@ -1,0 +1,4 @@
+index: 408
+type: MexCheese_Soup
+corner: (7, 3)
+layer: 2

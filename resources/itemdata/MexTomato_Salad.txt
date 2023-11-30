@@ -1,0 +1,9 @@
+index: 415
+type: MexTomato_Salad
+adjustx: 4
+adjusty: 5
+absx: 2
+absy: -12
+layer: 6
+ox: 22
+oy: 16

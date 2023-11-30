@@ -1,0 +1,4 @@
+index: 601
+type: Spaghetti_Pot
+ox: 22
+oy: 26

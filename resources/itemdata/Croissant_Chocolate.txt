@@ -1,0 +1,4 @@
+index: 497
+type: Croissant_Chocolate
+ox: 26
+oy: 21

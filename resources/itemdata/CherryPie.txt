@@ -1,0 +1,7 @@
+index: 80
+type: CherryPie
+adjustx: 2
+ox: 23
+oy: 24
+height: 15
+layer: 1

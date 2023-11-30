@@ -1,0 +1,5 @@
+index: 63
+type: Phouseroll
+ox: 11
+oy: 23
+layer: 30

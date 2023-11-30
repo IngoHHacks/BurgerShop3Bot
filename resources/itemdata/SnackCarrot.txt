@@ -1,0 +1,5 @@
+index: 839
+type: SnackCarrot
+ox: 10
+oy: 27
+layer: 4

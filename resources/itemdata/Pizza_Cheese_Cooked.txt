@@ -1,0 +1,5 @@
+index: 644
+type: Pizza_Cheese_Cooked
+ox: 40
+oy: 18
+layer: 0

@@ -1,0 +1,5 @@
+index: 570
+type: Sundae_Cherry
+adjustx: 1
+adjusty: 1
+corner: (8, -19)

@@ -1,0 +1,4 @@
+index: 652
+type: Pizza_Pepperoni
+corner: (10, 6)
+layer: 5

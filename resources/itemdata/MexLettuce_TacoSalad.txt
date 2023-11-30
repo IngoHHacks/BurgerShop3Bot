@@ -1,0 +1,7 @@
+index: 420
+type: MexLettuce_TacoSalad
+absx: 0
+absy: -7
+layer: 7
+ox: 22
+oy: 20

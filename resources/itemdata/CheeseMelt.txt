@@ -1,0 +1,6 @@
+index: 275
+type: CheeseMelt
+adjusty: 7
+ox: 24
+oy: 12
+height: 3

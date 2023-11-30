@@ -1,0 +1,6 @@
+index: 553
+type: SugarDonut_CreamFill
+ox: 18
+oy: 20
+height: 10
+layer: 1

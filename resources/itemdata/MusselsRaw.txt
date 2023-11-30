@@ -1,0 +1,4 @@
+index: 138
+type: MusselsRaw
+ox: 21
+oy: 19

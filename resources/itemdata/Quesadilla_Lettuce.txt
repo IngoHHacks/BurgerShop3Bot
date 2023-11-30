@@ -1,0 +1,4 @@
+index: 437
+type: Quesadilla_Lettuce
+ox: 20
+oy: 20

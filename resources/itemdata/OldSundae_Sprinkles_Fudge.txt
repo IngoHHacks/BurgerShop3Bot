@@ -1,0 +1,4 @@
+index: 486
+type: OldSundae_Sprinkles_Fudge
+absx: 2
+absy: -2

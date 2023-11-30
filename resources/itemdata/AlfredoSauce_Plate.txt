@@ -1,0 +1,3 @@
+index: 640
+type: AlfredoSauce_Plate
+corner: (13, 2)

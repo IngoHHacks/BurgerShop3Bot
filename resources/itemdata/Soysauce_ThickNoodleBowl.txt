@@ -1,0 +1,3 @@
+index: 798
+type: Soysauce_ThickNoodleBowl
+corner: (15, -8)

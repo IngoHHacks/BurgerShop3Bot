@@ -1,0 +1,4 @@
+index: 831
+type: Rice_Tofu_Wok
+ox: 25
+oy: 18

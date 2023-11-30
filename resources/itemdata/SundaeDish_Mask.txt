@@ -1,0 +1,3 @@
+index: 583
+type: SundaeDish_Mask
+corner: (0, 5)

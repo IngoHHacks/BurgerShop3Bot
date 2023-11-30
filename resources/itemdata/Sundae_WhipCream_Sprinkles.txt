@@ -1,0 +1,3 @@
+index: 582
+type: Sundae_WhipCream_Sprinkles
+corner: (2, 0)

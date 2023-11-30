@@ -1,0 +1,7 @@
+index: 381
+type: BurritoRice2
+adjustx: 1
+adjusty: 16
+ox: 23
+oy: 19
+layer: 2

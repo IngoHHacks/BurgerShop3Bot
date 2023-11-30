@@ -1,0 +1,5 @@
+parent: 178
+index: 115
+type: VanillaIceCream
+absx: 4
+absy: 12

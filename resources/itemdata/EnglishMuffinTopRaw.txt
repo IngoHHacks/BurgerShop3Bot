@@ -1,0 +1,6 @@
+index: 319
+type: EnglishMuffinTopRaw
+ox: 17
+oy: 10
+height: 8
+layer: 20

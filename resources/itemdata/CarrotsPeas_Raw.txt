@@ -1,0 +1,4 @@
+index: 290
+type: CarrotsPeas_Raw
+ox: 26
+oy: 15

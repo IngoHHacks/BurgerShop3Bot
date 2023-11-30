@@ -1,0 +1,4 @@
+index: 181
+type: OJ
+ox: 19
+oy: 50

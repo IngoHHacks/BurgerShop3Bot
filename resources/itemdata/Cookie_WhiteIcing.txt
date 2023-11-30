@@ -1,0 +1,4 @@
+index: 505
+type: Cookie_WhiteIcing
+absx: 1
+absy: 0

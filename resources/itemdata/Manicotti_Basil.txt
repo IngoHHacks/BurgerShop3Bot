@@ -1,0 +1,3 @@
+index: 630
+type: Manicotti_Basil
+corner: (4, 3)

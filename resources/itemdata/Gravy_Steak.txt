@@ -1,0 +1,4 @@
+index: 307
+type: Gravy_Steak
+absx: 13
+absy: 3

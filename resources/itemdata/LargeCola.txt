@@ -1,0 +1,4 @@
+index: 236
+type: LargeCola
+ox: 17
+oy: 54

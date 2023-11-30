@@ -1,0 +1,3 @@
+index: 824
+type: GreenBeans_Tofu_Wok_Cooked
+corner: (-4, 1)

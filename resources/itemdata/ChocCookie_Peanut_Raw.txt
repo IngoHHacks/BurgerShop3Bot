@@ -1,0 +1,5 @@
+index: 517
+type: ChocCookie_Peanut_Raw
+ox: 12
+oy: 12
+layer: -1

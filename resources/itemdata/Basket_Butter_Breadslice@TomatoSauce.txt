@@ -1,0 +1,5 @@
+parent: 677
+index: 48
+type: TomatoSauce
+adjustx: 0
+adjusty: 5

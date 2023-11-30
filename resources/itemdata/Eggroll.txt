@@ -1,0 +1,4 @@
+index: 149
+type: Eggroll
+ox: 21
+oy: 14

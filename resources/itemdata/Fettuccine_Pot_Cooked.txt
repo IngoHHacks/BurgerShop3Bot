@@ -1,0 +1,4 @@
+index: 612
+type: Fettuccine_Pot_Cooked
+ox: 22
+oy: 26

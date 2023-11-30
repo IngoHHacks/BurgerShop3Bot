@@ -1,0 +1,4 @@
+index: 529
+type: ChocCookieTree_Raw
+ox: 27
+oy: 14

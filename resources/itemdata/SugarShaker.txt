@@ -1,0 +1,4 @@
+index: 267
+type: SugarShaker
+ox: 13
+oy: 38

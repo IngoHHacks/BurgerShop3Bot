@@ -1,0 +1,7 @@
+index: 164
+type: PotatoSoup
+ox: 27
+oy: 31
+absx: 3
+absy: 3
+layer: 1

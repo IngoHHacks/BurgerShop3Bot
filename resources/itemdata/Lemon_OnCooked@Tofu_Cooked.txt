@@ -1,0 +1,4 @@
+parent: 342
+index: 231
+type: Tofu_Cooked
+corner: (-10, 5)

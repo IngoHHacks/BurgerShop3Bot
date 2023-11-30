@@ -1,0 +1,7 @@
+index: 1
+type: BeefPatty
+adjusty: 0
+ox: 23
+oy: 12
+height: 7
+layer: 3

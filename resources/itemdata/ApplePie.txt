@@ -1,0 +1,8 @@
+index: 79
+type: ApplePie
+adjustx: 4
+adjusty: -2
+ox: 25
+oy: 25
+height: 15
+layer: 1

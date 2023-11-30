@@ -1,0 +1,4 @@
+index: 68
+type: Meatloaf
+ox: 22
+oy: 17

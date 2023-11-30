@@ -1,0 +1,5 @@
+index: 492
+type: CupCake_ChocolateChips
+absx: 2
+absy: -9
+layer: 3

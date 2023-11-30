@@ -1,0 +1,4 @@
+index: 411
+type: MexJalapeno_Soup
+corner: (29, 6)
+layer: 6

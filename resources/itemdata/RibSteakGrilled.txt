@@ -1,0 +1,5 @@
+index: 214
+type: RibSteakGrilled
+height: 12
+ox: 22
+oy: 17

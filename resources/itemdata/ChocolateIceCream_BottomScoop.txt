@@ -1,0 +1,6 @@
+index: 562
+type: ChocolateIceCream_BottomScoop
+ox: 10
+oy: 12
+absx: 6
+absy: 33

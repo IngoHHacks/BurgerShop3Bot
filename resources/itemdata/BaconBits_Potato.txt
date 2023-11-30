@@ -1,0 +1,7 @@
+index: 295
+type: BaconBits_Potato
+ox: 15
+oy: 10
+absx: 8
+absy: -6
+layer: 12

@@ -1,0 +1,4 @@
+index: 126
+type: Breadslice
+ox: 20
+oy: 12

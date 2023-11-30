@@ -1,0 +1,4 @@
+index: 133
+type: Meatball
+ox: 8
+oy: 12

@@ -1,0 +1,6 @@
+index: 276
+type: CheeseMeltNoMeat
+adjusty: 5
+ox: 24
+oy: 12
+height: 3

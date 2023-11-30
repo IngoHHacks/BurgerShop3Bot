@@ -1,0 +1,4 @@
+index: 623
+type: MacaroniRaw_Pot
+ox: 29
+oy: 23

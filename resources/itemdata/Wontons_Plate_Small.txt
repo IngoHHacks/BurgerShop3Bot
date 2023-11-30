@@ -1,0 +1,4 @@
+index: 758
+type: Wontons_Plate_Small
+ox: 25
+oy: 21

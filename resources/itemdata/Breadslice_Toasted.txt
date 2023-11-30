@@ -1,0 +1,6 @@
+index: 594
+type: Breadslice_Toasted
+ox: 19
+oy: 18
+height: 8
+layer: 10

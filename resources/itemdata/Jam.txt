@@ -1,0 +1,7 @@
+index: 45
+type: Jam
+ox: 12
+oy: 38
+layer: 24
+absx: 25
+absy: 11

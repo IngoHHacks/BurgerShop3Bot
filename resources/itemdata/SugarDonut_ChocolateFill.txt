@@ -1,0 +1,6 @@
+index: 552
+type: SugarDonut_ChocolateFill
+ox: 18
+oy: 20
+height: 10
+layer: 1

@@ -1,0 +1,7 @@
+index: 850
+type: BurgerLettuceOld
+adjusty: 3
+ox: 25
+oy: 11
+height: 5
+layer: 1006

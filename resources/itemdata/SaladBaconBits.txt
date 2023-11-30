@@ -1,0 +1,7 @@
+index: 297
+type: SaladBaconBits
+ox: 16
+oy: 10
+absx: 13
+absy: -4
+layer: 4

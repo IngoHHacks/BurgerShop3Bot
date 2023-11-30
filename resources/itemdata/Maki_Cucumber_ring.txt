@@ -1,0 +1,4 @@
+index: 720
+type: Maki_Cucumber_ring
+absx: 6
+absy: 2

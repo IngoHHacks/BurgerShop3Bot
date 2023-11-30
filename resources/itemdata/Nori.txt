@@ -1,0 +1,5 @@
+index: 152
+type: Nori
+ox: 27
+oy: 11
+height: 0

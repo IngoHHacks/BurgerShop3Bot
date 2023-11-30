@@ -1,0 +1,5 @@
+index: 39
+type: Sprinkles
+ox: 18
+oy: 8
+layer: 4

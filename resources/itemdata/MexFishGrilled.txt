@@ -1,0 +1,5 @@
+index: 199
+type: MexFishGrilled
+ox: 32
+oy: 16
+layer: 31

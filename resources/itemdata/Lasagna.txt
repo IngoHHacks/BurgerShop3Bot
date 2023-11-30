@@ -1,0 +1,5 @@
+index: 131
+type: Lasagna
+adjusty: 2
+ox: 22
+oy: 17

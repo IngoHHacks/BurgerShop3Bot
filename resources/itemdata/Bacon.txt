@@ -1,0 +1,7 @@
+index: 6
+type: Bacon
+adjusty: 6
+ox: 30
+oy: 13
+height: 2
+layer: 8

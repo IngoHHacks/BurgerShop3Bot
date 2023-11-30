@@ -1,0 +1,6 @@
+index: 355
+type: TacoChicken1
+adjusty: 11
+ox: 23
+oy: 19
+layer: 4

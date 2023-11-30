@@ -1,0 +1,3 @@
+index: 602
+type: Spaghetti_Alfredo
+corner: (5, -9)

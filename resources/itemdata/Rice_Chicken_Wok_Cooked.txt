@@ -1,0 +1,3 @@
+index: 827
+type: Rice_Chicken_Wok_Cooked
+corner: (0, 0)

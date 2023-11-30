@@ -1,0 +1,5 @@
+index: 576
+type: Sundae_IceCream_Sprinkles
+adjustx: 1
+adjusty: -3
+corner: (-1, 0)

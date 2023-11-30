@@ -1,0 +1,9 @@
+index: 416
+type: MexJalapeno_Salad
+adjustx: 4
+adjusty: 5
+absx: 0
+absy: 0
+layer: 60
+ox: 18
+oy: 11

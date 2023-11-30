@@ -1,0 +1,7 @@
+index: 365
+type: TacoTomato4
+adjustx: 4
+adjusty: 7
+ox: 22
+oy: 16
+layer: 6

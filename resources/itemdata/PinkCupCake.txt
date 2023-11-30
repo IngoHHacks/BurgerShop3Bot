@@ -1,0 +1,4 @@
+index: 90
+type: PinkCupCake
+ox: 15
+oy: 23

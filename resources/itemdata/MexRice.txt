@@ -1,0 +1,5 @@
+index: 105
+type: MexRice
+ox: 23
+oy: 19
+layer: 2

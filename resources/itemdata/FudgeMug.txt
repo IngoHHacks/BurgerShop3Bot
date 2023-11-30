@@ -1,0 +1,6 @@
+index: 258
+type: FudgeMug
+ox: 17
+oy: 34
+height: 26
+layer: 1

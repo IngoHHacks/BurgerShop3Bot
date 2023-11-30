@@ -1,0 +1,3 @@
+index: 702
+type: Ramekin_Mustard
+corner: (2, 2)

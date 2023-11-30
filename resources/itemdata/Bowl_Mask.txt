@@ -1,0 +1,8 @@
+index: 336
+type: Bowl_Mask
+absx: 0
+absy: 0
+layer: 1000
+ox: 27
+oy: 31
+height: 24

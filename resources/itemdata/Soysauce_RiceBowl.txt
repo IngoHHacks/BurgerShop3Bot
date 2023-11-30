@@ -1,0 +1,3 @@
+index: 784
+type: Soysauce_RiceBowl
+corner: (18, -8)

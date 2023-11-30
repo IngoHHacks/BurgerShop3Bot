@@ -1,0 +1,9 @@
+index: 423
+type: MexOlives_TacoSalad
+adjustx: 4
+adjusty: 5
+absx: 23
+absy: -1
+layer: 50
+ox: 18
+oy: 11

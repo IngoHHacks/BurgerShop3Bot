@@ -1,0 +1,7 @@
+index: 329
+type: Butter_Sugar
+ox: 6
+oy: 7
+absx: 32
+absy: 9
+layer: 25

@@ -1,0 +1,4 @@
+index: 35
+type: DogBiscuit
+ox: 21
+oy: 11

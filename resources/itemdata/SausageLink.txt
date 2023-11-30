@@ -1,0 +1,7 @@
+index: 54
+type: SausageLink
+adjustx: 8
+adjusty: 2
+ox: 14
+oy: 14
+layer: 5

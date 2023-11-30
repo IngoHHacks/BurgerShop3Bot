@@ -1,0 +1,4 @@
+parent: 342
+index: 450
+type: MexRice_Plate
+corner: (5, 12)

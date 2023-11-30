@@ -1,0 +1,4 @@
+index: 428
+type: MexChips_Nacho
+corner: (2, -5)
+layer: 1

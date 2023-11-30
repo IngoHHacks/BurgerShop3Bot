@@ -1,0 +1,4 @@
+index: 37
+type: ChocolateChips
+ox: 20
+oy: 14

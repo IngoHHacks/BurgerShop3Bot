@@ -1,0 +1,3 @@
+index: 785
+type: MexSteak_RiceBowl
+corner: (30, -9)

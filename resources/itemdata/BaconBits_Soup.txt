@@ -1,0 +1,4 @@
+index: 301
+type: BaconBits_Soup
+absx: 12
+absy: -6

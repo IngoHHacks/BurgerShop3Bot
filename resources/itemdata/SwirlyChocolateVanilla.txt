@@ -1,0 +1,3 @@
+index: 478
+type: SwirlyChocolateVanilla
+corner: (0, -22)

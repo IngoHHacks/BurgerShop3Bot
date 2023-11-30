@@ -1,0 +1,4 @@
+index: 823
+type: GreenBeans_Tofu_Wok
+ox: 26
+oy: 21

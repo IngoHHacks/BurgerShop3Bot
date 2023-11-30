@@ -1,0 +1,4 @@
+index: 239
+type: SmallLemonLimeSoda
+ox: 23
+oy: 48

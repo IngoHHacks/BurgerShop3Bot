@@ -1,0 +1,7 @@
+index: 666
+type: ItalSand_Olives
+ox: 27
+oy: 12
+absx: 12
+absy: 13
+layer: 9

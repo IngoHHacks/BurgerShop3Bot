@@ -1,0 +1,4 @@
+parent: 809
+index: 808
+type: MexSteak_NoodleBowl
+corner: (29, -2)

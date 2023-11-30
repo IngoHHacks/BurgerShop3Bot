@@ -1,0 +1,5 @@
+index: 842
+type: SnackCurlyFries
+ox: 16
+oy: 35
+layer: 2

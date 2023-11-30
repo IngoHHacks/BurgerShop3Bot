@@ -1,0 +1,4 @@
+index: 436
+type: Quesadilla_Jalapeno_Small
+ox: 18
+oy: 8

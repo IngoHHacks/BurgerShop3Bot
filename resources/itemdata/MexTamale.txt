@@ -1,0 +1,5 @@
+index: 106
+type: MexTamale
+ox: 25
+oy: 15
+layer: 0

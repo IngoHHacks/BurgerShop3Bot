@@ -1,0 +1,7 @@
+index: 331
+type: OrangeSodaSmall
+absx: 11
+absy: 18
+layer: 2
+ox: 23
+oy: 48

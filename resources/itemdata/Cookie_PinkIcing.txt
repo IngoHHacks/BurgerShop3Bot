@@ -1,0 +1,4 @@
+index: 506
+type: Cookie_PinkIcing
+absx: 1
+absy: 0

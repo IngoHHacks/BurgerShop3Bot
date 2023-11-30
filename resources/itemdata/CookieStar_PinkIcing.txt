@@ -1,0 +1,4 @@
+index: 536
+type: CookieStar_PinkIcing
+absx: 3
+absy: 0

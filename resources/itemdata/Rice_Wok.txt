@@ -1,0 +1,4 @@
+index: 825
+type: Rice_Wok
+ox: 25
+oy: 20

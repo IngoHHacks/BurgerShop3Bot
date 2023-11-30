@@ -1,0 +1,7 @@
+index: 731
+type: Nigiri_Riceball
+ox: 19
+oy: 14
+absx: 0
+absy: 0
+height: 8

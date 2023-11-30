@@ -1,0 +1,3 @@
+index: 787
+type: EggFried_NoodleBowl
+corner: (22, 2)

@@ -1,0 +1,4 @@
+index: 694
+type: ItalSalad_Tomato
+corner: (1, -7)
+layer: 8

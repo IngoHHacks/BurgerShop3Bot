@@ -1,0 +1,5 @@
+index: 198
+type: MexCornGrilled
+ox: 27
+oy: 15
+layer: 34

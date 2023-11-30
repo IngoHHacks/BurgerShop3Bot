@@ -1,0 +1,3 @@
+index: 479
+type: SwirlyStrawberryVanilla
+corner: (0, -22)

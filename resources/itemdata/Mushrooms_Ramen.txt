@@ -1,0 +1,3 @@
+index: 767
+type: Mushrooms_Ramen
+corner: (8, 0)

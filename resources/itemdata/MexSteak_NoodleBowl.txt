@@ -1,0 +1,3 @@
+index: 808
+type: MexSteak_NoodleBowl
+corner: (29, -10)

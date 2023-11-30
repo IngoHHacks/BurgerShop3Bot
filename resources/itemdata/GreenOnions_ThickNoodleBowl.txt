@@ -1,0 +1,3 @@
+index: 793
+type: GreenOnions_ThickNoodleBowl
+corner: (5, 5)

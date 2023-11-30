@@ -1,0 +1,5 @@
+index: 496
+type: CupCake_Peanuts_NoIcing
+absx: 1
+absy: -2
+layer: 3

@@ -1,0 +1,5 @@
+index: 305
+type: Gravy_MashedPotatos
+absx: 5
+absy: 0
+layer: 2

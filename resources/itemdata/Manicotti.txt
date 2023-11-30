@@ -1,0 +1,4 @@
+index: 132
+type: Manicotti
+ox: 20
+oy: 13

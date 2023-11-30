@@ -1,0 +1,5 @@
+index: 203
+type: MexSteakGrilled
+ox: 28
+oy: 16
+layer: 33

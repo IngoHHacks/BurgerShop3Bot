@@ -1,0 +1,6 @@
+index: 283
+type: CheeseMeltNoMeat_Provolone
+adjusty: 5
+ox: 24
+oy: 12
+height: 3

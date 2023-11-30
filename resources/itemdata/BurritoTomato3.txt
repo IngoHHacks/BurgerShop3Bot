@@ -1,0 +1,7 @@
+index: 394
+type: BurritoTomato3
+adjustx: 3
+adjusty: 15
+ox: 22
+oy: 16
+layer: 6

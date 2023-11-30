@@ -1,0 +1,4 @@
+index: 252
+type: SmallOnionRings
+ox: 20
+oy: 39

@@ -1,0 +1,5 @@
+index: 208
+type: PeasBoiled
+ox: 23
+oy: 22
+layer: 1

@@ -1,0 +1,4 @@
+index: 625
+type: FettuccinePackage
+ox: 30
+oy: 16

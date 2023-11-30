@@ -1,0 +1,4 @@
+index: 157
+type: Tofu
+ox: 14
+oy: 16

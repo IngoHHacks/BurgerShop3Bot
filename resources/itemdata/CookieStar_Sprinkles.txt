@@ -1,0 +1,4 @@
+index: 534
+type: CookieStar_Sprinkles
+absx: 10
+absy: -4

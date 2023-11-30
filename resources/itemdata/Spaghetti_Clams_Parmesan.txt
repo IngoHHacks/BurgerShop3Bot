@@ -1,0 +1,3 @@
+index: 607
+type: Spaghetti_Clams_Parmesan
+corner: (11, -6)

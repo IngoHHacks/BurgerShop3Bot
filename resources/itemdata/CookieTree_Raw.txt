@@ -1,0 +1,4 @@
+index: 513
+type: CookieTree_Raw
+ox: 27
+oy: 14

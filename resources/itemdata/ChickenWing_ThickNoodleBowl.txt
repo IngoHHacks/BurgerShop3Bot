@@ -1,0 +1,3 @@
+index: 791
+type: ChickenWing_ThickNoodleBowl
+corner: (35, -12)

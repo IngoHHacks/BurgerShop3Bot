@@ -1,0 +1,4 @@
+index: 226
+type: MusselsCooked
+ox: 21
+oy: 19

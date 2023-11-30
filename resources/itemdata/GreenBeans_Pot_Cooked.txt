@@ -1,0 +1,4 @@
+index: 751
+type: GreenBeans_Pot_Cooked
+ox: 14
+oy: 34

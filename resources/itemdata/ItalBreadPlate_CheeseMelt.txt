@@ -1,0 +1,3 @@
+index: 682
+type: ItalBreadPlate_CheeseMelt
+layer: 11

@@ -1,0 +1,5 @@
+index: 202
+type: MexShrimpGrilled
+ox: 30
+oy: 14
+layer: 32

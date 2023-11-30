@@ -1,0 +1,5 @@
+parent: 486
+index: 39
+type: Sprinkles
+absx: 0
+absy: 15

@@ -1,0 +1,4 @@
+index: 714
+type: Edamame_Saucer
+absx: -1
+absy: -7

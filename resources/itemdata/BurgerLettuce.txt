@@ -1,0 +1,7 @@
+index: 277
+type: BurgerLettuce
+adjusty: 1
+ox: 26
+oy: 11
+height: 7
+layer: 1006

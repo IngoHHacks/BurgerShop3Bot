@@ -1,0 +1,4 @@
+index: 626
+type: SpaghettiPackage
+ox: 30
+oy: 16

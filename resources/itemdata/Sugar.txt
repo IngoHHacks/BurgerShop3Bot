@@ -1,0 +1,5 @@
+index: 46
+type: Sugar
+ox: 21
+oy: 11
+layer: 22

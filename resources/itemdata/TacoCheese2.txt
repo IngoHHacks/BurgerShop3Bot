@@ -1,0 +1,6 @@
+index: 359
+type: TacoCheese2
+adjusty: 11
+ox: 23
+oy: 16
+layer: 5

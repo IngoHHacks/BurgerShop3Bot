@@ -1,0 +1,6 @@
+index: 730
+type: Nigiri_Cucumber
+ox: 16
+oy: 14
+absx: 0
+absy: -4

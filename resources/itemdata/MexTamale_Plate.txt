@@ -1,0 +1,5 @@
+index: 451
+type: MexTamale_Plate
+ox: 30
+oy: 18
+layer: 35

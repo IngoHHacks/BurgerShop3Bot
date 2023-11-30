@@ -1,0 +1,3 @@
+index: 788
+type: Jalapeno_NoodleBowl
+corner: (0, -6)

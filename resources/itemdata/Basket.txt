@@ -1,0 +1,5 @@
+index: 124
+type: Basket
+ox: 30
+oy: 24
+layer: 0

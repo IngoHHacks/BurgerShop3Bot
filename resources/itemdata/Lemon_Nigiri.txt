@@ -1,0 +1,5 @@
+index: 343
+type: Lemon_Nigiri
+ox: 9
+oy: 3
+corner: (10, 1)

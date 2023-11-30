@@ -1,0 +1,4 @@
+index: 559
+type: VanillaMilkshake
+absx: 3
+absy: 14

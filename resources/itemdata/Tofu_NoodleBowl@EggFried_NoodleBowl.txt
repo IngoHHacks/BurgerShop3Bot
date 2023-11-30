@@ -1,0 +1,4 @@
+parent: 809
+index: 787
+type: EggFried_NoodleBowl
+corner: (14, 3)

@@ -1,0 +1,5 @@
+parent: 41
+index: 456
+type: Cake_Banana
+absx: 27
+absy: 11

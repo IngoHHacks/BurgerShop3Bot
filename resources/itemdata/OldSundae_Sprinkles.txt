@@ -1,0 +1,4 @@
+index: 485
+type: OldSundae_Sprinkles
+absx: 2
+absy: 0

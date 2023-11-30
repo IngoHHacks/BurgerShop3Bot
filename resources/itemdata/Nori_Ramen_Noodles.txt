@@ -1,0 +1,3 @@
+index: 769
+type: Nori_Ramen_Noodles
+corner: (-1, -7)

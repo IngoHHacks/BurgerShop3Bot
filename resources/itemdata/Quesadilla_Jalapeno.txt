@@ -1,0 +1,4 @@
+index: 435
+type: Quesadilla_Jalapeno
+ox: 21
+oy: 10

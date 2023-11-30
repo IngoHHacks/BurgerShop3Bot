@@ -1,0 +1,4 @@
+index: 272
+type: FlakesMilkBowl
+ox: 27
+oy: 34

@@ -1,0 +1,6 @@
+index: 649
+type: Pizza_Crust_Raw
+ox: 40
+oy: 18
+corner: (0, 1)
+layer: 0

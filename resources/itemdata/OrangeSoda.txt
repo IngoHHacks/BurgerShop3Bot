@@ -1,0 +1,7 @@
+index: 175
+type: OrangeSoda
+absx: 3
+absy: 14
+layer: 2
+ox: 17
+oy: 54

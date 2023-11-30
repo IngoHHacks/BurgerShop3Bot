@@ -1,0 +1,4 @@
+index: 78
+type: SteakRaw
+ox: 22
+oy: 17

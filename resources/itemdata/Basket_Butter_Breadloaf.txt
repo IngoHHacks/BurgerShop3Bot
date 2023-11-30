@@ -1,0 +1,3 @@
+index: 678
+type: Basket_Butter_Breadloaf
+corner: (20, 6)

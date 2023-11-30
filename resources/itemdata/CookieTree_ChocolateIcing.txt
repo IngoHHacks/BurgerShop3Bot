@@ -1,0 +1,4 @@
+index: 541
+type: CookieTree_ChocolateIcing
+absx: 5
+absy: 1

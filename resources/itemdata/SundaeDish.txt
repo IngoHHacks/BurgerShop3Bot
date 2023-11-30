@@ -1,0 +1,4 @@
+index: 24
+type: SundaeDish
+ox: 29
+oy: 23

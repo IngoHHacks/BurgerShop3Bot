@@ -1,0 +1,3 @@
+index: 832
+type: Rice_Tofu_Wok_Cooked
+corner: (2, 7)

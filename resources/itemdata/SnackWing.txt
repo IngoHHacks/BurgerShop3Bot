@@ -1,0 +1,5 @@
+index: 837
+type: SnackWing
+ox: 6
+oy: 28
+layer: 5

@@ -1,0 +1,5 @@
+index: 318
+type: EnglishMuffinBottomRaw
+ox: 18
+oy: 12
+height: 9

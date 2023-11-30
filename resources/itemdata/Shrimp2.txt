@@ -1,0 +1,6 @@
+index: 308
+type: Shrimp2
+ox: 22
+oy: 17
+absx: 23
+absy: 21

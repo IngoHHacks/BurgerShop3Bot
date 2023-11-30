@@ -1,0 +1,3 @@
+index: 616
+type: Fettuccine_Clams
+corner: (6, -12)

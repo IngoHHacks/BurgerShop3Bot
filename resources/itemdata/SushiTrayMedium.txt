@@ -1,0 +1,5 @@
+index: 743
+type: SushiTrayMedium
+ox: 37
+oy: 14
+height: 5

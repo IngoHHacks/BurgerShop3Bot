@@ -1,0 +1,5 @@
+index: 18
+type: Bowl
+ox: 27
+oy: 31
+height: 24

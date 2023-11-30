@@ -1,0 +1,5 @@
+index: 16
+type: SnackTray
+ox: 43
+oy: 29
+layer: 0

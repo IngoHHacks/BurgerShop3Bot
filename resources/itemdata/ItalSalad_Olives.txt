@@ -1,0 +1,6 @@
+index: 692
+type: ItalSalad_Olives
+ox: 15
+oy: 12
+corner: (9, -5)
+layer: 10

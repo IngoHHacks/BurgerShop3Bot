@@ -1,0 +1,5 @@
+index: 223
+type: FettuccineCooked
+ox: 37
+oy: 22
+corner: (8, -6)

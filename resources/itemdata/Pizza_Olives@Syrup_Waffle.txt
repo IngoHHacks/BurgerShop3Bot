@@ -1,0 +1,4 @@
+parent: 657
+index: 317
+type: Syrup_Waffle
+corner: (15, 5)

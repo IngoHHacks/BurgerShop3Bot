@@ -1,0 +1,3 @@
+index: 620
+type: Fettuccine_Mussels_Basil
+corner: (12, -6)

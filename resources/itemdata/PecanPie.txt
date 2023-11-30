@@ -1,0 +1,8 @@
+index: 83
+type: PecanPie
+adjustx: 1
+adjusty: -2
+ox: 20
+oy: 25
+height: 13
+layer: 1

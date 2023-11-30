@@ -1,0 +1,5 @@
+index: 592
+type: Breadslice_Dinner
+ox: 11
+oy: 23
+layer: 30

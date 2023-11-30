@@ -1,0 +1,4 @@
+index: 717
+type: Hotsauce_Saucer
+absx: 2
+absy: 1

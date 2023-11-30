@@ -1,0 +1,4 @@
+index: 253
+type: LargeOnionRings
+ox: 25
+oy: 50

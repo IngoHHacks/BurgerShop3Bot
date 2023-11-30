@@ -1,0 +1,4 @@
+index: 238
+type: LargeOrangeSoda
+ox: 17
+oy: 54

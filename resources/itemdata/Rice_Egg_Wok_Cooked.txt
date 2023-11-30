@@ -1,0 +1,3 @@
+index: 828
+type: Rice_Egg_Wok_Cooked
+corner: (9, 2)

@@ -1,0 +1,3 @@
+index: 577
+type: Sundae_IceCream_StrawberrySauce
+corner: (-1, -3)

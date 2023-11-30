@@ -1,0 +1,3 @@
+index: 809
+type: Tofu_NoodleBowl
+corner: (28, 0)

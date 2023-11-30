@@ -1,0 +1,7 @@
+index: 44
+type: Butter
+ox: 6
+oy: 7
+layer: 25
+absx: 32
+absy: 9

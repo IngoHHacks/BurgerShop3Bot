@@ -1,0 +1,5 @@
+index: 265
+type: TeaPot_LemonLime
+ox: 28
+oy: 38
+layer: 1

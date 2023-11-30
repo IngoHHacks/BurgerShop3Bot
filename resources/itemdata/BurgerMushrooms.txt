@@ -1,0 +1,7 @@
+index: 279
+type: BurgerMushrooms
+adjusty: 3
+ox: 24
+oy: 8
+height: 6
+layer: 1005

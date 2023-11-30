@@ -1,0 +1,4 @@
+index: 432
+type: Quesadilla_Raw
+ox: 42
+oy: 22

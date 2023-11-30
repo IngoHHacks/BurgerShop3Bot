@@ -1,0 +1,4 @@
+parent: 433
+index: 285
+type: PlateBig
+adjusty: 5

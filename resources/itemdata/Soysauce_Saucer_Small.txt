@@ -1,0 +1,3 @@
+index: 756
+type: Soysauce_Saucer_Small
+corner: (1, 2)

@@ -1,0 +1,7 @@
+index: 169
+type: MexChips
+ox: 29
+oy: 18
+absx: 4
+absy: -5
+layer: 1

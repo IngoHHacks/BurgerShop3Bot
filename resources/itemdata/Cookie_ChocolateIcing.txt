@@ -1,0 +1,4 @@
+index: 507
+type: Cookie_ChocolateIcing
+absx: 1
+absy: 0
