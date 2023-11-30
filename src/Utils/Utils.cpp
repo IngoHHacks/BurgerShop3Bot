@@ -319,3 +319,20 @@ Gdiplus::Image *Utils::GetImageFromPath(std::wstring path) {
     imageCache[path] = image;
     return image;
 }
+
+HWND g_hwnd = NULL;
+
+BOOL CALLBACK Utils::EnumWindowsProc(HWND hwnd, LPARAM lParam) {
+    DWORD lpdwProcessId;
+    GetWindowThreadProcessId(hwnd, &lpdwProcessId);
+    if (lpdwProcessId == lParam) {
+        g_hwnd = hwnd;
+        return FALSE;
+    }
+    return TRUE;
+}
+
+HWND Utils::FindWindowByProcessId(DWORD processId) {
+    EnumWindows(EnumWindowsProc, processId);
+    return g_hwnd;
+}
