@@ -27,9 +27,11 @@ class Utils {
 public:
     static uintptr_t GetModuleBaseAddress(DWORD procId, const char *modName);
 
+#ifdef _WIN64
     static bool GetWow64ThreadContext(HANDLE hThread, WOW64_CONTEXT &context);
 
     static bool SetWow64ThreadContext(HANDLE hThread, WOW64_CONTEXT &context);
+#endif
 
     static bool ReadBufferToProcessMemory(HANDLE processHandle, DWORD address, LPVOID buffer, SIZE_T size);
 

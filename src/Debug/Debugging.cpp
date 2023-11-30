@@ -246,6 +246,7 @@ void Debugging::DebugLoop() {
                                 context.ContextFlags = CONTEXT_CONTROL;
                                 HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, debugEvent.dwThreadId);
                                 if (hThread != NULL) {
+#ifdef _WIN64
                                     WOW64_CONTEXT context;
                                     if (Utils::GetWow64ThreadContext(hThread, context)) {
                                         context.Eip--;
@@ -255,6 +256,16 @@ void Debugging::DebugLoop() {
                                     } else {
                                         std::cout << "Error: Could not get thread context." << std::endl;
                                     }
+#else
+                                    if (GetThreadContext(hThread, &context)) {
+                                        context.Eip--;
+                                        if (!SetThreadContext(hThread, context)) {
+                                            std::cout << "Error: Could not set thread context." << std::endl;
+                                        }
+                                    } else {
+                                        std::cout << "Error: Could not get thread context." << std::endl;
+                                    }
+#endif
                                     CloseHandle(hThread);
                                 }
                             }

@@ -28,6 +28,7 @@ uintptr_t Utils::GetModuleBaseAddress(DWORD procId, const char *modName) {
     return modBaseAddr;
 }
 
+#ifdef _WIN64
 bool Utils::GetWow64ThreadContext(HANDLE hThread, WOW64_CONTEXT &context) {
     ZeroMemory(&context, sizeof(WOW64_CONTEXT));
     context.ContextFlags = CONTEXT_FULL;
@@ -48,6 +49,7 @@ bool Utils::SetWow64ThreadContext(HANDLE hThread, WOW64_CONTEXT &context) {
 
     return true;
 }
+#endif
 
 bool Utils::ReadBufferToProcessMemory(HANDLE processHandle, DWORD address, LPVOID buffer, SIZE_T size) {
     SIZE_T bytesRead;
