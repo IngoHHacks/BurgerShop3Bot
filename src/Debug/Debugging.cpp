@@ -75,6 +75,7 @@ void Debugging::DebugLoop() {
     }
     MoveWindow(windowHandle, 0, 0, 800, 600, TRUE);
     GameState::SetHandle(hProcess);
+    GameState::SetWindowHandle(windowHandle);
     BreakpointManager bpManager(hProcess);
     std::thread workerThread(WorkerThread, hProcess);
 

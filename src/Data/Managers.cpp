@@ -20,6 +20,7 @@ std::vector<Customer> GameState::customers;
 bool GameState::dirty = false;
 bool GameState::needsSorting = false;
 HANDLE GameState::handle = NULL;
+HWND GameState::windowHandle = NULL;
 
 std::mutex GameState::conveyorItemsMutex;
 std::mutex GameState::customersMutex;
@@ -86,6 +87,14 @@ HANDLE GameState::GetHandle() {
 }
 
 /**
+ * Returns the handle to the game window.
+ * @return The handle to the game window.
+ */
+HWND GameState::GetWindowHandle() {
+    return windowHandle;
+}
+
+/**
  * Sets the BurgerBot percentage.
  * @param value The new BurgerBot percentage.
  */
@@ -128,6 +137,17 @@ void GameState::SetHandle(HANDLE pHandle) {
         std::cout << "Warning: Overwriting game handle." << std::endl;
     }
     handle = pHandle;
+}
+
+/**
+ * Sets the handle to the game window.
+ * @param pHandle The new handle to the game window.
+ */
+void GameState::SetWindowHandle(HWND pHandle) {
+    if (windowHandle != nullptr) {
+        std::cout << "Warning: Overwriting window handle." << std::endl;
+    }
+    windowHandle = pHandle;
 }
 
 /**

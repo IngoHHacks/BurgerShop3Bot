@@ -33,6 +33,8 @@ public:
 
     static HANDLE GetHandle();
 
+    static HWND GetWindowHandle();
+
     static void SetBBPercent(float value);
 
     static void SetNumConveyorItems(int value);
@@ -40,6 +42,8 @@ public:
     static void SetConveyorItems(std::list<std::unique_ptr<ItemBase>> value);
 
     static void SetHandle(HANDLE pVoid);
+
+    static void SetWindowHandle(HWND pVoid);
 
     static void SortConveyorItems();
 
@@ -65,6 +69,7 @@ private:
     static bool dirty;
     static bool needsSorting;
     static void *handle;
+    static HWND windowHandle;
 };
 
 class ItemManager {
