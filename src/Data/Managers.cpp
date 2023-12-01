@@ -297,7 +297,7 @@ bool BreakpointManager::HandleBreakpoint(const DEBUG_EVENT &debugEvent) {
     threadHandle = OpenThread(THREAD_ALL_ACCESS, FALSE, debugEvent.dwThreadId);
     CONTEXT context;
     ZeroMemory(&context, sizeof(CONTEXT));
-    context.ContextFlags = CONTEXT_CONTROL;
+    context.ContextFlags = CONTEXT_FULL;
     GetThreadContext(threadHandle, &context);
 
     // Set the trap flag for single-step execution
@@ -336,7 +336,7 @@ void BreakpointManager::ReinstateBreakpoint() {
 void BreakpointManager::ClearSingleStep() {
     CONTEXT context;
     ZeroMemory(&context, sizeof(CONTEXT));
-    context.ContextFlags = CONTEXT_CONTROL;
+    context.ContextFlags = CONTEXT_FULL;
     GetThreadContext(threadHandle, &context);
     context.EFlags &= ~0x100; // Clear trap flag
     SetThreadContext(threadHandle, &context);
