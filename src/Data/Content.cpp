@@ -10,7 +10,7 @@
  */
 void MemoryProbe::PrintInts(int length) {
     std::vector<int> values(length);
-	if (!Utils::ReadBufferToProcessMemory(GameState::GetHandle(), address, &values, values.size() * sizeof(int))) {
+	if (!Utils::ReadMemoryToBuffer(GameState::GetHandle(), address, values.data(), values.size() * sizeof(int))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         return;
     }
@@ -26,7 +26,7 @@ void MemoryProbe::PrintInts(int length) {
  */
 void MemoryProbe::PrintBytes(int length) {
     std::vector<BYTE> values(length);
-	if (!Utils::ReadBufferToProcessMemory(GameState::GetHandle(), address, &values, values.size() * sizeof(BYTE))) {
+	if (!Utils::ReadMemoryToBuffer(GameState::GetHandle(), address, values.data(), values.size() * sizeof(BYTE))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         return;
     }
@@ -42,7 +42,7 @@ void MemoryProbe::PrintBytes(int length) {
  */
 void MemoryProbe::PrintFloats(int length) {
 	std::vector<float> values(length);
-	if (!Utils::ReadBufferToProcessMemory(GameState::GetHandle(), address, &values, values.size() * sizeof(float))) {
+	if (!Utils::ReadMemoryToBuffer(GameState::GetHandle(), address, values.data(), values.size() * sizeof(float))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         return;
     }
@@ -58,15 +58,15 @@ void MemoryProbe::PrintFloats(int length) {
  */
 bool SimpleItem::isValid(HANDLE hProcess) {
     int value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address, &value, sizeof(value))) {
         return false;
     }
     int typeValue;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, value, &typeValue, sizeof(typeValue))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, value, &typeValue, sizeof(typeValue))) {
         return false;
     }
     int actualValue;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue))) {
         return false;
     }
     return actualValue == 1317794187;
@@ -79,7 +79,7 @@ bool SimpleItem::isValid(HANDLE hProcess) {
  */
 int SimpleItem::GetItemId(HANDLE hProcess) {
     int value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x2C, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x2C, &value, sizeof(value))) {
         return -1;
     }
     return value;
@@ -92,7 +92,7 @@ int SimpleItem::GetItemId(HANDLE hProcess) {
  */
 int SimpleItem::GetIngredientId(HANDLE hProcess) {
     int value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x30, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x30, &value, sizeof(value))) {
         return -1;
     }
     return value;
@@ -105,7 +105,7 @@ int SimpleItem::GetIngredientId(HANDLE hProcess) {
  */
 int SimpleItem::GetConveyorIndex(HANDLE hProcess) {
     int value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x38, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x38, &value, sizeof(value))) {
         return -1;
     }
     return value;
@@ -138,7 +138,7 @@ std::string SimpleItem::GetIngredientName(HANDLE hProcess) {
  */
 float SimpleItem::GetX(HANDLE hProcess) {
     float value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x24, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x24, &value, sizeof(value))) {
         return -1;
     }
     return value;
@@ -151,7 +151,7 @@ float SimpleItem::GetX(HANDLE hProcess) {
  */
 float SimpleItem::GetY(HANDLE hProcess) {
     float value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x28, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x28, &value, sizeof(value))) {
         return -1;
     }
     return value;
@@ -218,16 +218,16 @@ bool SimpleItem::HasChanged() {
  */
 bool ComplexItem::isValid(HANDLE hProcess) {
     int values[32];
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address, &values, sizeof(values))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address, &values, sizeof(values))) {
         return false;
     }
     int type = values[0];
     int typeValue;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, type, &typeValue, sizeof(typeValue))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, type, &typeValue, sizeof(typeValue))) {
         return false;
     }
     int actualValue;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue))) {
         return false;
     }
     return actualValue == 113766795;
@@ -240,17 +240,17 @@ bool ComplexItem::isValid(HANDLE hProcess) {
  */
 std::list<SimpleItem> ComplexItem::GetItems(HANDLE hProcess) {
     int values[32];
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address, &values, sizeof(values))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address, &values, sizeof(values))) {
         return {};
     }
     // Validate
     int type = values[0];
     int typeValue;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, type, &typeValue, sizeof(typeValue))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, type, &typeValue, sizeof(typeValue))) {
         return {};
     }
     int actualValue;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue))) {
         return {};
     }
     if (actualValue != 113766795) {
@@ -259,7 +259,7 @@ std::list<SimpleItem> ComplexItem::GetItems(HANDLE hProcess) {
     int listAddress = values[30];
     int size = values[22];
 	std::vector<int> itemAddresses(size);
-	if (!Utils::ReadBufferToProcessMemory(hProcess, listAddress, &itemAddresses, itemAddresses.size() * sizeof(int))) {
+	if (!Utils::ReadMemoryToBuffer(hProcess, listAddress, itemAddresses.data(), itemAddresses.size() * sizeof(int))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         return {};
     }
@@ -277,7 +277,7 @@ std::list<SimpleItem> ComplexItem::GetItems(HANDLE hProcess) {
  */
 int ComplexItem::GetConveyorIndex(HANDLE hProcess) {
     int value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x38, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x38, &value, sizeof(value))) {
         return -1;
     }
     return value;
@@ -290,7 +290,7 @@ int ComplexItem::GetConveyorIndex(HANDLE hProcess) {
  */
 float ComplexItem::GetX(HANDLE hProcess) {
     float value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x24, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x24, &value, sizeof(value))) {
         return -1;
     }
     return value;
@@ -303,7 +303,7 @@ float ComplexItem::GetX(HANDLE hProcess) {
  */
 float ComplexItem::GetY(HANDLE hProcess) {
     float value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x28, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x28, &value, sizeof(value))) {
         return -1;
     }
     return value;
@@ -341,18 +341,18 @@ std::unique_ptr<ItemBase> ItemInfo::GetItem() {
         return nullptr;
     }
     int values[32];
-    if (!Utils::ReadBufferToProcessMemory(GameState::GetHandle(), mItem, &values, sizeof(values))) {
+    if (!Utils::ReadMemoryToBuffer(GameState::GetHandle(), mItem, &values, sizeof(values))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         return nullptr;
     }
     int type = values[0];
     int typeValue;
-    if (!Utils::ReadBufferToProcessMemory(GameState::GetHandle(), type, &typeValue, sizeof(typeValue))) {
+    if (!Utils::ReadMemoryToBuffer(GameState::GetHandle(), type, &typeValue, sizeof(typeValue))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         return nullptr;
     }
     int actualValue;
-    if (!Utils::ReadBufferToProcessMemory(GameState::GetHandle(), typeValue + 0x4, &actualValue, sizeof(actualValue))) {
+    if (!Utils::ReadMemoryToBuffer(GameState::GetHandle(), typeValue + 0x4, &actualValue, sizeof(actualValue))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         return nullptr;
     }
@@ -370,15 +370,15 @@ std::unique_ptr<ItemBase> ItemInfo::GetItem() {
  */
 bool Customer::isValid(HANDLE hProcess) {
     int value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address, &value, sizeof(value))) {
         return false;
     }
     int typeValue;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, value, &typeValue, sizeof(typeValue))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, value, &typeValue, sizeof(typeValue))) {
         return false;
     }
     int actualValue;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue))) {
         return false;
     }
     return actualValue == 113766795;
@@ -392,7 +392,7 @@ bool Customer::isValid(HANDLE hProcess) {
  */
 int Customer::GetId(HANDLE hProcess) {
     int value;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x488, &value, sizeof(value))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x488, &value, sizeof(value))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         return -1;
     }
@@ -407,18 +407,18 @@ int Customer::GetId(HANDLE hProcess) {
 std::list<ItemInfo> Customer::GetItems(HANDLE hProcess) {
     std::list<ItemInfo> items;
     DWORD vectorAddress;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x15C, &vectorAddress, sizeof(vectorAddress))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x15C, &vectorAddress, sizeof(vectorAddress))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
     }
     DWORD vectorEnd;
-    if (!Utils::ReadBufferToProcessMemory(hProcess, address + 0x160, &vectorEnd, sizeof(vectorEnd))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x160, &vectorEnd, sizeof(vectorEnd))) {
         std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
     }
     int vectorLength = (vectorEnd - vectorAddress) / 48;
     for (int i = 0; i < vectorLength; i++) {
         DWORD itemAddress = vectorAddress + i * 48;
         ItemInfo itemInfo;
-        if (!Utils::ReadBufferToProcessMemory(hProcess, itemAddress, &itemInfo, sizeof(itemInfo))) {
+        if (!Utils::ReadMemoryToBuffer(hProcess, itemAddress, &itemInfo, sizeof(itemInfo))) {
             std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
         }
         items.push_back(itemInfo);

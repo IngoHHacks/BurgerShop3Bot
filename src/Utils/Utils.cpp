@@ -68,7 +68,7 @@ bool Utils::SetWow64ThreadContext(HANDLE hThread, WOW64_CONTEXT &context) {
 #endif
 
 /**
- * Read a buffer from process memory.
+ * Read process memory into a buffer.
  * @param processHandle The process handle.
  * @param address The address to read from.
  * @param buffer (out) The buffer to read into.
@@ -76,7 +76,7 @@ bool Utils::SetWow64ThreadContext(HANDLE hThread, WOW64_CONTEXT &context) {
  * @return @c true if the read was successful. @c false if the read failed or the number of bytes read was not equal to
  * the size of the buffer.
  */
-bool Utils::ReadBufferToProcessMemory(HANDLE processHandle, DWORD address, LPVOID buffer, SIZE_T size) {
+bool Utils::ReadMemoryToBuffer(HANDLE processHandle, DWORD address, LPVOID buffer, SIZE_T size) {
     SIZE_T bytesRead;
     return ReadProcessMemory(processHandle, reinterpret_cast<LPCVOID>(static_cast<DWORD_PTR>(address)), buffer,
                              size, &bytesRead) && bytesRead == size;
@@ -108,18 +108,18 @@ bool Utils::WriteBufferToProcessMemory(HANDLE processHandle, DWORD address, LPCV
 bool Utils::IsNotItem(HANDLE hProcess, DWORD address, const Node &node) {
     // 1. Try reading content. If it fails, we know it's not an item.
     int value;
-    if (!ReadBufferToProcessMemory(hProcess, node.content, &value, sizeof(value))) {
+    if (!ReadMemoryToBuffer(hProcess, node.content, &value, sizeof(value))) {
         return true;
     }
     // 2. Try reading the value as a pointer. If it fails, we know it's not an item.
     int pointer;
-    if (!ReadBufferToProcessMemory(hProcess, value, &pointer, sizeof(pointer))) {
+    if (!ReadMemoryToBuffer(hProcess, value, &pointer, sizeof(pointer))) {
         return true;
     }
     // 3. Try reading the pointer + 0x4 as pointer. If it fails or is not 1317794187 or 113766795, we know it's not an
     // item.
     int pointerToPointer;
-    if (!ReadBufferToProcessMemory(hProcess, pointer + 0x4, &pointerToPointer, sizeof(pointerToPointer))) {
+    if (!ReadMemoryToBuffer(hProcess, pointer + 0x4, &pointerToPointer, sizeof(pointerToPointer))) {
         return true;
     }
     if (pointerToPointer != 1317794187 && pointerToPointer != 113766795) {
@@ -146,16 +146,16 @@ bool Utils::TryFindFood(HANDLE hProcess, DWORD startAddress, int depth, int widt
     }
 
     int test1;
-    if (!ReadBufferToProcessMemory(hProcess, startAddress, &test1, sizeof(test1))) {
+    if (!ReadMemoryToBuffer(hProcess, startAddress, &test1, sizeof(test1))) {
         return false;
     }
     int test2;
-    if (!ReadBufferToProcessMemory(hProcess, test1 + 0x4, &test2, sizeof(test2))) {
+    if (!ReadMemoryToBuffer(hProcess, test1 + 0x4, &test2, sizeof(test2))) {
         return false;
     }
     if (test2 == 113766795) {
         int values[32];
-        if (!ReadBufferToProcessMemory(hProcess, test2, &values, sizeof(values))) {
+        if (!ReadMemoryToBuffer(hProcess, test2, &values, sizeof(values))) {
             return {};
         }
         int size = values[22];
@@ -166,7 +166,7 @@ bool Utils::TryFindFood(HANDLE hProcess, DWORD startAddress, int depth, int widt
     }
 
 	std::vector<int> values(width);
-	if (!ReadBufferToProcessMemory(hProcess, startAddress, &values, values.size() * sizeof(int))) {
+	if (!ReadMemoryToBuffer(hProcess, startAddress, values.data(), values.size() * sizeof(int))) {
         return false;
     }
 
@@ -195,7 +195,7 @@ std::list<Node> Utils::TraverseAndCollectNodes(HANDLE hProcess, DWORD startAddre
     DWORD sentinelAddress = 0;
     std::list<Node> path;
     while (true) {
-        if (!ReadBufferToProcessMemory(hProcess, currentAddress, &currentNode, sizeof(currentNode))) {
+        if (!ReadMemoryToBuffer(hProcess, currentAddress, &currentNode, sizeof(currentNode))) {
             std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
             break;
         }
@@ -222,7 +222,7 @@ std::list<Node> Utils::TraverseAndCollectNodes(HANDLE hProcess, DWORD startAddre
     std::list<DWORD> addresses;
     // Traverse the list forwards, adding each item to the list until we reach the end
     while (true) {
-        if (!ReadBufferToProcessMemory(hProcess, currentAddress, &currentNode, sizeof(currentNode))) {
+        if (!ReadMemoryToBuffer(hProcess, currentAddress, &currentNode, sizeof(currentNode))) {
             std::cout << "Error: Could not read from process memory. Line: " << __LINE__ << std::endl;
             break;
         }
@@ -247,14 +247,14 @@ void Utils::ApplyConveyorItems(std::list<Node> nodeList, HANDLE hProcess) {
     bool valid = true;
     for (const Node &node: nodeList) {
         int values[32];
-        if (!ReadBufferToProcessMemory(hProcess, node.content, &values, sizeof(values))) {
+        if (!ReadMemoryToBuffer(hProcess, node.content, &values, sizeof(values))) {
             continue;
         }
         int type = values[0];
         int typeValue;
-        ReadBufferToProcessMemory(hProcess, type, &typeValue, sizeof(typeValue));
+        ReadMemoryToBuffer(hProcess, type, &typeValue, sizeof(typeValue));
         int actualValue;
-        ReadBufferToProcessMemory(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue));
+        ReadMemoryToBuffer(hProcess, typeValue + 0x4, &actualValue, sizeof(actualValue));
         if (actualValue == 1317794187) {
             std::unique_ptr<SimpleItem> item = std::make_unique<SimpleItem>(node.content);
             if (!item->isValid(hProcess)) {
@@ -292,7 +292,7 @@ void Utils::RecursivePrint(DWORD address, int depth, int items) {
     std::cout << "Address: " << address << std::endl;
     std::cout << "Values:";
 	std::vector<int> values(items);
-	if (!ReadBufferToProcessMemory(GameState::GetHandle(), address, &values, values.size() * sizeof(int))) {
+	if (!ReadMemoryToBuffer(GameState::GetHandle(), address, values.data(), values.size() * sizeof(int))) {
         std::cout << " (Unreadable)" << std::endl;
         return;
     }

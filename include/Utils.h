@@ -33,7 +33,7 @@ public:
     static bool SetWow64ThreadContext(HANDLE hThread, WOW64_CONTEXT &context);
 #endif
 
-    static bool ReadBufferToProcessMemory(HANDLE processHandle, DWORD address, LPVOID buffer, SIZE_T size);
+    static bool ReadMemoryToBuffer(HANDLE processHandle, DWORD address, LPVOID buffer, SIZE_T size);
 
     static bool WriteBufferToProcessMemory(HANDLE processHandle, DWORD address, LPCVOID buffer, SIZE_T size);
 
