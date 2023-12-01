@@ -20,7 +20,6 @@
 std::mutex queueMutex;
 std::condition_variable queueCondition;
 std::queue<std::pair<DEBUG_EVENT, std::function<void(const DEBUG_EVENT &, HANDLE)>>> eventQueue;
-WNDPROC originalWndProc = nullptr;
 
 void WorkerThread(HANDLE handle) {
     while (true) {
@@ -42,25 +41,6 @@ void Debugging::EnqueueEvent(const DEBUG_EVENT &debugEvent, std::function<void(c
     std::lock_guard<std::mutex> lock(queueMutex);
     eventQueue.push(std::make_pair(debugEvent, callback));
     queueCondition.notify_one();
-}
-
-LRESULT CALLBACK MarkerProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
-    switch (message) {
-        case WM_PAINT: {
-            CallWindowProc(originalWndProc, hwnd, message, wParam, lParam);
-            // Just draw a little square for now
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hwnd, &ps);
-            HBRUSH hBrush = CreateSolidBrush(RGB(255, 220, 200));
-            FillRect(hdc, &ps.rcPaint, hBrush);
-            DeleteObject(hBrush);
-            EndPaint(hwnd, &ps);
-            break;
-        }
-        default:
-            return CallWindowProc(originalWndProc, hwnd, message, wParam, lParam);
-    }
-    return 0;
 }
 
 void Debugging::DebugLoop() {
@@ -94,8 +74,6 @@ void Debugging::DebugLoop() {
         exit(0);
     }
     MoveWindow(windowHandle, 0, 0, 800, 600, TRUE);
-    originalWndProc = (WNDPROC) GetWindowLongPtr(windowHandle, GWLP_WNDPROC);
-    SetWindowLongPtr(windowHandle, GWLP_WNDPROC, (LONG_PTR) MarkerProcedure);
     GameState::SetHandle(hProcess);
     BreakpointManager bpManager(hProcess);
     std::thread workerThread(WorkerThread, hProcess);
@@ -369,6 +347,5 @@ void Debugging::DebugLoop() {
     } else {
         std::cout << "Error: Could not attach debugger to process." << std::endl;
     }
-    SetWindowLongPtr(windowHandle, GWLP_WNDPROC, (LONG_PTR) originalWndProc);
     CloseHandle(hProcess);
 }
