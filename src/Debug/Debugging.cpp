@@ -20,6 +20,7 @@
 std::mutex queueMutex;
 std::condition_variable queueCondition;
 std::queue<std::pair<DEBUG_EVENT, std::function<void(const DEBUG_EVENT &, HANDLE)>>> eventQueue;
+WNDPROC originalWndProc = nullptr;
 
 void WorkerThread(HANDLE handle) {
     while (true) {
@@ -41,6 +42,25 @@ void Debugging::EnqueueEvent(const DEBUG_EVENT &debugEvent, std::function<void(c
     std::lock_guard<std::mutex> lock(queueMutex);
     eventQueue.push(std::make_pair(debugEvent, callback));
     queueCondition.notify_one();
+}
+
+LRESULT CALLBACK MarkerProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
+    switch (message) {
+        case WM_PAINT: {
+            CallWindowProc(originalWndProc, hwnd, message, wParam, lParam);
+            // Just draw a little square for now
+            PAINTSTRUCT ps;
+            HDC hdc = BeginPaint(hwnd, &ps);
+            HBRUSH hBrush = CreateSolidBrush(RGB(255, 220, 200));
+            FillRect(hdc, &ps.rcPaint, hBrush);
+            DeleteObject(hBrush);
+            EndPaint(hwnd, &ps);
+            break;
+        }
+        default:
+            return CallWindowProc(originalWndProc, hwnd, message, wParam, lParam);
+    }
+    return 0;
 }
 
 void Debugging::DebugLoop() {
@@ -69,7 +89,13 @@ void Debugging::DebugLoop() {
     CloseHandle(snapshot);
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
     HWND windowHandle = Utils::FindWindowByProcessId(pid);
+    if (windowHandle == NULL) {
+        std::cout << "Error: Could not find window." << std::endl;
+        exit(0);
+    }
     MoveWindow(windowHandle, 0, 0, 800, 600, TRUE);
+    originalWndProc = (WNDPROC) GetWindowLongPtr(windowHandle, GWLP_WNDPROC);
+    SetWindowLongPtr(windowHandle, GWLP_WNDPROC, (LONG_PTR) MarkerProcedure);
     GameState::SetHandle(hProcess);
     BreakpointManager bpManager(hProcess);
     std::thread workerThread(WorkerThread, hProcess);
@@ -94,6 +120,7 @@ void Debugging::DebugLoop() {
         context.ContextFlags = CONTEXT_CONTROL;
         HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, debugEvent.dwThreadId);
         if (hThread != NULL) {
+#ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
                 DWORD_PTR address = context.Ecx;
@@ -103,6 +130,16 @@ void Debugging::DebugLoop() {
                 }
                 GameState::SetBBPercent(value);
             }
+#else
+            if (GetThreadContext(hThread, &context)) {
+                DWORD address = context.Ecx;
+                float value;
+                if (!ReadProcessMemory(hProcess, (LPVOID) address, &value, sizeof(value), NULL)) {
+                    return;
+                }
+                GameState::SetBBPercent(value);
+            }
+#endif
             CloseHandle(hThread);
         }
     });
@@ -126,6 +163,7 @@ void Debugging::DebugLoop() {
         context.ContextFlags = CONTEXT_CONTROL;
         HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, debugEvent.dwThreadId);
         if (hThread != NULL) {
+#ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
                 DWORD_PTR address = context.Edi + 0x10C;
@@ -135,6 +173,16 @@ void Debugging::DebugLoop() {
                 }
                 GameState::SetNumConveyorItems(value);
             }
+#else
+            if (GetThreadContext(hThread, &context)) {
+                DWORD address = context.Edi + 0x10C;
+                int value;
+                if (!ReadProcessMemory(hProcess, (LPVOID) address, &value, sizeof(value), NULL)) {
+                    return;
+                }
+                GameState::SetNumConveyorItems(value);
+            }
+#endif
             CloseHandle(hThread);
         }
     });
@@ -158,6 +206,7 @@ void Debugging::DebugLoop() {
         context.ContextFlags = CONTEXT_CONTROL;
         HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, debugEvent.dwThreadId);
         if (hThread != NULL) {
+#ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
                 DWORD startAddress = context.Edx;
@@ -165,6 +214,13 @@ void Debugging::DebugLoop() {
                 Utils::ApplyConveyorItems(nodeList, hProcess);
 
             }
+#else
+            if (GetThreadContext(hThread, &context)) {
+                DWORD startAddress = context.Edx;
+                std::list<Node> nodeList = Utils::TraverseAndCollectNodes(hProcess, startAddress);
+                Utils::ApplyConveyorItems(nodeList, hProcess);
+            }
+#endif
             CloseHandle(hThread);
         }
     });
@@ -188,12 +244,20 @@ void Debugging::DebugLoop() {
         context.ContextFlags = CONTEXT_CONTROL;
         HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, debugEvent.dwThreadId);
         if (hThread != NULL) {
+#ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
                 DWORD startAddress = context.Edi + 0x0000010C;
                 std::list<Node> nodeList = Utils::TraverseAndCollectNodes(hProcess, startAddress);
                 Utils::ApplyConveyorItems(nodeList, hProcess);
             }
+#else
+            if (GetThreadContext(hThread, &context)) {
+                DWORD startAddress = context.Edi + 0x0000010C;
+                std::list<Node> nodeList = Utils::TraverseAndCollectNodes(hProcess, startAddress);
+                Utils::ApplyConveyorItems(nodeList, hProcess);
+            }
+#endif
             CloseHandle(hThread);
         }
     });
@@ -217,6 +281,7 @@ void Debugging::DebugLoop() {
         context.ContextFlags = CONTEXT_CONTROL;
         HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, debugEvent.dwThreadId);
         if (hThread != NULL) {
+#ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
                 DWORD address = context.Ebx;
@@ -225,6 +290,15 @@ void Debugging::DebugLoop() {
                     GameState::AddCustomer(customer);
                 }
             }
+#else
+            if (GetThreadContext(hThread, &context)) {
+                DWORD address = context.Ebx;
+                Customer customer(address);
+                if (customer.isValid(hProcess)) {
+                    GameState::AddCustomer(customer);
+                }
+            }
+#endif
             CloseHandle(hThread);
         }
     });
@@ -261,7 +335,7 @@ void Debugging::DebugLoop() {
 #else
                                     if (GetThreadContext(hThread, &context)) {
                                         context.Eip--;
-                                        if (!SetThreadContext(hThread, context)) {
+                                        if (!SetThreadContext(hThread, &context)) {
                                             std::cout << "Error: Could not set thread context." << std::endl;
                                         }
                                     } else {
@@ -295,5 +369,6 @@ void Debugging::DebugLoop() {
     } else {
         std::cout << "Error: Could not attach debugger to process." << std::endl;
     }
+    SetWindowLongPtr(windowHandle, GWLP_WNDPROC, (LONG_PTR) originalWndProc);
     CloseHandle(hProcess);
 }
