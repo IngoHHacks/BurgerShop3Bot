@@ -473,13 +473,16 @@ void GameState::PerformActions() {
                             ingredient.GetIngredientId(GameState::GetHandle())) {
                             coords = std::make_pair(si->GetX(GameState::GetHandle()),
                                                     si->GetY(GameState::GetHandle()));
+                            coords = Utils::TranslateCoords(coords.first, coords.second);
+                            if (coords.first <= 10 && coords.second <= 10) {
+                                coords = std::make_pair(-1, -1);
+                            }
                             break;
                         }
                     } else if (ComplexItem * ci = dynamic_cast<ComplexItem *>(conveyorItem.get())) {
                         // Ignored for now
                     }
                 }
-                coords = Utils::TranslateCoords(coords.first, coords.second);
                 if (coords.first != -1) {
                     std::cout << "Clicking at " << coords.first << ", " << coords.second << std::endl;
                     ClickMouseAt(GameState::GetWindowHandle(), coords.first, coords.second);

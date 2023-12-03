@@ -347,10 +347,13 @@ std::pair<float, float> Utils::TranslateCoordsRelativeTo(HWND hwndOverlay, float
     GetWindowRect(gameWindow, &gameRect);
     int w = gameRect.right - gameRect.left;
     int h = gameRect.bottom - gameRect.top;
+    float scale = (h/637.5);
+    float expectedWidth = (4.0/3.0) * h;
+    float widthDelta = (w - expectedWidth)/2.0;
+    float xPrime = 24 + scale * (x + widthDelta);
+    float yPrime = 28 + scale * y;
     int offsetX = gameRect.left - overlayRect.left;
     int offsetY = gameRect.top - overlayRect.top;
-    float xPrime = 24 + (w/850.0) * x;
-    float yPrime = 28 + (h/637.5) * y;
     return std::make_pair(xPrime + offsetX, yPrime + offsetY);
 }
 
@@ -361,7 +364,10 @@ std::pair<float, float> Utils::TranslateCoords(float x, float y) {
     GetWindowRect(gameWindow, &gameRect);
     int w = gameRect.right - gameRect.left;
     int h = gameRect.bottom - gameRect.top;
-    float xPrime = 24 + (w/850.0) * x;
-    float yPrime = 28 + (h/637.5) * y;
+    float scale = (h/637.5);
+    float expectedWidth = (4.0/3.0) * h;
+    float widthDelta = (w - expectedWidth)/2.0;
+    float xPrime = 24 + scale * (x + widthDelta);
+    float yPrime = 28 + scale * y;
     return std::make_pair(xPrime, yPrime);
 }
