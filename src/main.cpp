@@ -146,27 +146,24 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
     }
 }
 
-int originX = 0;
-int originY = 0;
-float scaleX = 1.0/800.0;
-float scaleY = 1.0/600.0;
 
 static std::pair<float, float> TranslateCoords(HWND hwndOverlay, float x, float y) {
+    // Depends on window being 800x600
     RECT overlayRect;
     GetWindowRect(hwndOverlay, &overlayRect);
     HWND gameWindow = GameState::GetWindowHandle();
     RECT gameRect;
     GetWindowRect(gameWindow, &gameRect);
-    int gameWidth = gameRect.right - gameRect.left;
-    int gameHeight = gameRect.bottom - gameRect.top;
-    float relScaleX = gameWidth * scaleX;
-    float relScaleY = gameHeight * scaleY;
+    int w = gameRect.right - gameRect.left;
+    int h = gameRect.bottom - gameRect.top;
     int offsetX = gameRect.left - overlayRect.left;
     int offsetY = gameRect.top - overlayRect.top;
-    float xPrime = originX + (x * relScaleX) + offsetX;
-    float yPrime = originY + (y * relScaleY) + offsetY;
-    return std::make_pair(xPrime, yPrime);
+    float xPrime = 24 + (w/850.0) * x;
+    float yPrime = 28 + (h/637.5) * y;
+    return std::make_pair(xPrime + offsetX, yPrime + offsetY);
 }
+
+bool updateOverlay = true;
 
 VOID OverlayPaint(HWND hwnd) {
     int maxWidth = GetSystemMetrics(SM_CXSCREEN);
@@ -182,6 +179,10 @@ VOID OverlayPaint(HWND hwnd) {
     Pen smallPen(Color(255, 255, 0, 0), 2);
 
     std::list<std::unique_ptr<ItemBase>> itemList = GameState::GetConveyorItems();
+    if (itemList.size() >= 50) {
+        std::cerr << "Too many items to draw" << std::endl;
+        return;
+    }
     for (const std::unique_ptr<ItemBase> &item: itemList) {
         if (SimpleItem * simpleItem = dynamic_cast<SimpleItem *>(item.get())) {
             if (!simpleItem->isValid(GameState::GetHandle())) {
@@ -238,7 +239,10 @@ LRESULT CALLBACK WindowProcedureOverlay(HWND hwnd, UINT message, WPARAM wParam, 
             SetTimer(hwnd, 1, 33, NULL);
             return 0;
         case WM_TIMER:
-            OverlayPaint(hwnd);
+            if (updateOverlay) {
+                updateOverlay = false;
+                OverlayPaint(hwnd);
+            }
             return 0;
         }
         case WM_DESTROY:
@@ -356,6 +360,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             // Update every 33ms if dirty
             if (currentTimeMillis - timeMillis > 33) {
                 if (GameState::CheckItemsDirty()) {
+                    updateOverlay = true;
                     InvalidateRect(hwnd, NULL, TRUE);
                     UpdateWindow(hwnd);
                     GameState::Update();
