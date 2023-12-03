@@ -1,4 +1,6 @@
 #include <Content.h>
+#include <Utils.h>
+#include <Windows.h>
 #include <unordered_map>
 #include <fstream>
 #include <iostream>
@@ -15,7 +17,7 @@
 
 float GameState::bbPercent = 0.0f;
 int GameState::numConveyorItems = 0;
-std::list<std::unique_ptr<ItemBase>> GameState::conveyorItems;
+std::vector<std::unique_ptr<ItemBase>> GameState::conveyorItems;
 std::vector<Customer> GameState::customers;
 bool GameState::dirty = false;
 bool GameState::needsSorting = false;
@@ -46,15 +48,30 @@ float GameState::GetNumConveyorItems() {
  * @return A copy of the conveyor items.
  * @note This function is thread-safe, but locks the conveyor items mutex.
  */
-std::list<std::unique_ptr<ItemBase>> GameState::GetConveyorItems() {
+std::vector<std::unique_ptr<ItemBase>> GameState::GetConveyorItems() {
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
-    std::list<std::unique_ptr<ItemBase>> items;
+    std::vector<std::unique_ptr<ItemBase>> items;
+    std::vector<int> deletedItems;
+    int i = 0;
     for (const std::unique_ptr<ItemBase> &item: conveyorItems) {
         if (SimpleItem * singleItem = dynamic_cast<SimpleItem *>(item.get())) {
+            if (singleItem->GetX(handle) > 50 && singleItem->GetY(handle) > 100) {
+                items.push_back(std::make_unique<SimpleItem>(*singleItem));
+            } else {
+                deletedItems.push_back(i);
+            }
             items.push_back(std::make_unique<SimpleItem>(*singleItem));
         } else if (ComplexItem * multiItem = dynamic_cast<ComplexItem *>(item.get())) {
-            items.push_back(std::make_unique<ComplexItem>(*multiItem));
+            if (multiItem->GetX(handle) > 50 && multiItem->GetY(handle) > 100) {
+                items.push_back(std::make_unique<ComplexItem>(*multiItem));
+            } else {
+                deletedItems.push_back(i);
+            }
         }
+        i++;
+    }
+    for (int i = deletedItems.size() - 1; i >= 0; i--) {
+        conveyorItems.erase(conveyorItems.begin() + deletedItems[i]);
     }
     return items;
 }
@@ -66,6 +83,11 @@ std::list<std::unique_ptr<ItemBase>> GameState::GetConveyorItems() {
  */
 std::vector<Customer> GameState::GetCustomers() {
     std::lock_guard<std::mutex> lock(customersMutex);
+    for (int i = customers.size() - 1; i >= 0; i--) {
+        if (!customers[i].isValid(handle)) {
+            customers.erase(customers.begin() + i);
+        }
+    }
     std::vector<Customer> customersCopy(customers);
     return customersCopy;
 }
@@ -121,7 +143,7 @@ void GameState::SetNumConveyorItems(int value) {
  * @param value The new conveyor items.
  * @note This function is thread-safe, but locks the conveyor items mutex.
  */
-void GameState::SetConveyorItems(std::list<std::unique_ptr<ItemBase>> value) {
+void GameState::SetConveyorItems(std::vector<std::unique_ptr<ItemBase>> value) {
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
     conveyorItems = std::move(value);
     dirty = true;
@@ -158,18 +180,19 @@ void GameState::SortConveyorItems() {
     if (!needsSorting) {
         return;
     }
-    conveyorItems.sort([](const std::unique_ptr<ItemBase> &a, const std::unique_ptr<ItemBase> &b) {
-        if (SimpleItem * singleItemA = dynamic_cast<SimpleItem *>(a.get())) {
-            if (SimpleItem * singleItemB = dynamic_cast<SimpleItem *>(b.get())) {
-                return singleItemA->GetConveyorIndex(GameState::handle) <
-                       singleItemB->GetConveyorIndex(GameState::handle);
+    std::sort(conveyorItems.begin(), conveyorItems.end(),
+              [](const std::unique_ptr<ItemBase> &a, const std::unique_ptr<ItemBase> &b) {
+            if (SimpleItem * singleItemA = dynamic_cast<SimpleItem *>(a.get())) {
+                if (SimpleItem * singleItemB = dynamic_cast<SimpleItem *>(b.get())) {
+                    return singleItemA->GetConveyorIndex(GameState::handle) >
+                           singleItemB->GetConveyorIndex(GameState::handle);
+                }
+            } else if (ComplexItem * multiItemA = dynamic_cast<ComplexItem *>(a.get())) {
+                if (ComplexItem * multiItemB = dynamic_cast<ComplexItem *>(b.get())) {
+                    return multiItemA->GetConveyorIndex(GameState::handle) >
+                           multiItemB->GetConveyorIndex(GameState::handle);
+                }
             }
-        } else if (ComplexItem * multiItemA = dynamic_cast<ComplexItem *>(a.get())) {
-            if (ComplexItem * multiItemB = dynamic_cast<ComplexItem *>(b.get())) {
-                return multiItemA->GetConveyorIndex(GameState::handle) <
-                       multiItemB->GetConveyorIndex(GameState::handle);
-            }
-        }
         return false;
     });
     needsSorting = false;
@@ -248,6 +271,9 @@ void GameState::Update() {
  * @note This function is thread-safe, but locks the conveyor items mutex.
  */
 bool GameState::CheckItemsDirty() {
+    if (dirty) {
+        return true;
+    }
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
     for (const std::unique_ptr<ItemBase> &item: conveyorItems) {
         if (SimpleItem * singleItem = dynamic_cast<SimpleItem *>(item.get())) {
@@ -261,6 +287,219 @@ bool GameState::CheckItemsDirty() {
         }
     }
     return dirty;
+}
+
+void ClickMouseAt(HWND window, int x, int y) {
+    if (window != GetForegroundWindow()) {
+        SetForegroundWindow(window);
+        Sleep(100);
+    }
+
+
+    POINT p = {x, y - 30};
+    ClientToScreen(window, &p);
+
+    POINT cp1;
+    GetCursorPos(&cp1);
+    // Move the mouse away slightly to prevent errors
+    if (abs(cp1.x - p.x) > 2 || abs(cp1.y - p.y) > 2) {
+        INPUT input = {0};
+        input.type = INPUT_MOUSE;
+        input.mi.dx = static_cast<long>((p.x + 10) * (65535.0 / GetSystemMetrics(SM_CXSCREEN)));
+        input.mi.dy = static_cast<long>((p.y) * (65535.0 / GetSystemMetrics(SM_CYSCREEN)));
+        input.mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
+        SendInput(1, &input, sizeof(INPUT));
+        POINT cp2;
+        GetCursorPos(&cp2);
+        do {
+            GetCursorPos(&cp2);
+            Sleep(5);
+        } while (abs(cp2.x - (p.x + 10)) > 2 || abs(cp2.y - p.y) > 2);
+        Sleep(5);
+    }
+
+    INPUT input = {0};
+    input.type = INPUT_MOUSE;
+    input.mi.dx = static_cast<long>(p.x * (65535.0 / GetSystemMetrics(SM_CXSCREEN)));
+    input.mi.dy = static_cast<long>(p.y * (65535.0 / GetSystemMetrics(SM_CYSCREEN)));
+    input.mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
+    SendInput(1, &input, sizeof(INPUT));
+    POINT cp;
+    do {
+        GetCursorPos(&cp);
+        Sleep(5);
+    } while (abs(cp.x - p.x) > 2 || abs(cp.y - p.y) > 2);
+    Sleep(5);
+
+    input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+    SendInput(1, &input, sizeof(INPUT));
+
+    input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+    SendInput(1, &input, sizeof(INPUT));
+}
+
+void ClickRightMouse(HWND window) {
+
+    POINT p = {10,40};
+    ClientToScreen(window, &p);
+
+    INPUT input = {0};
+    input.type = INPUT_MOUSE;
+    input.mi.dwFlags = MOUSEEVENTF_RIGHTDOWN;
+    SendInput(1, &input, sizeof(INPUT));
+
+    input.mi.dwFlags = MOUSEEVENTF_RIGHTUP;
+    SendInput(1, &input, sizeof(INPUT));
+}
+
+int delay = 0;
+
+bool makingItem = false;
+ItemInfo targetItem;
+std::vector<std::unique_ptr<SimpleItem>> ingredientsLeft;
+
+void GameState::PerformActions() {
+    if (GetAsyncKeyState(VK_END)) {
+        delay = 999999;
+        return;
+    }
+    if (GetAsyncKeyState(VK_HOME)) {
+        delay = 0;
+        return;
+    }
+    if (delay > 0) {
+        delay--;
+        return;
+    }
+    if (GameState::GetCustomers().size() > 0) {
+        if (!makingItem) {
+            std::vector<ItemInfo> items;
+            for (Customer &customer: GameState::GetCustomers()) {
+                for (ItemInfo &item: customer.GetItems(GameState::GetHandle())) {
+                    items.push_back(item);
+                }
+            }
+            ItemInfo target;
+            bool found = false;
+            int i = 0;
+            std::vector<std::unique_ptr<SimpleItem>> ingredients;
+            while (!found && i < items.size()) {
+                ItemInfo &item = items[i];
+                if (item.mNumCopies == item.mNumComplete || item.mRobotComplete) {
+                    i++;
+                    continue;
+                }
+                std::unique_ptr<ItemBase> ib = item.GetItem();
+                ingredients.clear();
+                if (SimpleItem * si = dynamic_cast<SimpleItem *>(ib.get())) {
+                    //ingredients.push_back(std::make_unique<SimpleItem>(*si));
+                    if (ItemManager::IngredientLimit(si->GetIngredientId(GameState::GetHandle())) != -1) {
+                        int numIngredients = 0;
+                        for (std::unique_ptr<SimpleItem> &ingredient: ingredients) {
+                            if (ingredient->GetIngredientId(GameState::GetHandle()) ==
+                                si->GetIngredientId(GameState::GetHandle())) {
+                                numIngredients++;
+                            }
+                        }
+                        if (numIngredients < ItemManager::IngredientLimit(si->GetIngredientId(GameState::GetHandle()))) {
+                            ingredients.push_back(std::make_unique<SimpleItem>(*si));
+                        }
+                    } else {
+                        ingredients.push_back(std::make_unique<SimpleItem>(*si));
+                    }
+                } else if (ComplexItem * ci = dynamic_cast<ComplexItem *>(ib.get())) {
+                    for (SimpleItem &ingredient: ci->GetItems(handle)) {
+                        if (ItemManager::IngredientLimit(ingredient.GetIngredientId(GameState::GetHandle())) != -1) {
+                            int numIngredients = 0;
+                            for (std::unique_ptr<SimpleItem> &ingredient2: ingredients) {
+                                if (ingredient2->GetIngredientId(GameState::GetHandle()) ==
+                                    ingredient.GetIngredientId(GameState::GetHandle())) {
+                                    numIngredients++;
+                                }
+                            }
+                            if (numIngredients < ItemManager::IngredientLimit(ingredient.GetIngredientId(GameState::GetHandle()))) {
+                                ingredients.push_back(std::make_unique<SimpleItem>(ingredient));
+                            }
+                        } else {
+                            ingredients.push_back(std::make_unique<SimpleItem>(ingredient));
+                        }
+                    }
+                }
+                std::vector<bool> foundIngredients;
+                for (int i = 0; i < ingredients.size(); i++) {
+                    foundIngredients.push_back(false);
+                }
+                for (const std::unique_ptr<ItemBase> &conveyorItem: GameState::GetConveyorItems()) {
+                    if (SimpleItem * si = dynamic_cast<SimpleItem *>(conveyorItem.get())) {
+                        for (int i = 0; i < ingredients.size(); i++) {
+                            if (ingredients[i]->GetIngredientId(GameState::GetHandle()) ==
+                                si->GetIngredientId(GameState::GetHandle()) && !foundIngredients[i]) {
+                                foundIngredients[i] = true;
+                                break;
+                            }
+                        }
+                    } else if (ComplexItem * ci = dynamic_cast<ComplexItem *>(conveyorItem.get())) {
+                        // Ignored for now
+                    }
+                }
+                bool allFound = true;
+                for (bool foundIngredient: foundIngredients) {
+                    if (!foundIngredient) {
+                        allFound = false;
+                        break;
+                    }
+                }
+                if (allFound) {
+                    target = item;
+                    found = true;
+                }
+                i++;
+            }
+            if (found) {
+                targetItem = target;
+                makingItem = true;
+                ingredientsLeft = std::move(ingredients);
+            }
+        } else {
+            if (ingredientsLeft.size() > 0) {
+                SimpleItem &ingredient = *ingredientsLeft[0];
+                std::cout << "Finding ingredient " << ingredient.GetIngredientName(handle) << std::endl;
+                // Find on the conveyor
+                std::vector<std::unique_ptr<ItemBase>> conveyorItems = GameState::GetConveyorItems();
+                std::pair<float, float> coords = std::make_pair(-1, -1);
+                for (const std::unique_ptr<ItemBase> &conveyorItem: conveyorItems) {
+                    if (SimpleItem * si = dynamic_cast<SimpleItem *>(conveyorItem.get())) {
+                        if (si->GetIngredientId(GameState::GetHandle()) ==
+                            ingredient.GetIngredientId(GameState::GetHandle())) {
+                            coords = std::make_pair(si->GetX(GameState::GetHandle()),
+                                                    si->GetY(GameState::GetHandle()));
+                            break;
+                        }
+                    } else if (ComplexItem * ci = dynamic_cast<ComplexItem *>(conveyorItem.get())) {
+                        // Ignored for now
+                    }
+                }
+                coords = Utils::TranslateCoords(coords.first, coords.second);
+                if (coords.first != -1) {
+                    std::cout << "Clicking at " << coords.first << ", " << coords.second << std::endl;
+                    ClickMouseAt(GameState::GetWindowHandle(), coords.first, coords.second);
+                    ingredientsLeft.erase(ingredientsLeft.begin());
+                    dirty = true;
+                } else {
+                    // Give up because you're bad at the game.
+                    std::cout << "I give up. This game is too hard." << std::endl;
+                    makingItem = false;
+                    dirty = true;
+                }
+            } else {
+                std::cout << "Done with item! Delivering." << std::endl;
+                makingItem = false;
+                ClickRightMouse(GameState::GetWindowHandle());
+                dirty = true;
+            }
+            delay = 2;
+        }
+    }
 }
 
 /**
@@ -490,6 +729,16 @@ bool ItemManager::LoadContent() {
         return false;
     }
     return true;
+}
+
+int ItemManager::IngredientLimit(int id) {
+    if (id == 57) {
+        return 1;
+    }
+    if (id >= 234) {
+        return 0;
+    }
+    return -1;
 }
 
 std::vector<std::string> ItemManager::itemNames;

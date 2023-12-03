@@ -66,6 +66,10 @@ public:
     void SetIngredientId(HANDLE hProcess, int value);
 
     bool HasChanged();
+
+private:
+    int _itemId = -1;
+    int _ingredientId = -1;
 };
 
 class ComplexItem : public ItemBase {

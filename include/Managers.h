@@ -25,7 +25,7 @@ public:
 
     static float GetNumConveyorItems();
 
-    static std::list<std::unique_ptr<ItemBase>> GetConveyorItems();
+    static std::vector<std::unique_ptr<ItemBase>> GetConveyorItems();
 
     static std::vector<Customer> GetCustomers();
 
@@ -39,7 +39,7 @@ public:
 
     static void SetNumConveyorItems(int value);
 
-    static void SetConveyorItems(std::list<std::unique_ptr<ItemBase>> value);
+    static void SetConveyorItems(std::vector<std::unique_ptr<ItemBase>> value);
 
     static void SetHandle(HANDLE pVoid);
 
@@ -59,7 +59,10 @@ public:
 
     static bool CheckItemsDirty();
 
-    static std::list<std::unique_ptr<ItemBase>> conveyorItems;
+    static std::vector<std::unique_ptr<ItemBase>> conveyorItems;
+
+    static void PerformActions();
+
 private:
     static std::mutex conveyorItemsMutex;
     static std::mutex customersMutex;
@@ -88,6 +91,8 @@ public:
     static int GetNumItems();
 
     static bool LoadContent();
+
+    static int IngredientLimit(int id);
 };
 
 class Breakpoint {

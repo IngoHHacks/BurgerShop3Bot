@@ -7,6 +7,7 @@
 #include <Managers.h>
 #include <Content.h>
 #include <string>
+#include <utility>
 #include <Utils.h>
 
 /**
@@ -243,7 +244,7 @@ std::list<Node> Utils::TraverseAndCollectNodes(HANDLE hProcess, DWORD startAddre
  * @param hProcess The process handle.
  */
 void Utils::ApplyConveyorItems(std::list<Node> nodeList, HANDLE hProcess) {
-    std::list<std::unique_ptr<ItemBase>> items;
+    std::vector<std::unique_ptr<ItemBase>> items;
     bool valid = true;
     for (const Node &node: nodeList) {
         int values[32];
@@ -335,4 +336,32 @@ BOOL CALLBACK Utils::EnumWindowsProc(HWND hwnd, LPARAM lParam) {
 HWND Utils::FindWindowByProcessId(DWORD processId) {
     EnumWindows(EnumWindowsProc, processId);
     return g_hwnd;
+}
+
+std::pair<float, float> Utils::TranslateCoordsRelativeTo(HWND hwndOverlay, float x, float y) {
+    // Depends on window being 800x600
+    RECT overlayRect;
+    GetWindowRect(hwndOverlay, &overlayRect);
+    HWND gameWindow = GameState::GetWindowHandle();
+    RECT gameRect;
+    GetWindowRect(gameWindow, &gameRect);
+    int w = gameRect.right - gameRect.left;
+    int h = gameRect.bottom - gameRect.top;
+    int offsetX = gameRect.left - overlayRect.left;
+    int offsetY = gameRect.top - overlayRect.top;
+    float xPrime = 24 + (w/850.0) * x;
+    float yPrime = 28 + (h/637.5) * y;
+    return std::make_pair(xPrime + offsetX, yPrime + offsetY);
+}
+
+std::pair<float, float> Utils::TranslateCoords(float x, float y) {
+    // Depends on window being 800x600
+    HWND gameWindow = GameState::GetWindowHandle();
+    RECT gameRect;
+    GetWindowRect(gameWindow, &gameRect);
+    int w = gameRect.right - gameRect.left;
+    int h = gameRect.bottom - gameRect.top;
+    float xPrime = 24 + (w/850.0) * x;
+    float yPrime = 28 + (h/637.5) * y;
+    return std::make_pair(xPrime, yPrime);
 }

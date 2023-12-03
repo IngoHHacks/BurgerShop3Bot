@@ -10,6 +10,8 @@
 #include <string>
 #include <Utils.h>
 
+#define BOTMODE
+
 using namespace Gdiplus;
 namespace fs = std::filesystem;
 
@@ -48,10 +50,11 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
             HBRUSH hBrush = CreateSolidBrush(RGB(255, 220, 200));
             FillRect(hdc, &ps.rcPaint, hBrush);
             DeleteObject(hBrush);
+#ifndef BOTMODE
             // Draw conveyor items
             TextOut(hdc, 10, 10, "Conveyor Items:", 15);
             GameState::SortConveyorItems();
-            std::list<std::unique_ptr<ItemBase>> itemList = GameState::GetConveyorItems();
+            std::vector<std::unique_ptr<ItemBase>> itemList = GameState::GetConveyorItems();
             for (const std::unique_ptr<ItemBase> &item: itemList) {
                 if (SimpleItem * simpleItem = dynamic_cast<SimpleItem *>(item.get())) {
                     if (!simpleItem->isValid(GameState::GetHandle())) {
@@ -134,8 +137,8 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
                     }
                 }
             }
-
             EndPaint(hwnd, &ps);
+#endif
             return 0;
         }
         case WM_DESTROY:
@@ -144,23 +147,6 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
         default:
             return DefWindowProc(hwnd, message, wParam, lParam);
     }
-}
-
-
-static std::pair<float, float> TranslateCoords(HWND hwndOverlay, float x, float y) {
-    // Depends on window being 800x600
-    RECT overlayRect;
-    GetWindowRect(hwndOverlay, &overlayRect);
-    HWND gameWindow = GameState::GetWindowHandle();
-    RECT gameRect;
-    GetWindowRect(gameWindow, &gameRect);
-    int w = gameRect.right - gameRect.left;
-    int h = gameRect.bottom - gameRect.top;
-    int offsetX = gameRect.left - overlayRect.left;
-    int offsetY = gameRect.top - overlayRect.top;
-    float xPrime = 24 + (w/850.0) * x;
-    float yPrime = 28 + (h/637.5) * y;
-    return std::make_pair(xPrime + offsetX, yPrime + offsetY);
 }
 
 bool updateOverlay = true;
@@ -178,7 +164,7 @@ VOID OverlayPaint(HWND hwnd) {
 
     Pen smallPen(Color(255, 255, 0, 0), 2);
 
-    std::list<std::unique_ptr<ItemBase>> itemList = GameState::GetConveyorItems();
+    std::vector<std::unique_ptr<ItemBase>> itemList = GameState::GetConveyorItems();
     if (itemList.size() >= 50) {
         std::cerr << "Too many items to draw" << std::endl;
         return;
@@ -192,7 +178,7 @@ VOID OverlayPaint(HWND hwnd) {
             float itemX = simpleItem->GetX(GameState::GetHandle());
             float itemY = simpleItem->GetY(GameState::GetHandle());
             // Draw dot on item after translation
-            std::pair<float, float> coords = TranslateCoords(hwnd, itemX, itemY);
+            std::pair<float, float> coords = Utils::TranslateCoordsRelativeTo(hwnd, itemX, itemY);
             int xPrime = coords.first;
             int yPrime = coords.second;
             bmpGraphics.DrawEllipse(&smallPen, xPrime - 4, yPrime - 4, 8, 8);
@@ -203,7 +189,7 @@ VOID OverlayPaint(HWND hwnd) {
             float itemX = multiItem->GetX(GameState::GetHandle());
             float itemY = multiItem->GetY(GameState::GetHandle());
             // Draw dot on item
-            std::pair<float, float> coords = TranslateCoords(hwnd, itemX, itemY);
+            std::pair<float, float> coords = Utils::TranslateCoordsRelativeTo(hwnd, itemX, itemY);
             int xPrime = coords.first;
             int yPrime = coords.second;
             bmpGraphics.DrawEllipse(&smallPen, xPrime - 4, yPrime - 4, 8, 8);
@@ -360,10 +346,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             // Update every 33ms if dirty
             if (currentTimeMillis - timeMillis > 33) {
                 if (GameState::CheckItemsDirty()) {
-                    updateOverlay = true;
+                    GameState::Update();
+                    //updateOverlay = true;
                     InvalidateRect(hwnd, NULL, TRUE);
                     UpdateWindow(hwnd);
-                    GameState::Update();
+                } else {
+#ifdef BOTMODE
+                    GameState::PerformActions();
+#endif
                 }
                 timeMillis = currentTimeMillis;
             }

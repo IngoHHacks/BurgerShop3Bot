@@ -328,8 +328,6 @@ void Debugging::DebugLoop() {
                             if (time > 50) {
                                 std::cerr << "Warning: Breakpoint callback took " << time << "ms to execute."
                                           << std::endl;
-                            } else if (time > 1) {
-                                std::cout << "Breakpoint callback took " << time << "ms to execute." << std::endl;
                             }
                             break;
                         case static_cast<DWORD>(EXCEPTION_SINGLE_STEP):

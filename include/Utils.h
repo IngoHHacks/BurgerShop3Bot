@@ -52,6 +52,10 @@ public:
     static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam);
 
     static HWND FindWindowByProcessId(DWORD processId);
+
+    static std::pair<float, float> TranslateCoordsRelativeTo(HWND hwndOverlay, float x, float y);
+
+    static std::pair<float, float> TranslateCoords(float x, float y);
 };
 
 #endif //MEMREAD_UTILS_H

@@ -78,6 +78,9 @@ bool SimpleItem::isValid(HANDLE hProcess) {
  * @return The item id.
  */
 int SimpleItem::GetItemId(HANDLE hProcess) {
+    if (_itemId != -1) {
+        return _itemId;
+    }
     int value;
     if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x2C, &value, sizeof(value))) {
         return -1;
@@ -91,6 +94,9 @@ int SimpleItem::GetItemId(HANDLE hProcess) {
  * @return The ingredient id.
  */
 int SimpleItem::GetIngredientId(HANDLE hProcess) {
+    if (_ingredientId != -1) {
+        return _ingredientId;
+    }
     int value;
     if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x30, &value, sizeof(value))) {
         return -1;
@@ -177,7 +183,9 @@ void SimpleItem::SetItemId(HANDLE hProcess, int value) {
     }
     if (!Utils::WriteBufferToProcessMemory(hProcess, address + 0x2C, &value, sizeof(value))) {
         std::cout << "Error: Could not write to process memory. Line: " << __LINE__ << std::endl;
+        return;
     }
+    _itemId = value;
 }
 
 /**
@@ -191,7 +199,9 @@ void SimpleItem::SetIngredientId(HANDLE hProcess, int value) {
     }
     if (!Utils::WriteBufferToProcessMemory(hProcess, address + 0x30, &value, sizeof(value))) {
         std::cout << "Error: Could not write to process memory. Line: " << __LINE__ << std::endl;
+        return;
     }
+    _ingredientId = value;
 }
 
 /**
