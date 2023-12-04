@@ -55,14 +55,13 @@ std::vector<std::unique_ptr<ItemBase>> GameState::GetConveyorItems() {
     int i = 0;
     for (const std::unique_ptr<ItemBase> &item: conveyorItems) {
         if (SimpleItem * singleItem = dynamic_cast<SimpleItem *>(item.get())) {
-            if (singleItem->GetX(handle) > 50 && singleItem->GetY(handle) > 100) {
+            if (singleItem->GetX(handle) > 10 && singleItem->GetY(handle) > 10) {
                 items.push_back(std::make_unique<SimpleItem>(*singleItem));
             } else {
                 deletedItems.push_back(i);
             }
-            items.push_back(std::make_unique<SimpleItem>(*singleItem));
         } else if (ComplexItem * multiItem = dynamic_cast<ComplexItem *>(item.get())) {
-            if (multiItem->GetX(handle) > 50 && multiItem->GetY(handle) > 100) {
+            if (multiItem->GetX(handle) > 10 && multiItem->GetY(handle) > 10) {
                 items.push_back(std::make_unique<ComplexItem>(*multiItem));
             } else {
                 deletedItems.push_back(i);
@@ -299,25 +298,6 @@ void ClickMouseAt(HWND window, int x, int y) {
     POINT p = {x, y - 30};
     ClientToScreen(window, &p);
 
-    POINT cp1;
-    GetCursorPos(&cp1);
-    // Move the mouse away slightly to prevent errors
-    if (abs(cp1.x - p.x) > 2 || abs(cp1.y - p.y) > 2) {
-        INPUT input = {0};
-        input.type = INPUT_MOUSE;
-        input.mi.dx = static_cast<long>((p.x + 10) * (65535.0 / GetSystemMetrics(SM_CXSCREEN)));
-        input.mi.dy = static_cast<long>((p.y) * (65535.0 / GetSystemMetrics(SM_CYSCREEN)));
-        input.mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-        SendInput(1, &input, sizeof(INPUT));
-        POINT cp2;
-        GetCursorPos(&cp2);
-        do {
-            GetCursorPos(&cp2);
-            Sleep(5);
-        } while (abs(cp2.x - (p.x + 10)) > 2 || abs(cp2.y - p.y) > 2);
-        Sleep(5);
-    }
-
     INPUT input = {0};
     input.type = INPUT_MOUSE;
     input.mi.dx = static_cast<long>(p.x * (65535.0 / GetSystemMetrics(SM_CXSCREEN)));
@@ -474,7 +454,7 @@ void GameState::PerformActions() {
                             coords = std::make_pair(si->GetX(GameState::GetHandle()),
                                                     si->GetY(GameState::GetHandle()));
                             coords = Utils::TranslateCoords(coords.first, coords.second);
-                            if (coords.first <= 10 && coords.second <= 10) {
+                            if (coords.first <= 5 || coords.second <= 5) {
                                 coords = std::make_pair(-1, -1);
                             }
                             break;
