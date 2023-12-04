@@ -50,7 +50,6 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
             HBRUSH hBrush = CreateSolidBrush(RGB(255, 220, 200));
             FillRect(hdc, &ps.rcPaint, hBrush);
             DeleteObject(hBrush);
-#ifndef BOTMODE
             // Draw conveyor items
             TextOut(hdc, 10, 10, "Conveyor Items:", 15);
             GameState::SortConveyorItems();
@@ -138,7 +137,6 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
                 }
             }
             EndPaint(hwnd, &ps);
-#endif
             return 0;
         }
         case WM_DESTROY:
@@ -271,6 +269,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     std::thread debugThread(Debugging::DebugLoop);
 
+#ifndef BOTMODE
     // Initialize GDI+ for drawing images to a window
 
     GdiplusStartupInput gdiplusStartupInput;
@@ -328,6 +327,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         std::cerr << "Failed to set mouse hook" << std::endl;
         return -1;
     }
+#endif
 
     // Main loop
 
@@ -350,7 +350,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 #else
                 if (GameState::CheckItemsDirty()) {
                     GameState::Update();
-                    //updateOverlay = true;
+                    updateOverlay = true;
                     InvalidateRect(hwnd, NULL, TRUE);
                     UpdateWindow(hwnd);
                 }
@@ -359,8 +359,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             }
         }
     }
+#ifndef BOTMODE
     GdiplusShutdown(gdiplusToken);
     UnhookWindowsHookEx(mouseHook);
+#endif
 
     return 0;
 }

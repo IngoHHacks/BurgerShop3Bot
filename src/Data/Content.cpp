@@ -61,12 +61,16 @@ void MemoryProbe::PrintFloats(int length) {
  * @param hProcess The handle to the process.
  */
 bool SimpleItem::isValid(HANDLE hProcess) {
-    int value;
-    if (!Utils::ReadMemoryToBuffer(hProcess, address, &value, sizeof(value))) {
+
+    int values[18];
+    if (!Utils::ReadMemoryToBuffer(hProcess, address, &values, sizeof(values))) {
+        return false;
+    }
+    if (values[17] != 0) {
         return false;
     }
     int typeValue;
-    if (!Utils::ReadMemoryToBuffer(hProcess, value, &typeValue, sizeof(typeValue))) {
+    if (!Utils::ReadMemoryToBuffer(hProcess, values[0], &typeValue, sizeof(typeValue))) {
         return false;
     }
     int actualValue;
@@ -89,6 +93,7 @@ int SimpleItem::GetItemId(HANDLE hProcess) {
     if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x2C, &value, sizeof(value))) {
         return -1;
     }
+    _itemId = value;
     return value;
 }
 
@@ -105,6 +110,7 @@ int SimpleItem::GetIngredientId(HANDLE hProcess) {
     if (!Utils::ReadMemoryToBuffer(hProcess, address + 0x30, &value, sizeof(value))) {
         return -1;
     }
+    _ingredientId = value;
     return value;
 }
 
