@@ -344,17 +344,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         } else {
             long currentTimeMillis = GetTickCount();
             // Update every 33ms if dirty
-            if (currentTimeMillis - timeMillis > 33) {
+            if (currentTimeMillis - timeMillis > 17) {
+#ifdef BOTMODE
+                GameState::PerformActions();
+#else
                 if (GameState::CheckItemsDirty()) {
                     GameState::Update();
                     //updateOverlay = true;
                     InvalidateRect(hwnd, NULL, TRUE);
                     UpdateWindow(hwnd);
-                } else {
-#ifdef BOTMODE
-                    GameState::PerformActions();
-#endif
                 }
+#endif
                 timeMillis = currentTimeMillis;
             }
         }

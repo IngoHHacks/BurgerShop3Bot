@@ -102,15 +102,9 @@ void Debugging::DebugLoop() {
 #ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
-                DWORD_PTR address = context.Ecx;
-                float value;
-                if (!ReadProcessMemory(hProcess, (LPVOID) address, &value, sizeof(value), NULL)) {
-                    return;
-                }
-                GameState::SetBBPercent(value);
-            }
 #else
             if (GetThreadContext(hThread, &context)) {
+#endif
                 DWORD address = context.Ecx;
                 float value;
                 if (!ReadProcessMemory(hProcess, (LPVOID) address, &value, sizeof(value), NULL)) {
@@ -118,7 +112,6 @@ void Debugging::DebugLoop() {
                 }
                 GameState::SetBBPercent(value);
             }
-#endif
             CloseHandle(hThread);
         }
     });
@@ -145,15 +138,9 @@ void Debugging::DebugLoop() {
 #ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
-                DWORD_PTR address = context.Edi + 0x10C;
-                int value;
-                if (!ReadProcessMemory(hProcess, (LPVOID) address, &value, sizeof(value), NULL)) {
-                    return;
-                }
-                GameState::SetNumConveyorItems(value);
-            }
 #else
             if (GetThreadContext(hThread, &context)) {
+#endif
                 DWORD address = context.Edi + 0x10C;
                 int value;
                 if (!ReadProcessMemory(hProcess, (LPVOID) address, &value, sizeof(value), NULL)) {
@@ -161,23 +148,22 @@ void Debugging::DebugLoop() {
                 }
                 GameState::SetNumConveyorItems(value);
             }
-#endif
             CloseHandle(hThread);
         }
     });
 
     /*
-     * 89 42 04 | mov [edx+04],eax
-     * 89 51 04 | mov [ecx+04],edx
-     * >> 89 10 | mov [eax],edx <-- Breakpoint here
-     * 8B C2    | mov eax,edx
-     * 8B 4D F4 | mov ecx,[ebp-0C]
-     * Literal: 89420489510489108BC28B4DF4
+     * 89 10             | mov [eax],edx
+     * 8B C2             | mov eax,edx
+     * >> 8B 4D F4       | mov ecx,[ebp-0C] <-- Breakpoint here
+     * 64 89 0D 00000000 | mov fs:[00000000],ecx
+     * 59                | pop ecx
+     * Literal: 89108BC28B4DF4
      */
 #if defined(VERSION_0_5_7D)
-    LPVOID addToConveyorOffset = (LPVOID) 0x3E103;
+    LPVOID addToConveyorOffset = (LPVOID) 0x3E107;
 #elif defined(VERSION_0_5_8A)
-    LPVOID addToConveyorOffset = (LPVOID) 0x3EB63;
+    LPVOID addToConveyorOffset = (LPVOID) 0x3EB67;
 #endif
     LPVOID addToConveyorAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) addToConveyorOffset);
     bpManager.SetBreakpoint(addToConveyorAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -188,18 +174,17 @@ void Debugging::DebugLoop() {
 #ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
-                DWORD startAddress = context.Edx;
-                std::list<Node> nodeList = Utils::TraverseAndCollectNodes(hProcess, startAddress);
-                Utils::ApplyConveyorItems(nodeList, hProcess);
-
-            }
 #else
             if (GetThreadContext(hThread, &context)) {
-                DWORD startAddress = context.Edx;
-                std::list<Node> nodeList = Utils::TraverseAndCollectNodes(hProcess, startAddress);
-                Utils::ApplyConveyorItems(nodeList, hProcess);
-            }
 #endif
+                DWORD startAddress = context.Eax;
+                Node node;
+                if (!Utils::ReadMemoryToBuffer(hProcess, startAddress, &node, sizeof(node))) {
+                    return;
+                }
+                DWORD item = node.content;
+                GameState::AddItemFromAddress(item);
+            }
             CloseHandle(hThread);
         }
     });
@@ -211,11 +196,12 @@ void Debugging::DebugLoop() {
      * 8B 4E 08          | mov ecx,[esi+08]
      * 85 C9             | test ecx,ecx
      * Literal: 8B4604894104FF8F0C0100008B4E0885C9
+     * Be careful! This set of instructions can appear multiple times in the disassembly.
      */
 #if defined(VERSION_0_5_7D)
     LPVOID removeFromConveyorOffset = (LPVOID) 0x4D489;
 #elif defined(VERSION_0_5_8A)
-    LPVOID removeFromConveyorOffset = (LPVOID) 0x409A4;
+    LPVOID removeFromConveyorOffset = (LPVOID) 0x4DFD9;
 #endif
     LPVOID removeFromConveyorAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) removeFromConveyorOffset);
     bpManager.SetBreakpoint(removeFromConveyorAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -226,17 +212,17 @@ void Debugging::DebugLoop() {
 #ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
-                DWORD startAddress = context.Edi + 0x0000010C;
-                std::list<Node> nodeList = Utils::TraverseAndCollectNodes(hProcess, startAddress);
-                Utils::ApplyConveyorItems(nodeList, hProcess);
-            }
 #else
             if (GetThreadContext(hThread, &context)) {
-                DWORD startAddress = context.Edi + 0x0000010C;
-                std::list<Node> nodeList = Utils::TraverseAndCollectNodes(hProcess, startAddress);
-                Utils::ApplyConveyorItems(nodeList, hProcess);
-            }
 #endif
+                DWORD nodeAddress = context.Esi;
+                Node node;
+                if (!Utils::ReadMemoryToBuffer(hProcess, nodeAddress, &node, sizeof(node))) {
+                    return;
+                }
+                DWORD item = node.content;
+                GameState::RemoveItemFromAddress(item);
+            }
             CloseHandle(hThread);
         }
     });
@@ -263,23 +249,36 @@ void Debugging::DebugLoop() {
 #ifdef _WIN64
             WOW64_CONTEXT context;
             if (Utils::GetWow64ThreadContext(hThread, context)) {
-                DWORD address = context.Ebx;
-                Customer customer(address);
-                if (customer.isValid(hProcess)) {
-                    GameState::AddCustomer(customer);
-                }
-            }
 #else
             if (GetThreadContext(hThread, &context)) {
+#endif
                 DWORD address = context.Ebx;
                 Customer customer(address);
                 if (customer.isValid(hProcess)) {
                     GameState::AddCustomer(customer);
                 }
             }
-#endif
+
             CloseHandle(hThread);
         }
+    });
+
+    /*
+     * C7 86 08010000 00000000 | mov [esi+00000108],00000000
+     * C7 86 0C010000 00000000 | mov [esi+0000010C],00000000
+     * >> E8 ????????          | call BurgerShop3.exe+????????
+     * 89 00                   | mov [eax],eax
+     * 89 40 04                | mov [eax+04],eax
+     * Literal: C786080100000000C7860C0100000000E8????????8900894004
+     */
+#if defined(VERSION_0_5_7D)
+    throw std::runtime_error("Unsupported version.");
+#elif defined(VERSION_0_5_8A)
+    LPVOID resetOffset = (LPVOID) 0x4B5C0;
+#endif
+    LPVOID resetAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) resetOffset);
+    bpManager.SetBreakpoint(resetAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
+        GameState::Reset();
     });
 
     if (DebugActiveProcess(pid)) {

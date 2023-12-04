@@ -23,6 +23,8 @@ public:
 
     virtual ~MemoryProbe() = default;
 
+    DWORD GetAddress();
+
     void PrintInts(int length);
 
     void PrintBytes(int length);

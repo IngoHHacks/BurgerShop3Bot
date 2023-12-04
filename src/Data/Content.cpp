@@ -4,6 +4,10 @@
 #include <Managers.h>
 #include <Utils.h>
 
+DWORD MemoryProbe::GetAddress() {
+    return address;
+}
+
 /**
  * Prints the integer values starting at the address of this MemoryProbe.
  * @param length The number of integers to print.

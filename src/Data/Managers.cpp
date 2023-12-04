@@ -24,6 +24,8 @@ bool GameState::needsSorting = false;
 HANDLE GameState::handle = NULL;
 HWND GameState::windowHandle = NULL;
 
+bool botRetryFlag = false;
+
 std::mutex GameState::conveyorItemsMutex;
 std::mutex GameState::customersMutex;
 
@@ -138,15 +140,51 @@ void GameState::SetNumConveyorItems(int value) {
 }
 
 /**
- * Sets the conveyor items.
- * @param value The new conveyor items.
+ * Adds a conveyor item from an address.
+ * @param address The address of the conveyor item.
  * @note This function is thread-safe, but locks the conveyor items mutex.
  */
-void GameState::SetConveyorItems(std::vector<std::unique_ptr<ItemBase>> value) {
+void GameState::AddItemFromAddress(DWORD address) {
+    int values[32];
+    if (!Utils::ReadMemoryToBuffer(handle, address, &values, sizeof(values))) {
+        return;
+    }
+    int type = values[0];
+    int typeValue;
+    Utils::ReadMemoryToBuffer(handle, type, &typeValue, sizeof(typeValue));
+    int actualValue;
+    Utils::ReadMemoryToBuffer(handle, typeValue + 0x4, &actualValue, sizeof(actualValue));
+    if (actualValue == 1317794187) {
+        std::unique_ptr<SimpleItem> item = std::make_unique<SimpleItem>(address);
+        if (!item->isValid(handle)) {
+            return;
+        }
+        std::lock_guard<std::mutex> lock(conveyorItemsMutex);
+        conveyorItems.push_back(std::move(item));
+    } else if (actualValue == 113766795) {
+        std::unique_ptr<ComplexItem> item = std::make_unique<ComplexItem>(address);
+        if (!item->isValid(handle)) {
+            return;
+        }
+        std::lock_guard<std::mutex> lock(conveyorItemsMutex);
+        conveyorItems.push_back(std::move(item));
+    }
+}
+
+/**
+ * Removes a conveyor item from an address.
+ * @param address The address of the conveyor item.
+ * @note This function is thread-safe, but locks the conveyor items mutex.
+ */
+void GameState::RemoveItemFromAddress(DWORD address) {
+    botRetryFlag = false;
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
-    conveyorItems = std::move(value);
-    dirty = true;
-    needsSorting = true;
+    for (int i = 0; i < conveyorItems.size(); i++) {
+        if (conveyorItems[i]->GetAddress() == address) {
+            conveyorItems.erase(conveyorItems.begin() + i);
+            break;
+        }
+    }
 }
 
 /**
@@ -219,6 +257,17 @@ void GameState::RemoveCustomer(int index) {
         customers.erase(customers.begin() + index);
         dirty = true;
     }
+}
+
+/**
+ * Resets the game state.
+ */
+void GameState::Reset() {
+    std::lock_guard<std::mutex> lock(conveyorItemsMutex);
+    conveyorItems.clear();
+    customers.clear();
+    numConveyorItems = 0;
+    dirty = true;
 }
 
 /**
@@ -338,6 +387,8 @@ bool makingItem = false;
 ItemInfo targetItem;
 std::vector<std::unique_ptr<SimpleItem>> ingredientsLeft;
 
+std::unique_ptr<SimpleItem> itemToRetry = nullptr;
+
 void GameState::PerformActions() {
     if (GetAsyncKeyState(VK_END)) {
         delay = 999999;
@@ -441,7 +492,10 @@ void GameState::PerformActions() {
                 ingredientsLeft = std::move(ingredients);
             }
         } else {
-            if (ingredientsLeft.size() > 0) {
+            if (botRetryFlag) {
+                ingredientsLeft.insert(ingredientsLeft.begin(), std::move(itemToRetry));
+            }
+            if (!ingredientsLeft.empty()) {
                 SimpleItem &ingredient = *ingredientsLeft[0];
                 std::cout << "Finding ingredient " << ingredient.GetIngredientName(handle) << std::endl;
                 // Find on the conveyor
@@ -465,6 +519,8 @@ void GameState::PerformActions() {
                 }
                 if (coords.first != -1) {
                     std::cout << "Clicking at " << coords.first << ", " << coords.second << std::endl;
+                    botRetryFlag = true;
+                    itemToRetry = std::move(ingredientsLeft[0]);
                     ClickMouseAt(GameState::GetWindowHandle(), coords.first, coords.second);
                     ingredientsLeft.erase(ingredientsLeft.begin());
                     dirty = true;

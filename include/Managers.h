@@ -39,7 +39,9 @@ public:
 
     static void SetNumConveyorItems(int value);
 
-    static void SetConveyorItems(std::vector<std::unique_ptr<ItemBase>> value);
+    static void AddItemFromAddress(DWORD address);
+
+    static void RemoveItemFromAddress(DWORD address);
 
     static void SetHandle(HANDLE pVoid);
 
@@ -50,6 +52,8 @@ public:
     static void AddCustomer(Customer customer);
 
     static void RemoveCustomer(int index);
+
+    static void Reset();
 
     static void IncrementFirstItem();
 
