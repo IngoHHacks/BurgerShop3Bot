@@ -592,8 +592,8 @@ void GameState::PerformActions() {
             if (!ingredientsLeft.empty()) {
                 std::vector<std::unique_ptr<ItemBase>> conveyorItems = GameState::GetConveyorItems();
                 std::pair<float, float> coords = std::make_pair(-1, -1);
+                int i = 0;
                 if (attempts < 10) {
-                    int i = 0;
                     do {
                         SimpleItem &ingredient = *ingredientsLeft[i];
                         std::cout << "Finding ingredient " << ingredient.GetIngredientName(handle) << std::endl;
@@ -628,7 +628,7 @@ void GameState::PerformActions() {
                     botRetryFlag = true;
                     itemToRetry = std::move(ingredientsLeft[0]);
                     ClickMouseAt(GameState::GetWindowHandle(), coords.first, coords.second);
-                    ingredientsLeft.erase(ingredientsLeft.begin());
+                    ingredientsLeft.erase(ingredientsLeft.begin() + i);
                     skip = 0;
                     dirty = true;
                 } else {
