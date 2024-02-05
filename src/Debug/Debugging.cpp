@@ -13,8 +13,8 @@
 #include <condition_variable>
 #include <Debugging.h>
 
-#ifndef VERSION_0_5_8A
-#define VERSION_0_5_8A
+#ifndef VERSION_0_5_9A
+#define VERSION_0_5_9A
 #endif
 
 std::mutex queueMutex;
@@ -92,6 +92,8 @@ void Debugging::DebugLoop() {
     LPVOID bbOffset = (LPVOID) 0x160143;
 #elif defined(VERSION_0_5_8A)
     LPVOID bbOffset = (LPVOID) 0x163373;
+#elif defined(VERSION_0_5_9A)
+    LPVOID bbOffset = (LPVOID) 0x168393;
 #endif
     LPVOID bbAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) bbOffset);
     bpManager.SetBreakpoint(bbAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -128,6 +130,8 @@ void Debugging::DebugLoop() {
     LPVOID conveyorSizeOffset = (LPVOID) 0x4F16E;
 #elif defined(VERSION_0_5_8A)
     LPVOID conveyorSizeOffset = (LPVOID) 0x4FCCE;
+#elif defined(VERSION_0_5_9A)
+    LPVOID conveyorSizeOffset = (LPVOID) 0x5303E;
 #endif
     LPVOID conveyorSizeAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) conveyorSizeOffset);
     bpManager.SetBreakpoint(conveyorSizeAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -159,11 +163,15 @@ void Debugging::DebugLoop() {
      * 64 89 0D 00000000 | mov fs:[00000000],ecx
      * 59                | pop ecx
      * Literal: 89108BC28B4DF4
+     * Be careful! This set of instructions can appear multiple times in the disassembler.
+     * The first one should be the correct one (as of the most recent version).
      */
 #if defined(VERSION_0_5_7D)
     LPVOID addToConveyorOffset = (LPVOID) 0x3E107;
 #elif defined(VERSION_0_5_8A)
     LPVOID addToConveyorOffset = (LPVOID) 0x3EB67;
+#elif defined(VERSION_0_5_9A)
+    LPVOID addToConveyorOffset = (LPVOID) 0x41EF7;
 #endif
     LPVOID addToConveyorAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) addToConveyorOffset);
     bpManager.SetBreakpoint(addToConveyorAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -196,12 +204,15 @@ void Debugging::DebugLoop() {
      * 8B 4E 08          | mov ecx,[esi+08]
      * 85 C9             | test ecx,ecx
      * Literal: 8B4604894104FF8F0C0100008B4E0885C9
-     * Be careful! This set of instructions can appear multiple times in the disassembly.
+     * Be careful! This set of instructions can appear multiple times in the disassembler.
+     * The second one should be the correct one (as of the most recent version).
      */
 #if defined(VERSION_0_5_7D)
     LPVOID removeFromConveyorOffset = (LPVOID) 0x4D489;
 #elif defined(VERSION_0_5_8A)
     LPVOID removeFromConveyorOffset = (LPVOID) 0x4DFD9;
+#elif defined(VERSION_0_5_9A)
+    LPVOID removeFromConveyorOffset = (LPVOID) 0x51349;
 #endif
     LPVOID removeFromConveyorAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) removeFromConveyorOffset);
     bpManager.SetBreakpoint(removeFromConveyorAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -239,6 +250,8 @@ void Debugging::DebugLoop() {
     LPVOID customerOffset = (LPVOID) 0x16756;
 #elif defined(VERSION_0_5_8A)
     LPVOID customerOffset = (LPVOID) 0x169B6;
+#elif defined(VERSION_0_5_9A)
+    LPVOID customerOffset = (LPVOID) 0x19106;
 #endif
     LPVOID customerAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) customerOffset);
     bpManager.SetBreakpoint(customerAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -269,12 +282,16 @@ void Debugging::DebugLoop() {
      * >> E8 ????????          | call BurgerShop3.exe+????????
      * 89 00                   | mov [eax],eax
      * 89 40 04                | mov [eax+04],eax
-     * Literal: C786080100000000C7860C0100000000E8????????8900894004
+     * Literal: C7860801000000000000C7860C01000000000000E8????????8900894004
+     * Be careful! This set of instructions can appear multiple times in the disassembler.
+     * The second one should be the correct one (as of the most recent version).
      */
 #if defined(VERSION_0_5_7D)
     throw std::runtime_error("Unsupported version.");
 #elif defined(VERSION_0_5_8A)
     LPVOID resetOffset = (LPVOID) 0x4B5C0;
+#elif defined(VERSION_0_5_9A)
+    LPVOID resetOffset = (LPVOID) 0x4E930;
 #endif
     LPVOID resetAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) resetOffset);
     bpManager.SetBreakpoint(resetAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
