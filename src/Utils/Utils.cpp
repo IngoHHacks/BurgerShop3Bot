@@ -205,23 +205,6 @@ void Utils::RecursivePrint(DWORD address, int depth, int items) {
     RecursivePrint(values[0], depth - 1, items);
 }
 
-static std::unordered_map<std::wstring, Gdiplus::Image *> imageCache = {};
-
-/**
- * Get an image from a path.
- * @param path The path to the image.
- * @return The image.
- * @note This function caches images for performance.
- */
-Gdiplus::Image *Utils::GetImageFromPath(std::wstring path) {
-    if (imageCache.find(path) != imageCache.end()) {
-        return imageCache[path];
-    }
-    Gdiplus::Image *image = Gdiplus::Image::FromFile(path.c_str());
-    imageCache[path] = image;
-    return image;
-}
-
 HWND g_hwnd = NULL;
 
 BOOL CALLBACK Utils::EnumWindowsProc(HWND hwnd, LPARAM lParam) {

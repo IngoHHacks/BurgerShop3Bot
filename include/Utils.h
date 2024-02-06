@@ -3,7 +3,6 @@
 
 #include <atomic>
 #include <windows.h>
-#include <gdiplus.h>
 #include <mutex>
 #include <thread>
 #include <list>
@@ -46,8 +45,6 @@ public:
     static void ApplyConveyorItems(std::list<Node> nodeList, HANDLE hProcess);
 
     static void RecursivePrint(DWORD address, int depth, int items);
-
-    static Gdiplus::Image *GetImageFromPath(std::wstring path);
 
     static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam);
 

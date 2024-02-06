@@ -838,7 +838,9 @@ bool ItemManager::LoadData(const std::string &folder) {
         } else {
             itemData[index] = data;
             if (data.oX == 0 || data.oY == 0) {
+#ifdef _DEBUG
                 std::cout << "Warning: Item " << data.type << " has no offset." << std::endl;
+#endif
             }
         }
     }
@@ -885,9 +887,11 @@ bool ItemManager::LoadContent() {
     if (!ItemManager::LoadItemNames("resources/bsfood.txt")) {
         return false;
     }
+#ifdef COMPLEX
     if (!ItemManager::LoadData("resources/itemdata")) {
         return false;
     }
+#endif
     return true;
 }
 

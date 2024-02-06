@@ -60,10 +60,14 @@ void Debugging::DebugLoop() {
         } while (Process32Next(snapshot, &entry));
         if (pid == 0) {
             std::cout << "Error: Could not find BurgerShop3.exe." << std::endl;
+            std::cout << "Press any key to exit." << std::endl;
+            std::cin.get();
             exit(0);
         }
     } else {
         std::cout << "Error: Could not enumerate processes." << std::endl;
+        std::cout << "Press any key to exit." << std::endl;
+        std::cin.get();
         exit(0);
     }
     CloseHandle(snapshot);

@@ -4,7 +4,6 @@
 #include <atomic>
 #include <objidl.h>
 #include <windows.h>
-#include <gdiplus.h>
 #include <mutex>
 #include <thread>
 #include <list>
@@ -112,6 +111,13 @@ struct ItemData {
     }
 };
 
+struct Point {
+    float x;
+    float y;
+
+    Point(float x, float y) : x(x), y(y) {}
+};
+
 struct ItemInfo {
     int mNumCopies;
     int mNumComplete;
@@ -123,14 +129,14 @@ struct ItemInfo {
     bool mRequired;
     bool mIsFree;
     int mHideCount;
-    Gdiplus::Point mGroupOffset;
+    Point mGroupOffset;
     bool mHiliteAll;
     bool mSpecialDraw;
     int mCustomParam;
 
     ItemInfo() : mNumCopies(0), mNumComplete(0), mRobotComplete(false), mItem(0), mFlyList(0), mDraw(false),
                  mInThoughtBubble(false), mRequired(false), mIsFree(false), mHideCount(0), mGroupOffset(
-                    Gdiplus::Point(0, 0)), mHiliteAll(false), mSpecialDraw(false), mCustomParam(0) {}
+                    Point(0, 0)), mHiliteAll(false), mSpecialDraw(false), mCustomParam(0) {}
 
     std::unique_ptr<ItemBase> GetItem();
 };
