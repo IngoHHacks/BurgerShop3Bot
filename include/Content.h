@@ -1,5 +1,5 @@
-#ifndef MEMREAD_CONTENT_H
-#define MEMREAD_CONTENT_H
+#ifndef BS3BOT_CONTENT_H
+#define BS3BOT_CONTENT_H
 
 #include <atomic>
 #include <objidl.h>
@@ -146,4 +146,4 @@ public:
     std::list<ItemInfo> GetItems(HANDLE hProcess);
 };
 
-#endif // MEMREAD_CONTENT_H
+#endif // BS3BOT_CONTENT_H

@@ -1,5 +1,5 @@
-#ifndef MEMREAD_UTILS_H
-#define MEMREAD_UTILS_H
+#ifndef BS3BOT_UTILS_H
+#define BS3BOT_UTILS_H
 
 #include <atomic>
 #include <windows.h>
@@ -58,4 +58,4 @@ public:
     static std::pair<float, float> TranslateCoords(float x, float y);
 };
 
-#endif //MEMREAD_UTILS_H
+#endif //BS3BOT_UTILS_H

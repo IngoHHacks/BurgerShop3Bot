@@ -1,5 +1,5 @@
-#ifndef MEMREAD_DEBUGGING_H
-#define MEMREAD_DEBUGGING_H
+#ifndef BS3BOT_DEBUGGING_H
+#define BS3BOT_DEBUGGING_H
 
 
 class Debugging {
@@ -11,4 +11,4 @@ public:
 };
 
 
-#endif //MEMREAD_DEBUGGING_H
+#endif //BS3BOT_DEBUGGING_H

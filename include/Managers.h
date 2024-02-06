@@ -1,5 +1,5 @@
-#ifndef MEMREAD_MANAGERS_H
-#define MEMREAD_MANAGERS_H
+#ifndef BS3BOT_MANAGERS_H
+#define BS3BOT_MANAGERS_H
 
 #include <atomic>
 #include <mutex>
@@ -77,6 +77,7 @@ private:
     static bool needsSorting;
     static void *handle;
     static HWND windowHandle;
+    static int timeWithNoCustomers;
 };
 
 class ItemManager {
@@ -130,4 +131,4 @@ public:
     void ClearSingleStep();
 };
 
-#endif // MEMREAD_MANAGERS_H
+#endif // BS3BOT_MANAGERS_H

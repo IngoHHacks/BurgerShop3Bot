@@ -23,6 +23,7 @@ bool GameState::dirty = false;
 bool GameState::needsSorting = false;
 HANDLE GameState::handle = NULL;
 HWND GameState::windowHandle = NULL;
+int GameState::timeWithNoCustomers = 30;
 
 bool botRetryFlag = false;
 
@@ -419,11 +420,11 @@ void GameState::PerformActions() {
         delay = 0;
         return;
     }
-    if (delay > 0) {
-        delay--;
-        return;
-    }
     if (GameState::GetCustomers().size() > 0) {
+        if (delay > 0) {
+            delay--;
+            return;
+        }
         if (!makingItem) {
             int cskip = skip;
             std::vector<ItemInfo> items;
@@ -649,6 +650,14 @@ void GameState::PerformActions() {
                 dirty = true;
             }
             delay = 2;
+        }
+        timeWithNoCustomers = 0;
+    } else {
+        timeWithNoCustomers++;
+        if (timeWithNoCustomers > 100) {
+            delay = 30;
+        } else {
+            delay = 10;
         }
     }
 }
