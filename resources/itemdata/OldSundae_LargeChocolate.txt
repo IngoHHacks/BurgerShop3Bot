@@ -1,4 +1,0 @@
-index: 483
-type: OldSundae_LargeChocolate
-ox: 18
-oy: 49

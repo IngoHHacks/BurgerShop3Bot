@@ -1,4 +1,0 @@
-parent: 342
-index: 758
-type: Wontons_Plate_Small
-corner: (5, 13)

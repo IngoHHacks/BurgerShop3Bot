@@ -1,6 +1,0 @@
-parent: 9
-index: 8
-type: Onions
-adjustx: -1
-adjusty: 2
-height: 4

@@ -1,4 +1,0 @@
-index: 76
-type: RibSteakRaw
-ox: 22
-oy: 17

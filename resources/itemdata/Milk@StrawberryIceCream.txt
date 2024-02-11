@@ -1,5 +1,0 @@
-parent: 178
-index: 117
-type: StrawberryIceCream
-absx: 4
-absy: 12

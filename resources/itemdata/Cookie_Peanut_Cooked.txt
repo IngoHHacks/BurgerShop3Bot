@@ -1,4 +1,0 @@
-index: 500
-type: Cookie_Peanut_Cooked
-ox: 17
-oy: 10

@@ -1,4 +1,0 @@
-parent: 342
-index: 227
-type: EggBoiled
-adjusty: -5

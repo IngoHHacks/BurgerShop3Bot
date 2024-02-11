@@ -1,4 +1,0 @@
-index: 429
-type: MexJalapeno_Nacho
-corner: (50, 3)
-layer: 7

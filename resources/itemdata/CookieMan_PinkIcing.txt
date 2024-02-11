@@ -1,4 +1,0 @@
-index: 532
-type: CookieMan_PinkIcing
-absx: 3
-absy: 0

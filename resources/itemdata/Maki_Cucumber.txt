@@ -1,4 +1,0 @@
-index: 718
-type: Maki_Cucumber
-absx: 6
-absy: 2

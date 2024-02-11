@@ -1,0 +1,224 @@
+<!DOCTYPE Food SYSTEM "food.dtd">
+<Food>
+    <Item id="0" name="None" type="None" />
+    <Item id="1" name="BottomBun" type="Conveyor" />
+    <Item id="2" name="BeefPatty" type="Conveyor" />
+    <Item id="3" name="ChickenPatty" type="Conveyor" />
+    <Item id="4" name="Cheese" type="Conveyor" />
+    <Item id="5" name="Lettuce" type="Conveyor" />
+    <Item id="6" name="Tomato" type="Conveyor" pan="Tomato_Cooked" />
+    <Item id="7" name="Bacon" type="Conveyor" />
+    <Item id="8" name="TopBun" type="Conveyor" />
+    <Item id="9" name="Onions" type="Conveyor" />
+    <Item id="10" name="Mushrooms" type="Conveyor" />
+    <Item id="11" name="GreenBeans" type="Conveyor" pot="GreenBeans_Boiled" pan="GreenBeans_Cooked" />
+    <Item id="12" name="GreenOnions" type="Conveyor" />
+    <Item id="13" name="BaconBits" type="Conveyor" />
+    <Item id="14" name="Carrot" type="Conveyor" />
+    <Item id="15" name="Celery" type="Conveyor" />
+    <Item id="16" name="ChickenNugget" type="Conveyor" />
+    <Item id="17" name="SnackTray" type="Conveyor" />
+    <Item id="18" name="SnackToy" type="Conveyor" />
+    <Item id="19" name="Bowl" type="Conveyor" />
+    <Item id="20" name="CoffeeMug" type="Conveyor" />
+    <Item id="21" name="TeaCup" type="Conveyor" />
+    <Item id="22" name="TeaPot" type="Conveyor" />
+    <Item id="23" name="MexSideTray" type="Conveyor" />
+    <Item id="24" name="Plate" type="Conveyor" />
+    <Item id="25" name="SundaeDish" type="Conveyor" />
+    <Item id="26" name="SmallDrinkCont" type="Conveyor" />
+    <Item id="27" name="LargeDrinkCont" type="Conveyor" />
+    <Item id="28" name="Glass" type="Conveyor" />
+    <Item id="29" name="SmallSideCont" type="Conveyor" />
+    <Item id="30" name="LargeSideCont" type="Conveyor" />
+    <Item id="31" name="LargeSundaeCont" type="Conveyor" />
+    <Item id="32" name="Ramekin" type="Conveyor" />
+    <Item id="33" name="Treat" type="Conveyor" />
+    <Item id="34" name="Menu" type="Conveyor" />
+    <Item id="35" name="Shirt" type="Conveyor" />
+    <Item id="36" name="DogBiscuit" type="Conveyor" />
+    <Item id="37" name="Cherry" type="Conveyor" />
+    <Item id="38" name="ChocolateChips" type="Conveyor" />
+    <Item id="39" name="Peanuts" type="Conveyor" />
+    <Item id="40" name="Sprinkles" type="Conveyor" />
+    <Item id="41" name="Blueberries" type="Conveyor" />
+    <Item id="42" name="Strawberries" type="Conveyor" />
+    <Item id="43" name="Banana" type="Conveyor" />
+    <Item id="44" name="AlfredoSauce" type="Conveyor" />
+    <Item id="45" name="Butter" type="Conveyor" />
+    <Item id="46" name="Jam" type="Conveyor" />
+    <Item id="47" name="Sugar" type="Conveyor" />
+    <Item id="48" name="Syrup" type="Conveyor" />
+    <Item id="49" name="TomatoSauce" type="Conveyor" />
+    <Item id="50" name="Gravy" type="Conveyor" />
+    <Item id="51" name="Hashbrown" type="Conveyor" />
+    <Item id="52" name="WaffleRaw" type="Conveyor" oven="Waffle" />
+    <Item id="53" name="Pancake" type="Conveyor" />
+    <Item id="54" name="EggFried" type="Conveyor" />
+    <Item id="55" name="SausageLink" type="Conveyor" />
+    <Item id="56" name="SausagePatty" type="Conveyor" />
+    <Item id="57" name="HomeFries" type="Conveyor" />
+    <Item id="58" name="EnglishMuffinRaw" type="Conveyor" oven="EnglishMuffin" />
+    <Item id="59" name="Flakes" type="Conveyor" />
+    <Item id="60" name="FruityOs" type="Conveyor" />
+    <Item id="61" name="SplitTopRoll" type="Conveyor" />
+    <Item id="62" name="Cornbread" type="Conveyor" />
+    <Item id="63" name="Kaiserroll" type="Conveyor" />
+    <Item id="64" name="Phouseroll" type="Conveyor" />
+    <Item id="65" name="ChickenStrip" type="Conveyor" />
+    <Item id="66" name="Shrimp" type="Conveyor" />
+    <Item id="67" name="Parsley" type="Conveyor" />
+    <Item id="68" name="CornCob" type="Conveyor" oven="CornGrilled" />
+    <Item id="69" name="Meatloaf" type="Conveyor" />
+    <Item id="70" name="SteakFries" type="Conveyor" />
+    <Item id="71" name="CarrotsRaw" type="Conveyor" pot="CarrotsBoiled" />
+    <Item id="72" name="PeasRaw" type="Conveyor" pot="PeasBoiled" />
+    <Item id="73" name="CornRaw" type="Conveyor" pot="CornBoiled" />
+    <Item id="74" name="PotatoRaw" type="Conveyor" oven="PotatoBaked" pot="PotatoMashed" />
+    <Item id="75" name="ChickenRaw" type="Conveyor" oven="ChickenGrilled" />
+    <Item id="76" name="HamRaw" type="Conveyor" oven="HamGrilled" />
+    <Item id="77" name="RibSteakRaw" type="Conveyor" oven="RibSteakGrilled" />
+    <Item id="78" name="SalmonRaw" type="Conveyor" oven="SalmonGrilled" />
+    <Item id="79" name="SteakRaw" type="Conveyor" oven="SteakGrilled" />
+    <Item id="80" name="ApplePie" type="Conveyor" />
+    <Item id="81" name="CherryPie" type="Conveyor" />
+    <Item id="82" name="CheeseCake" type="Conveyor" />
+    <Item id="83" name="StrawberryCake" type="Conveyor" />
+    <Item id="84" name="PecanPie" type="Conveyor" />
+    <Item id="85" name="CarrotCake" type="Conveyor" />
+    <Item id="86" name="Tiramisu" type="Conveyor" />
+    <Item id="87" name="ChocolateCake" type="Conveyor" />
+    <Item id="88" name="PinkCake" type="Conveyor" />
+    <Item id="89" name="WhiteCake" type="Conveyor" />
+    <Item id="90" name="ChocolateCupCake" type="Conveyor" />
+    <Item id="91" name="PinkCupCake" type="Conveyor" />
+    <Item id="92" name="WhiteCupCake" type="Conveyor" />
+    <Item id="93" name="Brownie" type="Conveyor" />
+    <Item id="94" name="CroissantRaw" type="Conveyor" oven="Croissant" />
+    <Item id="95" name="Donut" type="Conveyor" />
+    <Item id="96" name="TacoShell" type="Conveyor" />
+    <Item id="97" name="MexTortilla" type="Conveyor" />
+    <Item id="98" name="Beans" type="Conveyor" pan="RefriedBeans" />
+    <Item id="99" name="MexBeef" type="Conveyor" />
+    <Item id="100" name="MexCheese" type="Conveyor" />
+    <Item id="101" name="MexChicken" type="Conveyor" />
+    <Item id="102" name="Churro" type="Conveyor" />
+    <Item id="103" name="Jalapeno" type="Conveyor" />
+    <Item id="104" name="Lime" type="Conveyor" />
+    <Item id="105" name="Olives" type="Conveyor" />
+    <Item id="106" name="Rice" type="Conveyor" pan="Rice_Cooked" />
+    <Item id="107" name="Tamale" type="Conveyor" />
+    <Item id="108" name="Enchilada" type="Conveyor" />
+    <Item id="109" name="ChickenRaw" type="Conveyor" pan="ChickenGrilled" />
+    <Item id="110" name="CornRaw" type="Conveyor" oven="CornGrilled" />
+    <Item id="111" name="FishRaw" type="Conveyor" pan="FishGrilled" />
+    <Item id="112" name="GreenPepperRaw" type="Conveyor" pan="GreenPepperGrilled" />
+    <Item id="113" name="OnionRaw" type="Conveyor" pan="OnionGrilled" />
+    <Item id="114" name="ShrimpRaw" type="Conveyor" pan="ShrimpGrilled" />
+    <Item id="115" name="MexSteakRaw" type="Conveyor" pan="MexSteakGrilled" />
+    <Item id="116" name="VanillaIceCream" type="Conveyor" />
+    <Item id="117" name="ChocolateIceCream" type="Conveyor" />
+    <Item id="118" name="StrawberryIceCream" type="Conveyor" />
+    <Item id="119" name="IceCreamCone" type="Conveyor" />
+    <Item id="120" name="CookieDough" type="Conveyor" />
+    <Item id="121" name="ChocCookieDough" type="Conveyor" />
+    <Item id="122" name="TreeCutter" type="Conveyor" />
+    <Item id="123" name="ManCutter" type="Conveyor" />
+    <Item id="124" name="StarCutter" type="Conveyor" />
+    <Item id="125" name="Basket" type="Conveyor" />
+    <Item id="126" name="Breadloaf" type="Conveyor" />
+    <Item id="127" name="Breadslice" type="Conveyor" />
+    <Item id="128" name="Breadstick" type="Conveyor" />
+    <Item id="129" name="Cheesestick" type="Conveyor" />
+    <Item id="130" name="Basil" type="Conveyor" />
+    <Item id="131" name="Parmesan" type="Conveyor" />
+    <Item id="132" name="Lasagna" type="Conveyor" />
+    <Item id="133" name="Manicotti" type="Conveyor" />
+    <Item id="134" name="Meatball" type="Conveyor" />
+    <Item id="135" name="Noodles" type="Conveyor" pot="NoodlesCooked" />
+    <Item id="136" name="ThickNoodles" type="Conveyor" pot="ThickNoodlesCooked" />
+    <Item id="137" name="MacaroniRaw" type="Conveyor" pot="MacaroniCooked" />
+    <Item id="138" name="ClamsRaw" type="Conveyor" pot="ClamsCooked" />
+    <Item id="139" name="MusselsRaw" type="Conveyor" pot="MusselsCooked" />
+    <Item id="140" name="PizzaCrust" type="Conveyor" />
+    <Item id="141" name="GreenPepper" type="Conveyor" />
+    <Item id="142" name="Pepperoni" type="Conveyor" />
+    <Item id="143" name="Lemon" type="Conveyor" />
+    <Item id="144" name="Orange" type="Conveyor" />
+    <Item id="145" name="Tapioca" type="Conveyor" />
+    <Item id="146" name="Chickenwing" type="Conveyor" />
+    <Item id="147" name="Cucumber" type="Conveyor" />
+    <Item id="148" name="Dumpling" type="Conveyor" />
+    <Item id="149" name="Edamame" type="Conveyor" />
+    <Item id="150" name="Eggroll" type="Conveyor" />
+    <Item id="151" name="Hotsauce" type="Machine" />
+    <Item id="152" name="Ginger" type="Conveyor" />
+    <Item id="153" name="Nori" type="Conveyor" />
+    <Item id="154" name="Porkbun" type="Conveyor" />
+    <Item id="155" name="Saucer" type="Conveyor" />
+    <Item id="156" name="Soysauce" type="Conveyor" />
+    <Item id="157" name="SushiTray" type="Conveyor" />
+    <Item id="158" name="Tofu" type="Conveyor" pan="Tofu_Cooked" />
+    <Item id="159" name="Tuna" type="Conveyor" pan="Tuna_Cooked" />
+    <Item id="160" name="Wasabi" type="Conveyor" />
+    <Item id="161" name="Egg" type="Conveyor" pan="EggCooked" pot="EggBoiled" />
+    <Item id="162" name="BowlMaskMarker" type="None" />
+    <Item id="163" name="MinestroneSoup" type="Machine" />
+    <Item id="164" name="TomatoSoup" type="Machine" />
+    <Item id="165" name="PotatoSoup" type="Machine" />
+    <Item id="166" name="ChickenSoup" type="Machine" />
+    <Item id="167" name="TortillaSoup" type="Machine" />
+    <Item id="168" name="HotAndSourSoup" type="Machine" />
+    <Item id="169" name="RamenSoup" type="Machine" />
+    <Item id="170" name="MexChips" type="Machine" />
+    <Item id="171" name="Calamari" type="Conveyor" />
+    <Item id="172" name="Fries" type="Conveyor" />
+    <Item id="173" name="OnionRings" type="Conveyor" />
+    <Item id="174" name="CurlyFries" type="Conveyor" />
+    <Item id="175" name="ColaSoda" type="Machine" />
+    <Item id="176" name="OrangeSoda" type="Machine" />
+    <Item id="177" name="LemonLimeSoda" type="Machine" />
+    <Item id="178" name="RootBeer" type="Machine" />
+    <Item id="179" name="Milk" type="Machine" />
+    <Item id="180" name="Coffee" type="Machine" />
+    <Item id="181" name="Tea" type="Machine" />
+    <Item id="182" name="OJ" type="Conveyor" />
+    <Item id="183" name="Guacamole" type="Machine" />
+    <Item id="184" name="Salsa" type="Machine" />
+    <Item id="185" name="SourCream" type="Machine" />
+    <Item id="186" name="ItalianDressing" type="Machine" />
+    <Item id="187" name="OilVinegar" type="Machine" />
+    <Item id="188" name="Ranch" type="Machine" />
+    <Item id="189" name="Ketchup" type="Machine" />
+    <Item id="190" name="Mustard" type="Machine" />
+    <Item id="191" name="ChocolateSauce" type="Machine" />
+    <Item id="192" name="StrawberrySauce" type="Machine" />
+    <Item id="193" name="WhipCream" type="Machine" />
+    <Item id="194" name="Pudding" type="Machine" />
+    <Item id="195" name="ChocolateIcing" type="Machine" />
+    <Item id="196" name="WhiteIcing" type="Machine" />
+    <Item id="197" name="PinkIcing" type="Machine" />
+    <Item id="198" name="ChickenGrilled" type="Conveyor" />
+    <Item id="199" name="HamGrilled" type="Conveyor" />
+    <Item id="200" name="RibSteakGrilled" type="Conveyor" />
+    <Item id="201" name="SalmonGrilled" type="Conveyor" />
+    <Item id="202" name="SteakGrilled" type="Conveyor" />
+    <Item id="203" name="Croissant" type="Conveyor" />
+    <Item id="204" name="TortillaBowl" type="Conveyor" />
+    <Item id="205" name="RefriedBeans" type="Conveyor" />
+    <Item id="206" name="Tomato_Cooked" type="Conveyor" />
+    <Item id="207" name="Rice_Cooked" type="Conveyor" />
+    <Item id="208" name="NoodlesCooked" type="Conveyor" />
+    <Item id="209" name="ThickNoodlesCooked" type="Conveyor" />
+    <Item id="210" name="MacaroniCooked" type="Conveyor" />
+    <Item id="211" name="ClamsCooked" type="Conveyor" />
+    <Item id="212" name="MusselsCooked" type="Conveyor" />
+    <Item id="213" name="EggBoiled" type="Conveyor" />
+    <Item id="214" name="EggCooked" type="Conveyor" />
+    <Item id="215" name="GreenBeans_Cooked" type="Conveyor" />
+    <Item id="216" name="GreenBeans_Boiled" type="Conveyor" />
+    <Item id="217" name="Tofu_Cooked" type="Conveyor" />
+    <Item id="218" name="Tuna_Cooked" type="Conveyor" />
+    <Item id="219" name="Wontons" type="Machine" />
+    <Item id="220" name="NUM_ITEMS" type="None" />
+</Food>

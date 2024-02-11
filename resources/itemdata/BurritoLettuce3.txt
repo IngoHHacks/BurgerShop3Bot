@@ -1,7 +1,0 @@
-index: 399
-type: BurritoLettuce3
-adjustx: 1
-adjusty: 5
-ox: 22
-oy: 20
-layer: 7

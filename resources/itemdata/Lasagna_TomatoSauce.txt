@@ -1,3 +1,0 @@
-index: 629
-type: Lasagna_TomatoSauce
-corner: (-2, 0)

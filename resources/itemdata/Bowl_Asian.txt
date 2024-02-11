@@ -1,5 +1,0 @@
-index: 708
-type: Bowl_Asian
-ox: 27
-oy: 31
-height: 24

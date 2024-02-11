@@ -1,4 +1,0 @@
-index: 523
-type: ChocCookie_ChocolateIcing
-absx: 1
-absy: 0

@@ -1,3 +1,0 @@
-index: 795
-type: Noodles_ThickNoodleBowl_Overhang
-corner: (2, 10)

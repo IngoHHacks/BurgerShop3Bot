@@ -1,6 +1,0 @@
-index: 352
-type: TacoBeef1
-adjusty: 11
-ox: 26
-oy: 17
-layer: 3

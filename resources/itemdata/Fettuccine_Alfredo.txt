@@ -1,3 +1,0 @@
-index: 614
-type: Fettuccine_Alfredo
-corner: (7, -10)

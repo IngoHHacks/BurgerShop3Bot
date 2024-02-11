@@ -1,4 +1,0 @@
-index: 511
-type: CookieStar_Raw
-ox: 36
-oy: 11

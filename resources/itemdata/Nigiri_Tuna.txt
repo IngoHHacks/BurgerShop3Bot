@@ -1,7 +1,0 @@
-index: 733
-type: Nigiri_Tuna
-ox: 18
-oy: 8
-absx: 1
-absy: -2
-height: 8

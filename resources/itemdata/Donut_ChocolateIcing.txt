@@ -1,5 +1,0 @@
-index: 545
-type: Donut_ChocolateIcing
-absx: -1
-absy: -2
-layer: 3

@@ -1,4 +1,0 @@
-index: 510
-type: CookieStar_Cooked
-ox: 36
-oy: 11

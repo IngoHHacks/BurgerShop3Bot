@@ -1,7 +1,0 @@
-index: 472
-type: IceCream_Peanuts
-absx: 2
-absy: 0
-layer: 4
-ox: 20
-oy: 13

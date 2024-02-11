@@ -1,4 +1,0 @@
-index: 38
-type: Peanuts
-ox: 20
-oy: 13

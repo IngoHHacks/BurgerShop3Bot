@@ -1,5 +1,0 @@
-index: 468
-type: Cake_Blueberries_Small
-ox: 10
-oy: 11
-layer: 5

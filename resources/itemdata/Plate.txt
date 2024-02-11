@@ -1,5 +1,0 @@
-index: 23
-type: Plate
-ox: 30
-oy: 14
-layer: 0

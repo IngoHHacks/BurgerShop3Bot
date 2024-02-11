@@ -1,4 +1,0 @@
-parent: 677
-index: 31
-type: Ramekin
-corner: (20, 16)

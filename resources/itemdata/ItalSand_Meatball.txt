@@ -1,3 +1,0 @@
-index: 674
-type: ItalSand_Meatball
-layer: 5

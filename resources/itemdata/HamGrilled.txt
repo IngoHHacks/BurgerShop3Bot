@@ -1,5 +1,0 @@
-index: 213
-type: HamGrilled
-height: 6
-ox: 22
-oy: 17

@@ -1,7 +1,0 @@
-index: 324
-type: EggFried_Sandwich
-adjusty: 2
-ox: 20
-oy: 14
-height: 9
-layer: 1

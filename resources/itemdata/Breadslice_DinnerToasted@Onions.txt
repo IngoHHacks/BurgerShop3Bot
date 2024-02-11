@@ -1,6 +1,0 @@
-parent: 593
-index: 8
-type: Onions
-absx: 0
-absy: 0
-layer: 10

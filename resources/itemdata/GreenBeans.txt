@@ -1,4 +1,0 @@
-index: 10
-type: GreenBeans
-ox: 20
-oy: 14

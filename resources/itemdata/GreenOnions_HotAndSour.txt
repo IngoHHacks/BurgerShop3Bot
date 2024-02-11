@@ -1,3 +1,0 @@
-index: 810
-type: GreenOnions_HotAndSour
-corner: (3, 2)

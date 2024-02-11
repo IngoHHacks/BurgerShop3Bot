@@ -1,3 +1,0 @@
-index: 619
-type: Fettuccine_Mussels
-corner: (7, -15)

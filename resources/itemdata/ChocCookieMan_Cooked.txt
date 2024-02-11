@@ -1,4 +1,0 @@
-index: 524
-type: ChocCookieMan_Cooked
-ox: 27
-oy: 13

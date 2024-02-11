@@ -1,5 +1,0 @@
-index: 178
-type: Milk
-absx: 3
-absy: 14
-layer: 2

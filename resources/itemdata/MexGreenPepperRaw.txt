@@ -1,5 +1,0 @@
-index: 111
-type: MexGreenPepperRaw
-ox: 23
-oy: 10
-layer: 10

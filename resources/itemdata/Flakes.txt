@@ -1,4 +1,0 @@
-index: 58
-type: Flakes
-ox: 21
-oy: 48

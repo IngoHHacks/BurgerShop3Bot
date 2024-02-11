@@ -1,3 +1,0 @@
-index: 188
-type: Ketchup
-layer: 2001

@@ -1,3 +1,0 @@
-index: 685
-type: ItalBreadPlate_OliveTomato
-layer: 12

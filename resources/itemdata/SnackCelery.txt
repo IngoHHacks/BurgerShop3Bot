@@ -1,5 +1,0 @@
-index: 838
-type: SnackCelery
-ox: 11
-oy: 29
-layer: 3

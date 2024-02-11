@@ -1,4 +1,0 @@
-index: 424
-type: MexBeans_Nacho
-corner: (45, -9)
-layer: 5

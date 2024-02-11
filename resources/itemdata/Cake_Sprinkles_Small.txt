@@ -1,5 +1,0 @@
-index: 469
-type: Cake_Sprinkles_Small
-ox: 18
-oy: 8
-layer: 4

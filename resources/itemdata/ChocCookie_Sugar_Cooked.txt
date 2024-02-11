@@ -1,4 +1,0 @@
-index: 518
-type: ChocCookie_Sugar_Cooked
-ox: 17
-oy: 10

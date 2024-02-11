@@ -1,4 +1,0 @@
-index: 723
-type: Maki_RiceRing
-ox: 15
-oy: 16

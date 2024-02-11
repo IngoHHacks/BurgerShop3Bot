@@ -1,4 +1,0 @@
-index: 402
-type: BurritoLime
-absx: 16
-absy: -6

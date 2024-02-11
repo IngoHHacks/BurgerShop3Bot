@@ -1,3 +1,0 @@
-index: 572
-type: Sundae_BananaFront
-corner: (0, 7)

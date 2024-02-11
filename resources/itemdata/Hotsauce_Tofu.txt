@@ -1,4 +1,0 @@
-index: 716
-type: Hotsauce_Tofu
-absx: 2
-absy: 1

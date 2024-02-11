@@ -1,4 +1,0 @@
-index: 304
-type: Gravy_Ham
-absx: -4
-absy: 5

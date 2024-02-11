@@ -1,4 +1,0 @@
-index: 537
-type: CookieStar_ChocolateIcing
-absx: 3
-absy: 0

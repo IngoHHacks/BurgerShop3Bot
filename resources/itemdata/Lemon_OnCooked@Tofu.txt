@@ -1,4 +1,0 @@
-parent: 342
-index: 157
-type: Tofu
-corner: (-10, 5)

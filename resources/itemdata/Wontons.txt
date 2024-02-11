@@ -1,3 +1,0 @@
-index: 233
-type: Wontons
-corner: (14, -3)

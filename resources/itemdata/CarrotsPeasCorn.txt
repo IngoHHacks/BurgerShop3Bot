@@ -1,5 +1,0 @@
-index: 289
-type: CarrotsPeasCorn
-ox: 23
-oy: 22
-layer: 1

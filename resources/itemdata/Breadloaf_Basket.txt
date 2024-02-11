@@ -1,3 +1,0 @@
-index: 595
-type: Breadloaf_Basket
-corner: (3, -8)

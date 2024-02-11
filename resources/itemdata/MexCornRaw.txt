@@ -1,5 +1,0 @@
-index: 109
-type: MexCornRaw
-ox: 27
-oy: 15
-layer: 0

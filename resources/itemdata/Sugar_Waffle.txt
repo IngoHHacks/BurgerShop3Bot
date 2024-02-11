@@ -1,7 +1,0 @@
-index: 314
-type: Sugar_Waffle
-ox: 24
-oy: 13
-absx: 1
-absy: -1
-layer: 22

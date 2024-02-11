@@ -1,4 +1,0 @@
-index: 217
-type: Croissant
-ox: 26
-oy: 21

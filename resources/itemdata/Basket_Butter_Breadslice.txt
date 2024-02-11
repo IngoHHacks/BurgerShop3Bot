@@ -1,3 +1,0 @@
-index: 677
-type: Basket_Butter_Breadslice
-corner: (2, 3)

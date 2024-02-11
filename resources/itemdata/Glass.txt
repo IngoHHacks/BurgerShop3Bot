@@ -1,4 +1,0 @@
-index: 27
-type: Glass
-ox: 19
-oy: 50

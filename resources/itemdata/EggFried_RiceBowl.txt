@@ -1,3 +1,0 @@
-index: 777
-type: EggFried_RiceBowl
-corner: (22, 2)

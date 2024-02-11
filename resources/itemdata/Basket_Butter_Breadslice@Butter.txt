@@ -1,5 +1,0 @@
-parent: 677
-index: 44
-type: Butter
-adjustx: 10
-adjusty: -12

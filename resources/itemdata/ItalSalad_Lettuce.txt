@@ -1,4 +1,0 @@
-index: 690
-type: ItalSalad_Lettuce
-corner: (0, -3)
-layer: 1

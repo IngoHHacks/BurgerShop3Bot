@@ -1,5 +1,0 @@
-parent: 591
-index: 80
-type: CherryPie
-adjustx: 6
-adjusty: 2

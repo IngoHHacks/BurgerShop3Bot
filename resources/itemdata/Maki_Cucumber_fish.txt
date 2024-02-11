@@ -1,4 +1,0 @@
-index: 719
-type: Maki_Cucumber_Fish
-absx: 14
-absy: 3

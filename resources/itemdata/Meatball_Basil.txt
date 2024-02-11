@@ -1,3 +1,0 @@
-index: 633
-type: Meatball_Basil
-corner: (2, 1)

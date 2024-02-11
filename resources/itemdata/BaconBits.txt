@@ -1,4 +1,0 @@
-index: 12
-type: BaconBits
-ox: 22
-oy: 15

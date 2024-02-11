@@ -1,4 +1,0 @@
-parent: 593
-index: 61
-type: Cornbread
-layer: 5

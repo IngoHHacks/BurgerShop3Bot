@@ -1,6 +1,0 @@
-index: 681
-type: ItalBreadPlate_Breadslice
-ox: 19
-oy: 18
-height: 8
-layer: 10

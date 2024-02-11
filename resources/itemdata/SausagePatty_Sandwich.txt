@@ -1,7 +1,0 @@
-index: 326
-type: SausagePatty_Sandwich
-adjusty: -1
-ox: 18
-oy: 11
-height: 6
-layer: 2

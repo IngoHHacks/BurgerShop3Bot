@@ -1,3 +1,0 @@
-index: 636
-type: Meatball_TomatoSauce_Parmesan
-corner: (1, -3)

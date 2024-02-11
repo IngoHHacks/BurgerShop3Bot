@@ -1,5 +1,0 @@
-parent: 342
-index: 215
-type: SalmonGrilled
-adjustx: 5
-adjusty: 2

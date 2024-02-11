@@ -1,3 +1,0 @@
-index: 184
-type: SourCream
-layer: 2001

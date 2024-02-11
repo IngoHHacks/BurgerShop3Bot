@@ -1,4 +1,0 @@
-index: 539
-type: CookieTree_WhiteIcing
-absx: 5
-absy: 1

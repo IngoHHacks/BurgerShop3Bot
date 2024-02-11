@@ -1,4 +1,0 @@
-index: 273
-type: FruityOsMilkBowl
-ox: 27
-oy: 34

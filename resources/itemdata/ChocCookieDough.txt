@@ -1,5 +1,0 @@
-index: 120
-type: ChocCookieDough
-ox: 12
-oy: 12
-layer: -1

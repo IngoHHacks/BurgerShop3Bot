@@ -1,5 +1,0 @@
-index: 494
-type: CupCake_Sprinkles_NoIcing
-absx: 0
-absy: -2
-layer: 3

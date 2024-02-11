@@ -1,5 +1,0 @@
-index: 490
-type: CupCake_PinkIcing
-layer: 2
-absx: 3
-absy: -10

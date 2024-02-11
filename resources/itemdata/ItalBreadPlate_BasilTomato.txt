@@ -1,3 +1,0 @@
-index: 680
-type: ItalBreadPlate_BasilTomato
-layer: 14

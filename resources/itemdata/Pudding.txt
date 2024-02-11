@@ -1,5 +1,0 @@
-index: 193
-type: Pudding
-ox: 25
-oy: 8
-corner: (1, 3)

@@ -1,5 +1,0 @@
-index: 103
-type: MexLime
-ox: 14
-oy: 12
-layer: 2000

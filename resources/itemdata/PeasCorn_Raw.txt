@@ -1,5 +1,0 @@
-index: 292
-type: PeasCorn_Raw
-ox: 26
-oy: 15
-layer: 2

@@ -1,4 +1,0 @@
-index: 342
-type: Lemon_OnCooked
-ox: 12
-oy: 6

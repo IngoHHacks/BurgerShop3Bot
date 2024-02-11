@@ -1,5 +1,0 @@
-index: 200
-type: MexGreenPepperGrilled
-ox: 23
-oy: 10
-layer: 10

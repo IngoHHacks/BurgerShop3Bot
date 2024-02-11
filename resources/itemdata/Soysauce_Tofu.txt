@@ -1,4 +1,0 @@
-index: 742
-type: Soysauce_Tofu
-absx: 1
-absy: 1

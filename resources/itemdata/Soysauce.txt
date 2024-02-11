@@ -1,5 +1,0 @@
-index: 155
-type: Soysauce
-ox: 11
-oy: 45
-height: 5

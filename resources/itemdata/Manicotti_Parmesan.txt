@@ -1,3 +1,0 @@
-index: 631
-type: Manicotti_Parmesan
-corner: (0, 0)

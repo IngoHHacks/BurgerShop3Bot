@@ -1,4 +1,0 @@
-index: 438
-type: Quesadilla_Lettuce_Small
-ox: 18
-oy: 15

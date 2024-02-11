@@ -1,6 +1,0 @@
-index: 192
-type: WhipCream
-ox: 12
-oy: 20
-height: 12
-layer: 50

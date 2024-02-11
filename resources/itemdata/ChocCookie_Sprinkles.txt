@@ -1,4 +1,0 @@
-index: 520
-type: ChocCookie_Sprinkles
-absx: 2
-absy: 0

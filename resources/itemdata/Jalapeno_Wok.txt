@@ -1,3 +1,0 @@
-index: 834
-type: Jalapeno_Wok
-corner: (5, 16)

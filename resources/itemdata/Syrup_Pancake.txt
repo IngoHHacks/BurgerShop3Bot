@@ -1,7 +1,0 @@
-index: 316
-type: Syrup_Pancake
-ox: 22
-oy: 8
-absx: 2
-absy: 2
-layer: 23

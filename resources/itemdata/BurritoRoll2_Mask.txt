@@ -1,5 +1,0 @@
-index: 403
-type: BurritoRoll2_Mask
-absx: 0
-absy: -5
-layer: 1000

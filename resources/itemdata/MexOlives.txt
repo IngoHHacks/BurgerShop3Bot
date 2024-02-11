@@ -1,4 +1,0 @@
-index: 104
-type: MexOlives
-ox: 18
-oy: 11

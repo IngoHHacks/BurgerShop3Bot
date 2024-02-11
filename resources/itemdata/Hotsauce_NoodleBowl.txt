@@ -1,3 +1,0 @@
-index: 803
-type: Hotsauce_NoodleBowl
-corner: (14, -9)

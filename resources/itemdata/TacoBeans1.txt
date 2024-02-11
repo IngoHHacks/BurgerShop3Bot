@@ -1,6 +1,0 @@
-index: 349
-type: TacoBeans1
-adjusty: 11
-ox: 18
-oy: 18
-layer: 1

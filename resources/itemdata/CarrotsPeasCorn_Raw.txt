@@ -1,5 +1,0 @@
-index: 293
-type: CarrotsPeasCorn_Raw
-ox: 26
-oy: 15
-layer: 2

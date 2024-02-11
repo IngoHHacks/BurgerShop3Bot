@@ -1,5 +1,0 @@
-index: 71
-type: PeasRaw
-ox: 26
-oy: 15
-layer: 2

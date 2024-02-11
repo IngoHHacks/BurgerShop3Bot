@@ -1,4 +1,0 @@
-index: 526
-type: ChocCookieStar_Cooked
-ox: 36
-oy: 11

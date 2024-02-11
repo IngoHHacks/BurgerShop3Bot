@@ -1,4 +1,0 @@
-index: 30
-type: LargeSundaeCont
-ox: 18
-oy: 49

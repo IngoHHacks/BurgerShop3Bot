@@ -1,4 +1,0 @@
-parent: 221
-index: 160
-type: Egg
-corner: (15, 0)

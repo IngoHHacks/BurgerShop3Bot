@@ -1,5 +1,0 @@
-index: 42
-type: Banana
-ox: 12
-oy: 16
-layer: 5

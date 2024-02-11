@@ -1,5 +1,0 @@
-index: 170
-type: Calamari
-ox: 25
-oy: 19
-corner: (4, -3)

@@ -1,3 +1,0 @@
-index: 763
-type: EggFried_Ramen
-corner: (23, 1)

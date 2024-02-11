@@ -1,5 +1,0 @@
-index: 219
-type: MexRefriedBeans
-layer: 13
-ox: 16
-oy: 18

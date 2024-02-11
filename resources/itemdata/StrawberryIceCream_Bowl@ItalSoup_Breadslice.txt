@@ -1,5 +1,0 @@
-parent: 249
-index: 696
-type: ItalSoup_Breadslice
-absx: 25
-absy: -2

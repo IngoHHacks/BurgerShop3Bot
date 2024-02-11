@@ -1,7 +1,0 @@
-index: 379
-type: BurritoBeans1
-adjustx: 1
-adjusty: 15
-ox: 18
-oy: 18
-layer: 1

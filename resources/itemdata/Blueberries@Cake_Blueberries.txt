@@ -1,5 +1,0 @@
-parent: 40
-index: 458
-type: Cake_BlueBerries
-absx: 28
-absy: 8

@@ -1,4 +1,0 @@
-index: 509
-type: CookieMan_Raw
-ox: 27
-oy: 13

@@ -1,5 +1,0 @@
-parent: 677
-index: 341
-type: TomatoSauceIcon
-adjustx: -8
-adjusty: -7

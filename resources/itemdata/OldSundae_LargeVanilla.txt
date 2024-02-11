@@ -1,4 +1,0 @@
-index: 482
-type: OldSundae_LargeVanilla
-ox: 18
-oy: 49

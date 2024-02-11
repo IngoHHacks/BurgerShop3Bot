@@ -1,4 +1,0 @@
-index: 504
-type: Cookie_Sprinkles
-absx: 2
-absy: 0

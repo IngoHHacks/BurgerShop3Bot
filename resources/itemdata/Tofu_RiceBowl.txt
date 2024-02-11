@@ -1,3 +1,0 @@
-index: 786
-type: Tofu_RiceBowl
-corner: (32, -10)

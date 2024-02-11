@@ -1,8 +1,0 @@
-index: 709
-type: Bowl_Asian_Mask
-ox: 27
-oy: 31
-absx: 0
-absy: 0
-height: 24
-layer: 1000

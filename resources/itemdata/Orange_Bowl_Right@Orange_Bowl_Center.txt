@@ -1,4 +1,0 @@
-parent: 347
-index: 346
-type: Orange_Bowl_Center
-corner: (21, -3)

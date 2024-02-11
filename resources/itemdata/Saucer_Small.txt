@@ -1,4 +1,0 @@
-index: 754
-type: Saucer_Small
-ox: 11
-oy: 12

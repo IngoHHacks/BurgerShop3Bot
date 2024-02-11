@@ -1,4 +1,0 @@
-index: 125
-type: Breadloaf
-ox: 33
-oy: 20

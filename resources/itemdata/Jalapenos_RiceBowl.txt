@@ -1,3 +1,0 @@
-index: 780
-type: Jalapenos_RiceBowl
-corner: (5, -5)

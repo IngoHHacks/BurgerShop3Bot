@@ -1,3 +1,0 @@
-index: 835
-type: Mushrooms_Wok
-corner: (52, 13)

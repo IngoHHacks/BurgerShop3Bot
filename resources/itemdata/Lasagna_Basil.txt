@@ -1,3 +1,0 @@
-index: 627
-type: Lasagna_Basil
-corner: (8, 4)

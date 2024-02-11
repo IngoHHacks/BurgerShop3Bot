@@ -1,4 +1,0 @@
-index: 752
-type: Noodles_Plate
-ox: 18
-oy: 17

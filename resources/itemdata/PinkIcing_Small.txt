@@ -1,5 +1,0 @@
-index: 465
-type: PinkIcing_Small
-absx: 0
-absy: -1
-layer: 3

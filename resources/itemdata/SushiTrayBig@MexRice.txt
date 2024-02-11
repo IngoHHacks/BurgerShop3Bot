@@ -1,3 +1,0 @@
-parent: 744
-index: 105
-type: MexRice

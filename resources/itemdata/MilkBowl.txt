@@ -1,4 +1,0 @@
-index: 268
-type: MilkBowl
-ox: 27
-oy: 34

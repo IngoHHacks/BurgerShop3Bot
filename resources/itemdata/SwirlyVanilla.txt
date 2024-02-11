@@ -1,3 +1,0 @@
-index: 475
-type: SwirlyVanilla
-corner: (0, -22)

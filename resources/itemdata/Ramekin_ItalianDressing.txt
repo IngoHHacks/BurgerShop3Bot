@@ -1,3 +1,0 @@
-index: 705
-type: Ramekin_ItalianDressing
-corner: (2, 2)

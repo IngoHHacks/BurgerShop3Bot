@@ -1,8 +1,0 @@
-parent: 53
-index: 275
-type: CheeseMelt
-adjusty: 6
-ox: 24
-oy: 12
-height: 4
-layer: 9

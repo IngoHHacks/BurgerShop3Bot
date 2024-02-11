@@ -1,3 +1,0 @@
-index: 706
-type: Ramekin_Salsa
-corner: (2, 2)

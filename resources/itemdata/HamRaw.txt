@@ -1,4 +1,0 @@
-index: 75
-type: HamRaw
-ox: 22
-oy: 17

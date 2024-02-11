@@ -1,4 +1,0 @@
-parent: 687
-index: 3
-type: Cheese
-corner: (21, -1)

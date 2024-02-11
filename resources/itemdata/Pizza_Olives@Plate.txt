@@ -1,4 +1,0 @@
-parent: 657
-index: 23
-type: Plate
-corner: (15, 5)

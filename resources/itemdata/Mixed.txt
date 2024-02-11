@@ -1,2 +1,0 @@
-index: 855
-type: Mixed

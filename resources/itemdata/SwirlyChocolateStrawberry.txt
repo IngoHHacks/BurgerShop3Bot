@@ -1,3 +1,0 @@
-index: 480
-type: SwirlyChocolateStrawberry
-corner: (0, -22)

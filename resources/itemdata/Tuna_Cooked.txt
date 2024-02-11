@@ -1,5 +1,0 @@
-index: 232
-type: Tuna_Cooked
-ox: 31
-oy: 16
-height: 5

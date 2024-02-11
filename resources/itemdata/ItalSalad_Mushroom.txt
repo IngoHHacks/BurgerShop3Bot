@@ -1,4 +1,0 @@
-index: 691
-type: ItalSalad_Mushroom
-corner: (30, -4)
-layer: 9

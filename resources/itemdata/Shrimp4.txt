@@ -1,6 +1,0 @@
-index: 310
-type: Shrimp4
-ox: 22
-oy: 17
-absx: 18
-absy: 2

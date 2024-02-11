@@ -1,3 +1,0 @@
-index: 347
-type: Orange_Bowl_Right
-corner: (32, 0)

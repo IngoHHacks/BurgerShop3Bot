@@ -1,7 +1,0 @@
-index: 368
-type: TacoLettuce2
-adjustx: 1
-adjusty: 11
-ox: 22
-oy: 20
-layer: 7

@@ -1,5 +1,0 @@
-index: 493
-type: CupCake_Peanuts
-absx: 5
-absy: -7
-layer: 3

@@ -1,5 +1,0 @@
-index: 759
-type: Noodles_Vert
-ox: 18
-oy: 39
-corner: (8, -25)

@@ -1,7 +1,0 @@
-index: 414
-type: MexLettuce_Salad
-absx: -2
-absy: -11
-layer: 7
-ox: 22
-oy: 20

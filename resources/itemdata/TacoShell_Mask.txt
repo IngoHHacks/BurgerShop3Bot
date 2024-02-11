@@ -1,5 +1,0 @@
-index: 373
-type: TacoShell_Mask
-absx: 13
-absy: 0
-layer: 1000

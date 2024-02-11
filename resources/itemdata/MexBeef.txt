@@ -1,5 +1,0 @@
-index: 98
-type: MexBeef
-ox: 26
-oy: 17
-layer: 3

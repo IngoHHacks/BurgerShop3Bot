@@ -1,3 +1,0 @@
-index: 776
-type: EggBoiled_RiceBowl
-corner: (26, 3)
