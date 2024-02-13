@@ -13,8 +13,8 @@
 #include <condition_variable>
 #include <Debugging.h>
 
-#ifndef VERSION_0_5_9A
-#define VERSION_0_5_9A
+#ifndef VERSION_0_5_9C
+#define VERSION_0_5_9C
 #endif
 
 std::mutex queueMutex;
@@ -77,7 +77,6 @@ void Debugging::DebugLoop() {
         std::cout << "Error: Could not find window." << std::endl;
         exit(0);
     }
-    MoveWindow(windowHandle, 0, 0, 800, 600, TRUE);
     GameState::SetHandle(hProcess);
     GameState::SetWindowHandle(windowHandle);
     BreakpointManager bpManager(hProcess);
@@ -98,6 +97,8 @@ void Debugging::DebugLoop() {
     LPVOID bbOffset = (LPVOID) 0x163373;
 #elif defined(VERSION_0_5_9A)
     LPVOID bbOffset = (LPVOID) 0x168393;
+#elif defined(VERSION_0_5_9C)
+    LPVOID bbOffset = (LPVOID) 0x168F53;
 #endif
     LPVOID bbAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) bbOffset);
     bpManager.SetBreakpoint(bbAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -136,6 +137,8 @@ void Debugging::DebugLoop() {
     LPVOID conveyorSizeOffset = (LPVOID) 0x4FCCE;
 #elif defined(VERSION_0_5_9A)
     LPVOID conveyorSizeOffset = (LPVOID) 0x5303E;
+#elif defined(VERSION_0_5_9C)
+    LPVOID conveyorSizeOffset = (LPVOID) 0x533EE;
 #endif
     LPVOID conveyorSizeAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) conveyorSizeOffset);
     bpManager.SetBreakpoint(conveyorSizeAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -176,6 +179,8 @@ void Debugging::DebugLoop() {
     LPVOID addToConveyorOffset = (LPVOID) 0x3EB67;
 #elif defined(VERSION_0_5_9A)
     LPVOID addToConveyorOffset = (LPVOID) 0x41EF7;
+#elif defined(VERSION_0_5_9C)
+    LPVOID addToConveyorOffset = (LPVOID) 0x422A7;
 #endif
     LPVOID addToConveyorAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) addToConveyorOffset);
     bpManager.SetBreakpoint(addToConveyorAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -217,6 +222,8 @@ void Debugging::DebugLoop() {
     LPVOID removeFromConveyorOffset = (LPVOID) 0x4DFD9;
 #elif defined(VERSION_0_5_9A)
     LPVOID removeFromConveyorOffset = (LPVOID) 0x51349;
+#elif defined(VERSION_0_5_9C)
+    LPVOID removeFromConveyorOffset = (LPVOID) 0x516F9;
 #endif
     LPVOID removeFromConveyorAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) removeFromConveyorOffset);
     bpManager.SetBreakpoint(removeFromConveyorAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -256,6 +263,8 @@ void Debugging::DebugLoop() {
     LPVOID customerOffset = (LPVOID) 0x169B6;
 #elif defined(VERSION_0_5_9A)
     LPVOID customerOffset = (LPVOID) 0x19106;
+#elif defined(VERSION_0_5_9C)
+    LPVOID customerOffset = (LPVOID) 0x19206;
 #endif
     LPVOID customerAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) customerOffset);
     bpManager.SetBreakpoint(customerAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -296,6 +305,8 @@ void Debugging::DebugLoop() {
     LPVOID resetOffset = (LPVOID) 0x4B5C0;
 #elif defined(VERSION_0_5_9A)
     LPVOID resetOffset = (LPVOID) 0x4E930;
+#elif defined(VERSION_0_5_9C)
+    LPVOID resetOffset = (LPVOID) 0x4ECE0;
 #endif
     LPVOID resetAddress = (LPVOID) ((uintptr_t) baseAddress + (uintptr_t) resetOffset);
     bpManager.SetBreakpoint(resetAddress, [](const DEBUG_EVENT &debugEvent, HANDLE hProcess) {
@@ -305,7 +316,7 @@ void Debugging::DebugLoop() {
     if (DebugActiveProcess(pid)) {
         DEBUG_EVENT debugEvent;
         while (true) {
-            while (WaitForDebugEvent(&debugEvent, INFINITE)) {
+            while (WaitForDebugEvent(&debugEvent, 1000)) {
                 DWORD continueStatus = DBG_CONTINUE;
                 if (debugEvent.dwDebugEventCode == EXCEPTION_DEBUG_EVENT) {
                     long startTick = GetTickCount();
@@ -361,6 +372,10 @@ void Debugging::DebugLoop() {
                     }
                 }
                 ContinueDebugEvent(debugEvent.dwProcessId, debugEvent.dwThreadId, continueStatus);
+            }
+            // Check if the process has exited
+            if (WaitForSingleObject(hProcess, 0) == WAIT_OBJECT_0) {
+                break;
             }
         }
     } else {

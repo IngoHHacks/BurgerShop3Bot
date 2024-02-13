@@ -55,17 +55,36 @@ std::vector<std::unique_ptr<ItemBase>> GameState::GetConveyorItems() {
     std::lock_guard<std::mutex> lock(conveyorItemsMutex);
     std::vector<std::unique_ptr<ItemBase>> items;
     int i = 0;
+    for (int i = conveyorItems.size() - 1; i >= 0; i--) {
+        std::unique_ptr<ItemBase> &item = conveyorItems[i];
+        if (item.get() == nullptr) {
+            conveyorItems.erase(conveyorItems.begin() + i);
+        }
+    }
+    std::vector<std::unique_ptr<ItemBase>> removedItems = std::vector<std::unique_ptr<ItemBase>>();
     for (const std::unique_ptr<ItemBase> &item: conveyorItems) {
         if (SimpleItem * singleItem = dynamic_cast<SimpleItem *>(item.get())) {
             if (singleItem->isValid(handle)) {
                 items.push_back(std::make_unique<SimpleItem>(*singleItem));
+            } else {
+                removedItems.push_back(std::make_unique<SimpleItem>(*singleItem));
             }
         } else if (ComplexItem * multiItem = dynamic_cast<ComplexItem *>(item.get())) {
-            if (singleItem->isValid(handle)) {
+            if (multiItem->isValid(handle)) {
                 items.push_back(std::make_unique<ComplexItem>(*multiItem));
+            } else {
+                removedItems.push_back(std::make_unique<ComplexItem>(*multiItem));
             }
         }
         i++;
+    }
+    for (std::unique_ptr<ItemBase> &item: removedItems) {
+        for (int i = 0; i < conveyorItems.size(); i++) {
+            if (conveyorItems[i]->GetAddress() == item->GetAddress()) {
+                conveyorItems.erase(conveyorItems.begin() + i);
+                break;
+            }
+        }
     }
     return items;
 }
@@ -343,15 +362,14 @@ bool GameState::CheckItemsDirty() {
     return dirty;
 }
 
-void ClickMouseAt(HWND window, int x, int y) {
+void MoveMouseToAbsolute(HWND window, int x, int y) {
     if (window != GetForegroundWindow()) {
         SetForegroundWindow(window);
         Sleep(100);
     }
 
 
-    POINT p = {x, y - 30};
-    ClientToScreen(window, &p);
+    POINT p = {x, y};
 
     INPUT input = {0};
     input.type = INPUT_MOUSE;
@@ -360,11 +378,25 @@ void ClickMouseAt(HWND window, int x, int y) {
     input.mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
     SendInput(1, &input, sizeof(INPUT));
     POINT cp;
+    int sleepCount = 0;
     do {
         GetCursorPos(&cp);
         Sleep(5);
-    } while (abs(cp.x - p.x) > 2 || abs(cp.y - p.y) > 2);
+        sleepCount++;
+    } while ((abs(cp.x - p.x) > 2 || abs(cp.y - p.y) > 2) && sleepCount < 100);
     Sleep(5);
+}
+
+void ClickMouseAtAbsolute(HWND window, int x, int y) {
+    if (window != GetForegroundWindow()) {
+        SetForegroundWindow(window);
+        Sleep(100);
+    }
+
+    MoveMouseToAbsolute(window, x, y);
+
+    INPUT input = {0};
+    input.type = INPUT_MOUSE;
 
     input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
     SendInput(1, &input, sizeof(INPUT));
@@ -372,6 +404,12 @@ void ClickMouseAt(HWND window, int x, int y) {
     input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
     SendInput(1, &input, sizeof(INPUT));
 }
+
+void ClickMouseAtGamePos(HWND window, int x, int y) {
+    std::pair<float, float> pos = Utils::GamePosToMouseAbsolute(window, x, y);
+    ClickMouseAtAbsolute(window, static_cast<int>(pos.first), static_cast<int>(pos.second));
+}
+
 
 void ClickRightMouse(HWND window) {
 
@@ -406,6 +444,7 @@ void Shuffle(std::vector<std::unique_ptr<SimpleItem>> &v) {
 }
 
 void GameState::PerformActions() {
+    HANDLE h = GameState::GetHandle();
     if (GetAsyncKeyState(VK_END)) {
         if (delay > 100 && delay < 999999) {
             delay = 0;
@@ -419,6 +458,88 @@ void GameState::PerformActions() {
     if (GetAsyncKeyState(VK_HOME)) {
         delay = 0;
         return;
+    }
+    if (GetAsyncKeyState(0x50)) { // P
+        SimpleItem item = SimpleItem(0x0000000000000000);
+        for (const std::unique_ptr<ItemBase> &conveyorItem: GameState::GetConveyorItems()) {
+            if (SimpleItem * si = dynamic_cast<SimpleItem *>(conveyorItem.get())) {
+                if (si->GetConveyorIndex(GameState::GetHandle()) == 0) {
+                    item = *si;
+                    break;
+                }
+            }
+        }
+        if (item.GetAddress() != 0x0000000000000000) {
+            // Move mouse to item
+            std::pair<float, float> pos = Utils::GamePosToMouseAbsolute(GameState::GetWindowHandle(), item.GetX(GameState::GetHandle()), item.GetY(GameState::GetHandle()));
+            MoveMouseToAbsolute(GameState::GetWindowHandle(), static_cast<int>(pos.first), static_cast<int>(pos.second));
+        }
+    }
+    if (GetAsyncKeyState(0xBB)) { // Equals
+        RECT rect;
+        GetWindowRect(GameState::GetWindowHandle(), &rect);
+        int curHeight = rect.bottom - rect.top;
+        if (curHeight < 450) {
+            // Resize to 800x450 (small 16:9)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 800, 450, SWP_NOZORDER);
+        } else if (curHeight < 600) {
+            // Resize to 800x600 (small 4:3)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 800, 600, SWP_NOZORDER);
+        } else if (curHeight < 700) {
+            // Resize to 1000x700 (small 10:7)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1000, 700, SWP_NOZORDER);
+        } else if (curHeight < 900) {
+            // Resize to 1200x900 (medium 4:3)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1200, 900, SWP_NOZORDER);
+        } else if (curHeight < 1080) {
+            // Resize to 1920x1080 (medium 16:9)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1920, 1080, SWP_NOZORDER);
+        } else if (curHeight < 1100) {
+            // Resize to 1280x1100 (medium 16:11)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1280, 1100, SWP_NOZORDER);
+        } else if (curHeight < 1200) {
+            // Resize to 1600x1200 (large 4:3)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1600, 1200, SWP_NOZORDER);
+        } else if (curHeight < 1400) {
+            // Resize to 1920x1400 (large 12:7)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1920, 1400, SWP_NOZORDER);
+        } else {
+            // Resize to 2560x1440 (large 16:9)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 2560, 1440, SWP_NOZORDER);
+        }
+    }
+    if (GetAsyncKeyState(0xBD)) { // Minus
+        RECT rect;
+        GetWindowRect(GameState::GetWindowHandle(), &rect);
+        int curHeight = rect.bottom - rect.top;
+        if (curHeight > 2560) {
+            // Resize to 2560x1440 (large 16:9)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 2560, 1440, SWP_NOZORDER);
+        } else if (curHeight > 1920) {
+            // Resize to 1920x1400 (large 12:7)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1920, 1400, SWP_NOZORDER);
+        } else if (curHeight > 1600) {
+            // Resize to 1600x1200 (large 4:3)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1600, 1200, SWP_NOZORDER);
+        } else if (curHeight > 1280) {
+            // Resize to 1280x1100 (medium 16:11)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1280, 1100, SWP_NOZORDER);
+        } else if (curHeight > 1200) {
+            // Resize to 1920x1080 (medium 16:9)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1920, 1080, SWP_NOZORDER);
+        } else if (curHeight > 1000) {
+            // Resize to 1200x900 (medium 4:3)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1200, 900, SWP_NOZORDER);
+        } else if (curHeight > 800) {
+            // Resize to 1000x700 (small 10:7)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 1000, 700, SWP_NOZORDER);
+        } else if (curHeight > 600) {
+            // Resize to 800x600 (small 4:3)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 800, 600, SWP_NOZORDER);
+        } else {
+            // Resize to 800x450 (small 16:9)
+            SetWindowPos(GameState::GetWindowHandle(), HWND_TOP, rect.left, rect.top, 800, 450, SWP_NOZORDER);
+        }
     }
     if (GameState::GetCustomers().size() > 0) {
         if (delay > 0) {
@@ -596,6 +717,10 @@ void GameState::PerformActions() {
                 int i = 0;
                 if (attempts < 10) {
                     do {
+                        if (ingredientsLeft[i] == nullptr) {
+                            ingredientsLeft.erase(ingredientsLeft.begin() + i);
+                            continue;
+                        }
                         SimpleItem &ingredient = *ingredientsLeft[i];
                         std::cout << "Finding ingredient " << ingredient.GetIngredientName(handle) << std::endl;
                         // Find on the conveyor
@@ -603,18 +728,12 @@ void GameState::PerformActions() {
                             if (SimpleItem * si = dynamic_cast<SimpleItem *>(conveyorItem.get())) {
                                 if (si->GetIngredientId(GameState::GetHandle()) ==
                                     ingredient.GetIngredientId(GameState::GetHandle())) {
-                                    coords = std::make_pair(si->GetX(GameState::GetHandle()),
-                                                            si->GetY(GameState::GetHandle()));
-                                    coords = Utils::TranslateCoords(coords.first, coords.second);
-                                    if (coords.first <= 5 || coords.second <= 5) {
-                                        coords = std::make_pair(-1, -1);
+                                    coords = si->GetMousePos(GameState::GetHandle());
+                                    if (prev != si->GetAddress()) {
+                                        prev = si->GetAddress();
+                                        attempts = 0;
                                     } else {
-                                        if (prev != si->GetAddress()) {
-                                            prev = si->GetAddress();
-                                            attempts = 0;
-                                        } else {
-                                            attempts++;
-                                        }
+                                        attempts++;
                                     }
                                     break;
                                 }
@@ -628,7 +747,7 @@ void GameState::PerformActions() {
                     std::cout << "Clicking at " << coords.first << ", " << coords.second << std::endl;
                     botRetryFlag = true;
                     itemToRetry = std::move(ingredientsLeft[0]);
-                    ClickMouseAt(GameState::GetWindowHandle(), coords.first, coords.second);
+                    ClickMouseAtAbsolute(GameState::GetWindowHandle(), coords.first, coords.second);
                     ingredientsLeft.erase(ingredientsLeft.begin() + i);
                     skip = 0;
                     dirty = true;
@@ -637,7 +756,7 @@ void GameState::PerformActions() {
                     std::cout << "I give up. This game is too hard." << std::endl;
                     makingItem = false;
                     botRetryFlag = false;
-                    ClickMouseAt(GameState::GetWindowHandle(), 400, 120);
+                    ClickMouseAtGamePos(GameState::GetWindowHandle(), 400, 120);
                     skip++;
                     prev = 0;
                     attempts = 0;

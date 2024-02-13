@@ -78,9 +78,13 @@ bool Utils::SetWow64ThreadContext(HANDLE hThread, WOW64_CONTEXT &context) {
  * the size of the buffer.
  */
 bool Utils::ReadMemoryToBuffer(HANDLE processHandle, DWORD address, LPVOID buffer, SIZE_T size) {
-    SIZE_T bytesRead;
-    return ReadProcessMemory(processHandle, reinterpret_cast<LPCVOID>(static_cast<DWORD_PTR>(address)), buffer,
+    try {
+        SIZE_T bytesRead;
+        return ReadProcessMemory(processHandle, reinterpret_cast<LPCVOID>(static_cast<DWORD_PTR>(address)), buffer,
                              size, &bytesRead) && bytesRead == size;
+    } catch (std::exception &e) {
+        return false;
+    }
 }
 
 /**
@@ -222,36 +226,52 @@ HWND Utils::FindWindowByProcessId(DWORD processId) {
     return g_hwnd;
 }
 
-std::pair<float, float> Utils::TranslateCoordsRelativeTo(HWND hwndOverlay, float x, float y) {
-    // Depends on window being 800x600
+std::pair<float, float> Utils::GamePosToRelative(HWND hwndOverlay, float x, float y) {
     RECT overlayRect;
     GetWindowRect(hwndOverlay, &overlayRect);
-    HWND gameWindow = GameState::GetWindowHandle();
-    RECT gameRect;
-    GetWindowRect(gameWindow, &gameRect);
-    int w = gameRect.right - gameRect.left;
-    int h = gameRect.bottom - gameRect.top;
-    float scale = (h/637.5);
-    float expectedWidth = (4.0/3.0) * h;
-    float widthDelta = (w - expectedWidth)/2.0;
-    float xPrime = 24 + scale * (x + widthDelta);
-    float yPrime = 28 + scale * y;
-    int offsetX = gameRect.left - overlayRect.left;
-    int offsetY = gameRect.top - overlayRect.top;
-    return std::make_pair(xPrime + offsetX, yPrime + offsetY);
+    RECT clientRect;
+    GetClientRect(hwndOverlay, &clientRect);
+    float width = clientRect.right - clientRect.left;
+    float height = clientRect.bottom - clientRect.top;
+    float hDiff = (overlayRect.bottom - overlayRect.top) - height;
+    float scale = (height / 600.0f);
+    float relWidth = width / scale;
+    float widthDelta = relWidth - 800.0f;
+    float startX = -0.5f * widthDelta;
+    float relX = (x - startX) / relWidth;
+    float relY = (y + hDiff) / (600.0f + hDiff);
+    return std::make_pair(relX, relY);
 }
 
-std::pair<float, float> Utils::TranslateCoords(float x, float y) {
-    // Depends on window being 800x600
-    HWND gameWindow = GameState::GetWindowHandle();
-    RECT gameRect;
-    GetWindowRect(gameWindow, &gameRect);
-    int w = gameRect.right - gameRect.left;
-    int h = gameRect.bottom - gameRect.top;
-    float scale = (h/637.5);
-    float expectedWidth = (4.0/3.0) * h;
-    float widthDelta = (w - expectedWidth)/2.0;
-    float xPrime = 24 + scale * (x + widthDelta);
-    float yPrime = 28 + scale * y;
-    return std::make_pair(xPrime, yPrime);
+std::pair<float, float> Utils::MouseAbsoluteToRelative(HWND hwndOverlay, float x, float y) {
+    RECT overlayRect;
+    GetWindowRect(hwndOverlay, &overlayRect);
+    float xOrigin = overlayRect.left;
+    float yOrigin = overlayRect.top;
+    float width = overlayRect.right - overlayRect.left;
+    float height = overlayRect.bottom - overlayRect.top;
+    float xMultiplier = 1.0 / width ;
+    float yMultiplier = 1.0 / height;
+    float mouseXR = (x - xOrigin) * xMultiplier;
+    float mouseYR = (y - yOrigin) * yMultiplier;
+    return std::make_pair(mouseXR, mouseYR);
+}
+
+std::pair<float, float> Utils::RelativeToMouseAbsolute(HWND hwndOverlay, float x, float y) {
+    RECT overlayRect;
+    GetWindowRect(hwndOverlay, &overlayRect);
+    float xOrigin = overlayRect.left;
+    float yOrigin = overlayRect.top;
+    float width = overlayRect.right - overlayRect.left;
+    float height = overlayRect.bottom - overlayRect.top;
+    float xMultiplier = 1.0 / width;
+    float yMultiplier = 1.0 / height;
+    float mouseX = x / xMultiplier + xOrigin;
+    float mouseY = y / yMultiplier + yOrigin;
+    return std::make_pair(mouseX, mouseY);
+}
+
+std::pair<float, float> Utils::GamePosToMouseAbsolute(HWND hwndOverlay, float x, float y) {
+    std::pair<float, float> relative = GamePosToRelative(hwndOverlay, x, y);
+    return RelativeToMouseAbsolute(hwndOverlay, relative.first, relative.second);
 }
