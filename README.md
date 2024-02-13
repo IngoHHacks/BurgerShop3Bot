@@ -18,7 +18,6 @@ It only works on Windows, and it has only been tested on Windows 11 (64-bit).
 2. Extract the files to a folder.
 3. Open the game.
 4. Run the bot executable (BS3Bot.exe).
-5. Make sure the window of the game is in the foreground and not moved or resized from what the bot set it to when started.
 6. Start a level in the game.
 
 ## Keybinds
@@ -28,7 +27,6 @@ Note that the bot is enabled by default when started.
 
 ## Known Issues
 - The bot only works on Windows.
-- The bot only works on a specific resolution and position of the game window (800x600, top-left corner of the screen).
 - The game may crash on rare occasions when starting a level with the bot running. The cause of this is unknown.
 - Machines are not supported yet.
 - Some food may be messed up. It will automatically discard the food and create a new one if it gets stuck.

@@ -174,6 +174,44 @@ float SimpleItem::GetY(HANDLE hProcess) {
 }
 
 /**
+ * Gets the position of this item.
+ * @param hProcess The handle to the process.
+ * @return The position.
+ */
+std::pair<float, float> SimpleItem::GetPos(HANDLE hProcess) {
+    return std::make_pair(GetX(hProcess), GetY(hProcess));
+}
+
+/**
+ * Gets the x coordinate of the mouse position of this item.
+ * @param hProcess The handle to the process.
+ * @return The x coordinate of the mouse position.
+ */
+float SimpleItem::GetMouseX(HANDLE hProcess) {
+    std::pair<float, float> pos = GetMousePos(hProcess);
+    return pos.first;
+}
+
+/**
+ * Gets the y coordinate of the mouse position of this item.
+ * @param hProcess The handle to the process.
+ * @return The y coordinate of the mouse position.
+ */
+float SimpleItem::GetMouseY(HANDLE hProcess) {
+    std::pair<float, float> pos = GetMousePos(hProcess);
+    return pos.second;
+}
+
+/**
+ * Gets the mouse position of this item.
+ * @param hProcess The handle to the process.
+ * @return The mouse position.
+ */
+std::pair<float, float> SimpleItem::GetMousePos(HANDLE hProcess) {
+    return Utils::GamePosToMouseAbsolute(GameState::GetWindowHandle(), GetX(hProcess), GetY(hProcess));
+}
+
+/**
  * Gets the layer of this item.
  * @param hProcess The handle to the process.
  * @return The layer.
@@ -237,6 +275,9 @@ bool SimpleItem::HasChanged() {
  * @param hProcess The handle to the process.
  */
 bool ComplexItem::isValid(HANDLE hProcess) {
+    if (address == 0) {
+        return false;
+    }
     int values[32];
     if (!Utils::ReadMemoryToBuffer(hProcess, address, &values, sizeof(values))) {
         return false;
