@@ -60,6 +60,14 @@ public:
 
     float GetY(HANDLE hProcess);
 
+    std::pair<float, float> GetPos(HANDLE hProcess);
+
+    float GetMouseX(HANDLE hProcess);
+
+    float GetMouseY(HANDLE hProcess);
+
+    std::pair<float, float> GetMousePos(HANDLE hProcess);
+
     int GetLayer(HANDLE hProcess);
 
     void SetItemId(HANDLE hProcess, int value);

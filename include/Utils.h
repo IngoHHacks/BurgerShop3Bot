@@ -36,13 +36,9 @@ public:
 
     static bool WriteBufferToProcessMemory(HANDLE processHandle, DWORD address, LPCVOID buffer, SIZE_T size);
 
-    static std::list<Node> TraverseAndCollectNodes(HANDLE hProcess, DWORD startAddress);
-
     static bool TryFindFood(HANDLE hProcess, DWORD startAddress, int depth, int width, std::list<std::string> &path);
 
     static bool IsNotItem(HANDLE hProcess, DWORD address, const Node &node);
-
-    static void ApplyConveyorItems(std::list<Node> nodeList, HANDLE hProcess);
 
     static void RecursivePrint(DWORD address, int depth, int items);
 
@@ -50,9 +46,13 @@ public:
 
     static HWND FindWindowByProcessId(DWORD processId);
 
-    static std::pair<float, float> TranslateCoordsRelativeTo(HWND hwndOverlay, float x, float y);
+    static std::pair<float, float> GamePosToRelative(HWND hwndOverlay, float x, float y);
 
-    static std::pair<float, float> TranslateCoords(float x, float y);
+    static std::pair<float, float> MouseAbsoluteToRelative(HWND hwndOverlay, float x, float y);
+
+    static std::pair<float, float> RelativeToMouseAbsolute(HWND hwndOverlay, float x, float y);
+
+    static std::pair<float, float> GamePosToMouseAbsolute(HWND hwndOverlay, float x, float y);
 };
 
 #endif //BS3BOT_UTILS_H
