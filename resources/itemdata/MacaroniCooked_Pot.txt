@@ -1,4 +1,0 @@
-index: 622
-type: MacaroniCooked_Pot
-ox: 29
-oy: 32

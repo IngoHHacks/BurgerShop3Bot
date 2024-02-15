@@ -1,7 +1,0 @@
-index: 278
-type: BurgerTomato
-adjusty: 5
-ox: 23
-oy: 13
-height: 3
-layer: 1007

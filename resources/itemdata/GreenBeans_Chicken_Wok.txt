@@ -1,4 +1,0 @@
-index: 819
-type: GreenBeans_Chicken_Wok
-ox: 26
-oy: 22

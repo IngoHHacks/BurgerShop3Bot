@@ -1,4 +1,0 @@
-index: 231
-type: Tofu_Cooked
-ox: 16
-oy: 17

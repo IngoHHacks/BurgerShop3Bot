@@ -1,3 +1,0 @@
-index: 745
-type: Wontons_Plate_Bowl
-corner: (11, -8)

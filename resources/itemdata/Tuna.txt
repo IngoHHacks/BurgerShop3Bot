@@ -1,5 +1,0 @@
-index: 158
-type: Tuna
-ox: 31
-oy: 16
-height: 5

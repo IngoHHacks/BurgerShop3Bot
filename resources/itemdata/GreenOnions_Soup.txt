@@ -1,4 +1,0 @@
-index: 300
-type: GreenOnions_Soup
-absx: 5
-absy: 1

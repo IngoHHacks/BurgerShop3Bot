@@ -1,4 +1,0 @@
-index: 747
-type: Cucumber_Plate
-ox: 16
-oy: 11

@@ -1,5 +1,0 @@
-index: 449
-type: MexBeans_Plate
-ox: 16
-oy: 18
-layer: 13

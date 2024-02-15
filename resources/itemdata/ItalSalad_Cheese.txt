@@ -1,4 +1,0 @@
-index: 688
-type: ItalSalad_Cheese
-corner: (5, -2)
-layer: 2

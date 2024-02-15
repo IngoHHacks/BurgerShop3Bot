@@ -1,5 +1,0 @@
-parent: 591
-index: 191
-type: StrawberrySauce
-adjustx: 3
-adjusty: 2

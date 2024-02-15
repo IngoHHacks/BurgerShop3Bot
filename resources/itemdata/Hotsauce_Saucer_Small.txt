@@ -1,3 +1,0 @@
-index: 757
-type: Hotsauce_Saucer_Small
-corner: (1, 2)

@@ -1,9 +1,0 @@
-index: 417
-type: MexOlives_Salad
-adjustx: 4
-adjusty: 5
-absx: 23
-absy: -1
-layer: 50
-ox: 18
-oy: 11

@@ -1,4 +1,0 @@
-index: 721
-type: Maki_NoriRing
-ox: 15
-oy: 16

@@ -1,7 +1,0 @@
-index: 280
-type: ProvoloneCheese
-adjusty: 5
-ox: 26
-oy: 11
-height: 4
-layer: 5

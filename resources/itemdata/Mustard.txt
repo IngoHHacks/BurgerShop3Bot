@@ -1,3 +1,0 @@
-index: 189
-type: Mustard
-layer: 2001

@@ -1,5 +1,0 @@
-index: 450
-type: MexRice_Plate
-ox: 20
-oy: 19
-layer: 14

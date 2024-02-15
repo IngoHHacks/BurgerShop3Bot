@@ -1,5 +1,0 @@
-index: 684
-type: ItalBreadPlate_Olive
-ox: 14
-oy: 10
-layer: 13

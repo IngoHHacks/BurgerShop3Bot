@@ -1,5 +1,0 @@
-index: 167
-type: HotAndSourSoup
-ox: 27
-oy: 31
-corner: (3, 4)

@@ -1,5 +1,0 @@
-index: 218
-type: TortillaBowl
-ox: 32
-oy: 30
-layer: 0

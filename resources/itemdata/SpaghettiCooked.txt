@@ -1,5 +1,0 @@
-index: 222
-type: SpaghettiCooked
-ox: 34
-oy: 24
-corner: (11, -5)

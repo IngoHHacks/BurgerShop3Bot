@@ -1,2 +1,0 @@
-index: 544
-type: IceCreamSand_Van

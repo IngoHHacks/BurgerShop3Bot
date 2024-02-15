@@ -1,4 +1,0 @@
-index: 409
-type: MexChips_Soup
-corner: (13, -14)
-layer: 3

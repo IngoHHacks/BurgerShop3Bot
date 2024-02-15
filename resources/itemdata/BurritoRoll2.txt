@@ -1,5 +1,0 @@
-index: 375
-type: BurritoRoll2
-ox: 38
-oy: 18
-layer: 0

@@ -1,5 +1,0 @@
-index: 4
-type: MexLettuce
-ox: 22
-oy: 20
-layer: 7

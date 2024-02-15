@@ -1,4 +1,0 @@
-index: 829
-type: Rice_Steak_Wok
-ox: 26
-oy: 22

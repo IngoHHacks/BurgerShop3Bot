@@ -1,6 +1,0 @@
-index: 474
-type: IceCreamCone_Mask
-ox: 12
-oy: 28
-height: 23
-layer: 0

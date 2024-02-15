@@ -1,5 +1,0 @@
-parent: 853
-index: 9
-type: Mushrooms
-corner: (1, -7)
-layer: 9

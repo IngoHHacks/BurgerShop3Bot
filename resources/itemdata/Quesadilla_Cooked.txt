@@ -1,6 +1,0 @@
-index: 434
-type: Quesadilla_Cooked
-adjustx: 1
-adjusty: -2
-ox: 42
-oy: 22

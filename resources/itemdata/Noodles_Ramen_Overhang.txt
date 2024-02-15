@@ -1,3 +1,0 @@
-index: 772
-type: Noodles_Ramen_Overhang
-corner: (3, 10)

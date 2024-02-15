@@ -1,4 +1,0 @@
-index: 244
-type: SmallOJ
-ox: 23
-oy: 48

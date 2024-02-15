@@ -1,2 +1,0 @@
-index: 261
-type: Tea_LargeDrink

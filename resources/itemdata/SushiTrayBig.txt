@@ -1,5 +1,0 @@
-index: 744
-type: SushiTrayBig
-ox: 48
-oy: 17
-height: 5

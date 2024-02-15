@@ -1,5 +1,0 @@
-index: 96
-type: MexTortilla
-ox: 38
-oy: 18
-layer: 0

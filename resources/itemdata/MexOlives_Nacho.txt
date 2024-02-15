@@ -1,4 +1,0 @@
-index: 430
-type: MexOlives_Nacho
-corner: (9, 5)
-layer: 8

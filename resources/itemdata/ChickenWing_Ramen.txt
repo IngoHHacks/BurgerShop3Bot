@@ -1,3 +1,0 @@
-index: 761
-type: ChickenWing_Ramen
-corner: (10, -8)

@@ -1,3 +1,0 @@
-index: 345
-type: Orange_Bowl_Left
-corner: (1, -9)

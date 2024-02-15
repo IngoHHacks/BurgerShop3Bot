@@ -1,4 +1,0 @@
-index: 600
-type: Spaghetti_Pot_Cooked
-ox: 22
-oy: 26

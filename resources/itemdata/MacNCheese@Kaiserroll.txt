@@ -1,5 +1,0 @@
-parent: 624
-index: 62
-type: KaiserRoll
-absx: 4
-absy: 11

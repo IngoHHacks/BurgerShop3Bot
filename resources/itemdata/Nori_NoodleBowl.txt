@@ -1,3 +1,0 @@
-index: 790
-type: Nori_NoodleBowl
-corner: (-2, -8)

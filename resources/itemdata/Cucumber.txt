@@ -1,5 +1,0 @@
-index: 146
-type: Cucumber
-ox: 26
-oy: 19
-height: 5

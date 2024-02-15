@@ -1,5 +1,0 @@
-index: 455
-type: MexTomatoRice_Cooked
-layer: 14
-ox: 20
-oy: 19

@@ -1,7 +1,0 @@
-index: 383
-type: BurritoBeef2
-adjustx: 1
-adjusty: 15
-ox: 26
-oy: 17
-layer: 3

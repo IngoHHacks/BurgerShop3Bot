@@ -1,4 +1,0 @@
-index: 812
-type: EggBoiled_Pot
-ox: 5
-oy: 20

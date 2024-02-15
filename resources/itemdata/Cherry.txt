@@ -1,5 +1,0 @@
-index: 36
-type: Cherry
-ox: 6
-oy: 26
-layer: 12

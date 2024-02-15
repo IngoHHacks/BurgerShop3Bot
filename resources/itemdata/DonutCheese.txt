@@ -1,4 +1,0 @@
-index: 322
-type: DonutCheese
-ox: 20
-oy: 21

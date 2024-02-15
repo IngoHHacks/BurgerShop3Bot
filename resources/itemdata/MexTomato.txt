@@ -1,5 +1,0 @@
-index: 5
-type: MexTomato
-ox: 22
-oy: 16
-layer: 6

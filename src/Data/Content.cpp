@@ -212,15 +212,6 @@ std::pair<float, float> SimpleItem::GetMousePos(HANDLE hProcess) {
 }
 
 /**
- * Gets the layer of this item.
- * @param hProcess The handle to the process.
- * @return The layer.
- */
-int SimpleItem::GetLayer(HANDLE hProcess) {
-    return ItemManager::GetItemData(GetItemId(hProcess)).layer;
-}
-
-/**
  * Sets the item id of this item.
  * @param hProcess The handle to the process.
  * @param value The new item id.

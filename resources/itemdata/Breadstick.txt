@@ -1,4 +1,0 @@
-index: 127
-type: Breadstick
-ox: 22
-oy: 11

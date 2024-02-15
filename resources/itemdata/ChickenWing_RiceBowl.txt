@@ -1,3 +1,0 @@
-index: 775
-type: ChickenWing_RiceBowl
-corner: (35, -12)

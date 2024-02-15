@@ -1,5 +1,0 @@
-index: 197
-type: MexChickenGrilled
-ox: 29
-oy: 20
-layer: 30

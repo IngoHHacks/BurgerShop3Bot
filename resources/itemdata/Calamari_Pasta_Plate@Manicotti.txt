@@ -1,5 +1,0 @@
-parent: 643
-index: 132
-type: Manicotti
-adjustx: 0
-adjusty: -3

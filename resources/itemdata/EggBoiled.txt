@@ -1,4 +1,0 @@
-index: 227
-type: EggBoiled
-ox: 10
-oy: 10

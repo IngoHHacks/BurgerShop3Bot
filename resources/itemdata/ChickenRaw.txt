@@ -1,4 +1,0 @@
-index: 74
-type: ChickenRaw
-ox: 22
-oy: 17

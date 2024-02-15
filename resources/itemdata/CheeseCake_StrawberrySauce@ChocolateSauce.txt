@@ -1,5 +1,0 @@
-parent: 591
-index: 190
-type: ChocolateSauce
-adjustx: 2
-adjusty: 0

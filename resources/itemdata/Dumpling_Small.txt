@@ -1,4 +1,0 @@
-index: 748
-type: Dumpling_Small
-ox: 11
-oy: 12

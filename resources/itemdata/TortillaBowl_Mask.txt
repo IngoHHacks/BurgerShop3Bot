@@ -1,7 +1,0 @@
-index: 337
-type: TortillaBowl_Mask
-absx: 0
-absy: 0
-layer: 0
-ox: 32
-oy: 30

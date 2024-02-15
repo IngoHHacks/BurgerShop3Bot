@@ -1,5 +1,0 @@
-index: 286
-type: CarrotsPeas
-ox: 23
-oy: 22
-layer: 1

@@ -1,4 +1,0 @@
-index: 498
-type: Cookie_ChocoChip_Cooked
-ox: 17
-oy: 10

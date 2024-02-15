@@ -1,4 +1,0 @@
-index: 93
-type: CroissantRaw
-ox: 26
-oy: 21

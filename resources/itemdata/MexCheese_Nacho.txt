@@ -1,4 +1,0 @@
-index: 426
-type: MexCheese_Nacho
-corner: (9, -4)
-layer: 2

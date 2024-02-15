@@ -1,6 +1,0 @@
-parent: 53
-index: 6
-type: Bacon
-adjusty: 6
-height: 2
-layer: 5

@@ -1,4 +1,0 @@
-index: 11
-type: GreenOnions
-ox: 20
-oy: 13

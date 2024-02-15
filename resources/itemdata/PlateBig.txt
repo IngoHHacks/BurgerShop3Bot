@@ -1,5 +1,0 @@
-index: 285
-type: PlateBig
-ox: 44
-oy: 18
-layer: 0

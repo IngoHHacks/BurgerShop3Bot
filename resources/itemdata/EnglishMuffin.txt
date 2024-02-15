@@ -1,6 +1,0 @@
-index: 206
-type: EnglishMuffin
-layer: 2
-ox: 27
-oy: 20
-height: 10

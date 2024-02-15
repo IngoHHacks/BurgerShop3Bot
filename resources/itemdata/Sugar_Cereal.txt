@@ -1,7 +1,0 @@
-index: 315
-type: Sugar_Cereal
-ox: 18
-oy: 6
-absx: 29
-absy: 11
-layer: 30

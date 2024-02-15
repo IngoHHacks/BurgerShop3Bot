@@ -1,3 +1,0 @@
-index: 703
-type: Ramekin_Ranch
-corner: (2, 2)

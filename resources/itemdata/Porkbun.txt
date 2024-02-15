@@ -1,4 +1,0 @@
-index: 153
-type: Porkbun
-ox: 16
-oy: 16

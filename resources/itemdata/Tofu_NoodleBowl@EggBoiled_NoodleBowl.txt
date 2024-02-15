@@ -1,4 +1,0 @@
-parent: 809
-index: 806
-type: EggBoiled_NoodleBowl
-corner: (18, 5)

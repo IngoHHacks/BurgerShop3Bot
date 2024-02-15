@@ -1,7 +1,0 @@
-index: 294
-type: ShreddedCheese_Potato
-ox: 21
-oy: 11
-absx: 3
-absy: -4
-layer: 10

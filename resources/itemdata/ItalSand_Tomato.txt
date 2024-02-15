@@ -1,7 +1,0 @@
-index: 668
-type: ItalSand_Tomato
-ox: 25
-oy: 10
-absx: 20
-absy: 13
-layer: 10

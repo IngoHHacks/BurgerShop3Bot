@@ -1,4 +1,0 @@
-index: 89
-type: ChocolateCupCake
-ox: 15
-oy: 23

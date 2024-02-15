@@ -1,2 +1,0 @@
-index: 542
-type: IceCreamSand_Choco

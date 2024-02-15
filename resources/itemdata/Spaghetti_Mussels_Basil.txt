@@ -1,3 +1,0 @@
-index: 609
-type: Spaghetti_Mussels_Basil
-corner: (16, -4)

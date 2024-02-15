@@ -1,4 +1,0 @@
-index: 128
-type: Cheesestick
-ox: 17
-oy: 8

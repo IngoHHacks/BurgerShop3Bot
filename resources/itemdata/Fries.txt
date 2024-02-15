@@ -1,5 +1,0 @@
-index: 171
-type: Fries
-ox: 23
-oy: 22
-layer: 1

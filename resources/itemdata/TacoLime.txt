@@ -1,4 +1,0 @@
-index: 372
-type: TacoLime
-ox: 16
-oy: 18

@@ -1,5 +1,0 @@
-index: 151
-type: Ginger
-ox: 13
-oy: 14
-height: 5

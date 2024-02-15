@@ -1,4 +1,0 @@
-index: 150
-type: Hotsauce
-ox: 10
-oy: 63

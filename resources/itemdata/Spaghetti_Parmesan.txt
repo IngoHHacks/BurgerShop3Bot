@@ -1,3 +1,0 @@
-index: 604
-type: Spaghetti_Parmesan
-corner: (16, -4)

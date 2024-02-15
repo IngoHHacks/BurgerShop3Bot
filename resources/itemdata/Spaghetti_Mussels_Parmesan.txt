@@ -1,3 +1,0 @@
-index: 610
-type: Spaghetti_Mussels_Parmesan
-corner: (16, -10)

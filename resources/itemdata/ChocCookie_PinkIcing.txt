@@ -1,4 +1,0 @@
-index: 522
-type: ChocCookie_PinkIcing
-absx: 1
-absy: 0

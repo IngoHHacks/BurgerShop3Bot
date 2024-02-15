@@ -1,4 +1,0 @@
-index: 535
-type: CookieStar_WhiteIcing
-absx: 3
-absy: 0

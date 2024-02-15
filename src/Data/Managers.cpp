@@ -1,10 +1,8 @@
 #include <Content.h>
 #include <Utils.h>
-#include <Windows.h>
 #include <unordered_map>
 #include <fstream>
 #include <iostream>
-#include <filesystem>
 #include <atomic>
 #include <mutex>
 #include <thread>
@@ -14,6 +12,7 @@
 #include <Debugging.h>
 #include <Managers.h>
 #include <string>
+#include "pugixml.hpp"
 
 float GameState::bbPercent = 0.0f;
 int GameState::numConveyorItems = 0;
@@ -799,87 +798,38 @@ void BreakpointManager::ClearSingleStep() {
 }
 
 /**
- * Loads the item names from the specified file.
+ * Loads the item data from the specified file.
  * @param filename The filename to load the item names from.
  * @return Whether the item names were loaded successfully.
  */
-bool ItemManager::LoadItemNames(const std::string &filename) {
+bool ItemManager::LoadItems(const std::string &filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         std::cout << "Error: Could not open file." << std::endl;
         return false;
     }
-    std::string line;
-    while (std::getline(file, line)) {
-        itemNames.push_back(line);
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load(file);
+    if (!result) {
+        std::cout << "Error: " << result.description() << std::endl;
+        return false;
     }
-    file.close();
-    return true;
-}
-
-/**
- * Loads the item data from the specified folder.
- * @param folder The folder to load the item data from.
- * @return Whether the item data was loaded successfully.
- */
-bool ItemManager::LoadData(const std::string &folder) {
-    for (const auto &entry: std::filesystem::directory_iterator(folder)) {
-        std::string filename = entry.path().filename().string();
-        std::ifstream file(entry.path());
-        if (!file.is_open()) {
-            std::cout << "Error: Could not open file." << std::endl;
-            return false;
-        }
-        ItemData data;
-        std::string line;
-        bool isSubItem = filename.find('@') != std::string::npos;
-        int index = -1;
-        int parentIndex = -1;
-        while (std::getline(file, line)) {
-            std::string key = line.substr(0, line.find(':'));
-            std::transform(key.begin(), key.end(), key.begin(), [](unsigned char c) { return tolower(c); });
-            std::string value = line.substr(line.find(':') + 2);
-            if (key == "type") {
-                data.type = value;
-            } else if (key == "index") {
-                data.index = std::stoi(value);
-                index = data.index;
-            } else if (key == "parent") {
-                parentIndex = std::stoi(value);
-            } else if (key == "adjustx") {
-                data.adjustX = std::stoi(value);
-            } else if (key == "adjusty") {
-                data.adjustY = std::stoi(value);
-            } else if (key == "ox") {
-                data.oX = std::stoi(value);
-            } else if (key == "oy") {
-                data.oY = std::stoi(value);
-            } else if (key == "absx") {
-                data.absX = std::stoi(value);
-            } else if (key == "absy") {
-                data.absY = std::stoi(value);
-            } else if (key == "height") {
-                data.height = std::stoi(value);
-            } else if (key == "corner") {
-                data.cornerX = std::stoi(value.substr(value.find('(') + 1, value.find(',') - value.find('(') - 1));
-                data.cornerY = std::stoi(value.substr(value.find(',') + 2, value.find(')') - value.find(',') - 2));
-            } else if (key == "layer") {
-                data.layer = std::stoi(value);
-            } else {
-                std::cout << "Error: Unknown key: " << key << std::endl;
-                return false;
-            }
-        }
-        if (isSubItem) {
-            itemData[parentIndex].subItems.push_back(data);
-        } else {
-            itemData[index] = data;
-            if (data.oX == 0 || data.oY == 0) {
-#ifdef _DEBUG
-                std::cout << "Warning: Item " << data.type << " has no offset." << std::endl;
-#endif
-            }
-        }
+    pugi::xml_node root = doc.child("Food");
+    if (!root) {
+        std::cout << "Error: Could not find root node." << std::endl;
+        return false;
+    }
+    for (pugi::xml_node item: root.children("Item")) {
+        int id = item.attribute("id").as_int();
+        std::string name = item.attribute("name").as_string();
+        std::string type = item.attribute("type").as_string();
+        std::string oven = item.attribute("oven").as_string();
+        std::string pot = item.attribute("pot").as_string();
+        std::string pan = item.attribute("pan").as_string();
+        ItemData data = {id, name, type, oven, pot, pan};
+        itemNames.push_back(name);
+        itemData[id] = data;
+        itemDataByName[name] = data;
     }
     return true;
 }
@@ -921,14 +871,9 @@ int ItemManager::GetNumItems() {
  * @return Whether the item names and data were loaded successfully.
  */
 bool ItemManager::LoadContent() {
-    if (!ItemManager::LoadItemNames("resources/bsfood.txt")) {
+    if (!ItemManager::LoadItems("resources/food.xml")) {
         return false;
     }
-#ifdef COMPLEX
-    if (!ItemManager::LoadData("resources/itemdata")) {
-        return false;
-    }
-#endif
     return true;
 }
 
@@ -956,3 +901,4 @@ int ItemManager::IngredientLimit(int id) {
 
 std::vector<std::string> ItemManager::itemNames;
 std::unordered_map<int, ItemData> ItemManager::itemData;
+std::unordered_map<std::string, ItemData> ItemManager::itemDataByName;

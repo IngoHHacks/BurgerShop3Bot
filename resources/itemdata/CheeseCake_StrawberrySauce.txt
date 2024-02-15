@@ -1,5 +1,0 @@
-index: 591
-type: CheeseCake_StrawberrySauce
-ox: 8
-oy: 12
-corner: (20, -10)

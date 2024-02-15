@@ -1,4 +1,0 @@
-index: 77
-type: SalmonRaw
-ox: 22
-oy: 17

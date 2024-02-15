@@ -1,5 +1,0 @@
-index: 338
-type: MexSideTray_Mask
-absx: 0
-absy: 5
-layer: 1000

@@ -1,4 +1,0 @@
-index: 242
-type: LargeOJGlass
-ox: 19
-oy: 50

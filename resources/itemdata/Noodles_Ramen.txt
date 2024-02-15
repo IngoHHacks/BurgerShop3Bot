@@ -1,5 +1,0 @@
-index: 771
-type: Noodles_Ramen
-ox: 27
-oy: 31
-corner: (1, 2)

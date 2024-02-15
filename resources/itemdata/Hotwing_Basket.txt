@@ -1,2 +1,0 @@
-index: 599
-type: Hotwing_Basket

@@ -1,4 +1,0 @@
-index: 821
-type: GreenBeans_Steak_Wok
-ox: 31
-oy: 21

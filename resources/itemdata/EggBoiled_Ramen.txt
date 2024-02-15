@@ -1,3 +1,0 @@
-index: 762
-type: EggBoiled_Ramen
-corner: (32, 5)

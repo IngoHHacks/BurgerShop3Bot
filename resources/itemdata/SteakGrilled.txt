@@ -1,8 +1,0 @@
-index: 216
-type: SteakGrilled
-height: 12
-ox: 22
-oy: 17
-adjustx: 0
-adjusty: 7
-layer: 9

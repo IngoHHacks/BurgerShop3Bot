@@ -1,7 +1,0 @@
-index: 844
-type: SnackDipKetchup
-ox: 8
-oy: 4
-absx: 10
-absy: 16
-layer: 1001

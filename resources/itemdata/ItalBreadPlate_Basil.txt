@@ -1,3 +1,0 @@
-index: 679
-type: ItalBreadPlate_Basil
-layer: 12

@@ -1,6 +1,0 @@
-index: 52
-type: Pancake
-ox: 22
-oy: 11
-height: 5
-layer: 7

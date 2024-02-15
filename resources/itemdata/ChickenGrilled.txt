@@ -1,5 +1,0 @@
-index: 212
-type: ChickenGrilled
-height: 12
-ox: 22
-oy: 17

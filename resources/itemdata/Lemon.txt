@@ -1,4 +1,0 @@
-index: 142
-type: Lemon
-ox: 9
-oy: 13

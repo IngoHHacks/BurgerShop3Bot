@@ -1,3 +1,0 @@
-index: 637
-type: Meatball_TomatoSauce
-corner: (-2, -5)

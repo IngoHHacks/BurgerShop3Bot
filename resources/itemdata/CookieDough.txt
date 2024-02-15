@@ -1,5 +1,0 @@
-index: 119
-type: CookieDough
-ox: 12
-oy: 12
-layer: -1

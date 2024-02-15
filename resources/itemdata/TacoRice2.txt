@@ -1,6 +1,0 @@
-index: 351
-type: TacoRice2
-adjusty: 12
-ox: 23
-oy: 19
-layer: 2

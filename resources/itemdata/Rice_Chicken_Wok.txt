@@ -1,4 +1,0 @@
-index: 826
-type: Rice_Chicken_Wok
-ox: 26
-oy: 21

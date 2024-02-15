@@ -1,5 +1,0 @@
-index: 113
-type: MexShrimpRaw
-ox: 30
-oy: 11
-layer: 0

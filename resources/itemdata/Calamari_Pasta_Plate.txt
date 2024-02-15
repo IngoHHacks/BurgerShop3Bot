@@ -1,3 +1,0 @@
-index: 643
-type: Calamari_Pasta_Plate
-corner: (18, -9)

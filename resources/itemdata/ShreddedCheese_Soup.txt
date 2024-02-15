@@ -1,4 +1,0 @@
-index: 302
-type: ShreddedCheese_Soup
-absx: 2
-absy: 2

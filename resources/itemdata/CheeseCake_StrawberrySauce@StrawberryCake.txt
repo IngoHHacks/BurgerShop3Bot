@@ -1,4 +1,0 @@
-parent: 591
-index: 82
-type: StrawberryCake
-adjustx: 2

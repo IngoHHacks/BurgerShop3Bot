@@ -1,8 +1,0 @@
-index: 86
-type: ChocolateCake
-adjustx: 1
-adjusty: 1
-ox: 20
-oy: 23
-height: 17
-layer: 2

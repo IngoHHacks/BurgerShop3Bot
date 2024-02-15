@@ -1,5 +1,0 @@
-index: 303
-type: Gravy_Chicken
-absx: -4
-absy: -2
-layer: 21

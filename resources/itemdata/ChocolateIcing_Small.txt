@@ -1,5 +1,0 @@
-index: 463
-type: ChocolateIcing_Small
-absx: 0
-absy: -1
-layer: 3

@@ -1,5 +1,0 @@
-index: 841
-type: SnackOnionRings
-ox: 14
-oy: 32
-layer: 2

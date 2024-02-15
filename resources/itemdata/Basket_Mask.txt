@@ -1,4 +1,0 @@
-index: 335
-type: Basket_Mask
-absx: 1
-absy: 12

@@ -1,4 +1,0 @@
-index: 728
-type: Maki_Whitefish
-absx: 6
-absy: 2

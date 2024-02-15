@@ -1,3 +1,0 @@
-index: 800
-type: Tofu_ThickNoodleBowl
-corner: (30, -10)

@@ -1,4 +1,0 @@
-index: 712
-type: Cucumber_Saucer
-absx: 0
-absy: -5

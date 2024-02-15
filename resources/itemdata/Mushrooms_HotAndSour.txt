@@ -1,3 +1,0 @@
-index: 811
-type: Mushrooms_HotAndSour
-corner: (5, 1)

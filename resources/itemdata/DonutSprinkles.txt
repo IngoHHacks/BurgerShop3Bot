@@ -1,5 +1,0 @@
-index: 555
-type: DonutSprinkles
-adjusty: -3
-corner: (0, 0)
-layer: 4

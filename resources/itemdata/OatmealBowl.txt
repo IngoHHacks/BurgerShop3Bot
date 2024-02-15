@@ -1,4 +1,0 @@
-index: 271
-type: OatmealBowl
-ox: 27
-oy: 34

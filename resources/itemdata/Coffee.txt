@@ -1,6 +1,0 @@
-index: 179
-type: Coffee
-ox: 17
-oy: 34
-height: 26
-layer: 1

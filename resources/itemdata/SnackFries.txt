@@ -1,5 +1,0 @@
-index: 840
-type: SnackFries
-ox: 16
-oy: 32
-layer: 2

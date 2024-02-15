@@ -1,4 +1,0 @@
-index: 656
-type: Pizza_Meatlovers_Chicken
-corner: (5, -2)
-layer: 6

@@ -1,4 +1,0 @@
-index: 122
-type: ManCutter
-ox: 26
-oy: 16

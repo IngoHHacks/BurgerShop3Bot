@@ -1,4 +1,0 @@
-index: 818
-type: GreenBeans_Wok
-ox: 21
-oy: 19

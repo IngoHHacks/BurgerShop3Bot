@@ -1,4 +1,0 @@
-index: 739
-type: Saucer_Front
-absx: 0
-absy: 4

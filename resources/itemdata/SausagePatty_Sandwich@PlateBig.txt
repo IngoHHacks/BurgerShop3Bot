@@ -1,5 +1,0 @@
-parent: 326
-index: 285
-type: PlateBig
-adjustx: 26
-adjusty: 6

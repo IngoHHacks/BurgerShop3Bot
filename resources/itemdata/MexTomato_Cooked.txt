@@ -1,5 +1,0 @@
-index: 220
-type: MexTomato_Cooked
-ox: 23
-oy: 19
-layer: 17

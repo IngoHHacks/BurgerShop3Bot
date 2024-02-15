@@ -1,5 +1,0 @@
-index: 49
-type: Gravy
-ox: 22
-oy: 34
-layer: 21

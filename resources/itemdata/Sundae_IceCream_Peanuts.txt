@@ -1,4 +1,0 @@
-index: 574
-type: Sundae_IceCream_Peanuts
-adjusty: -2
-corner: (1, -1)

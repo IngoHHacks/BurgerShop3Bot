@@ -1,4 +1,0 @@
-index: 441
-type: Quesadilla_Tomato
-ox: 21
-oy: 17

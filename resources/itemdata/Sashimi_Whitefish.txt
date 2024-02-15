@@ -1,5 +1,0 @@
-index: 738
-type: Sashimi_Whitefish
-ox: 16
-oy: 19
-height: 2

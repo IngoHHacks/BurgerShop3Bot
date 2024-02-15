@@ -1,3 +1,0 @@
-index: 341
-type: TomatoSauceIcon
-layer: 1999

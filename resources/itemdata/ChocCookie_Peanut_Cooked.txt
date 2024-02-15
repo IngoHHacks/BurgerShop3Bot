@@ -1,4 +1,0 @@
-index: 516
-type: ChocCookie_Peanut_Cooked
-ox: 17
-oy: 10

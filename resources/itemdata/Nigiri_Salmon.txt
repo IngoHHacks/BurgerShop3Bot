@@ -1,7 +1,0 @@
-index: 732
-type: Nigiri_Salmon
-ox: 18
-oy: 9
-absx: 1
-absy: -2
-height: 8

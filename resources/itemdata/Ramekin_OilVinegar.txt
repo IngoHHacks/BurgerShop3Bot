@@ -1,3 +1,0 @@
-index: 700
-type: Ramekin_OilVinegar
-corner: (2, 2)

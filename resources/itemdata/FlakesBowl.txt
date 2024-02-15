@@ -1,4 +1,0 @@
-index: 269
-type: FlakesBowl
-ox: 27
-oy: 34

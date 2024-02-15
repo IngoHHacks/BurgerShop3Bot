@@ -1,4 +1,0 @@
-index: 145
-type: Chickenwing
-ox: 15
-oy: 14

@@ -1,5 +1,0 @@
-index: 99
-type: MexCheese
-ox: 23
-oy: 16
-layer: 5

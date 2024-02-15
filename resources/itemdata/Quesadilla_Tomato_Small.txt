@@ -1,4 +1,0 @@
-index: 442
-type: Quesadilla_Tomato_Small
-ox: 19
-oy: 14

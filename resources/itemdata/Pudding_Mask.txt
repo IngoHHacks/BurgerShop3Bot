@@ -1,3 +1,0 @@
-index: 815
-type: Pudding_Mask
-corner: (1, 3)

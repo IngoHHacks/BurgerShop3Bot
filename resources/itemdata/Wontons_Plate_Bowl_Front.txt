@@ -1,5 +1,0 @@
-index: 746
-type: Wontons_Plate_Bowl_Front
-ox: 13
-oy: 16
-corner: (25, 12)

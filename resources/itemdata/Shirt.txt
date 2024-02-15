@@ -1,4 +1,0 @@
-index: 34
-type: Shirt
-ox: 38
-oy: 13

@@ -1,3 +1,0 @@
-index: 797
-type: EggBoiled_ThickNoodleBowl
-corner: (26, 3)

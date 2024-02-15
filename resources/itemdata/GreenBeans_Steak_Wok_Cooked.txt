@@ -1,3 +1,0 @@
-index: 822
-type: GreenBeans_Steak_Wok_Cooked
-corner: (-5, 5)

@@ -1,3 +1,0 @@
-index: 573
-type: Sundae_IceCream_ChocolateSauce
-corner: (-1, -3)

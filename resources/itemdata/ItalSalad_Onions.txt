@@ -1,4 +1,0 @@
-index: 695
-type: ItalSalad_Onions
-corner: (30, -2)
-layer: 9

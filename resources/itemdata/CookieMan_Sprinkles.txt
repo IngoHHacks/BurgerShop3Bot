@@ -1,4 +1,0 @@
-index: 530
-type: CookieMan_Sprinkles
-absx: -1
-absy: -2

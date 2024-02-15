@@ -1,3 +1,0 @@
-index: 618
-type: Fettuccine_Clams_Parmesan
-corner: (8, -9)

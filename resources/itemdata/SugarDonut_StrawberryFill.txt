@@ -1,6 +1,0 @@
-index: 554
-type: SugarDonut_StrawberryFill
-ox: 18
-oy: 20
-height: 10
-layer: 1

@@ -1,5 +1,0 @@
-index: 62
-type: Kaiserroll
-ox: 11
-oy: 23
-layer: 30

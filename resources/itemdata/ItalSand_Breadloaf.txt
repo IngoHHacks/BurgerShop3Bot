@@ -1,5 +1,0 @@
-index: 659
-type: ItalSand_Breadloaf
-ox: 42
-oy: 38
-layer: 0

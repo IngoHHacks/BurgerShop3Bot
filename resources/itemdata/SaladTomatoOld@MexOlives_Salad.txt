@@ -1,5 +1,0 @@
-parent: 853
-index: 417
-type: MexOlives_Salad
-corner: (8, -1)
-layer: 10

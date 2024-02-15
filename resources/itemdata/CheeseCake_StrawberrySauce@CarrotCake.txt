@@ -1,4 +1,0 @@
-parent: 591
-index: 84
-type: CarrotCake
-adjustx: 2

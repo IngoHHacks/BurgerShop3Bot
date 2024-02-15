@@ -1,5 +1,0 @@
-index: 168
-type: RamenSoup
-ox: 27
-oy: 31
-corner: (4, 3)

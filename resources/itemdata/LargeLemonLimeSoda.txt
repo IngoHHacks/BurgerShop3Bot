@@ -1,4 +1,0 @@
-index: 240
-type: LargeLemonLimeSoda
-ox: 17
-oy: 54

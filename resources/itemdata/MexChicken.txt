@@ -1,5 +1,0 @@
-index: 100
-type: MexChicken
-ox: 23
-oy: 19
-layer: 4

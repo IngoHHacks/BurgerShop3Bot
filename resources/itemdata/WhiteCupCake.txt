@@ -1,4 +1,0 @@
-index: 91
-type: WhiteCupCake
-ox: 15
-oy: 23

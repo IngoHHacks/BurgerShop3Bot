@@ -1,5 +1,0 @@
-index: 260
-type: TeaPot_Tea
-ox: 28
-oy: 38
-layer: 1

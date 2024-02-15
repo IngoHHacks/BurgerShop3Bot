@@ -1,7 +1,0 @@
-index: 665
-type: ItalSand_Mushroom
-ox: 32
-oy: 14
-absx: 9
-absy: 16
-layer: 4

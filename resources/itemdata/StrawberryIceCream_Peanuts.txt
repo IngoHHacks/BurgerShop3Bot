@@ -1,7 +1,0 @@
-index: 473
-type: StrawberryIceCream_Peanuts
-ox: 20
-oy: 13
-absx: 2
-absy: 0
-layer: 4
