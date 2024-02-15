@@ -1,3 +1,0 @@
-index: 642
-type: Calamari_Plate
-corner: (12, 2)

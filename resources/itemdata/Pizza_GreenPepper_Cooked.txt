@@ -1,4 +1,0 @@
-index: 646
-type: Pizza_GreenPepper_Cooked
-corner: (7, 2)
-layer: 3

@@ -1,4 +1,0 @@
-index: 750
-type: Eggroll_Plate
-ox: 24
-oy: 13

@@ -1,5 +1,0 @@
-index: 259
-type: SugarCup
-ox: 3
-oy: 17
-layer: 10

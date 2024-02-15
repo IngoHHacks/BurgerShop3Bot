@@ -1,5 +1,0 @@
-index: 97
-type: MexBeans
-ox: 18
-oy: 18
-layer: 1

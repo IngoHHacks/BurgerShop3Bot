@@ -1,5 +1,0 @@
-index: 266
-type: TeaCup_LemonLime
-ox: 12
-oy: 23
-layer: 2

@@ -1,4 +1,0 @@
-index: 527
-type: ChocCookieStar_Raw
-ox: 36
-oy: 11

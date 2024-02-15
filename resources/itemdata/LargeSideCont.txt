@@ -1,4 +1,0 @@
-index: 29
-type: LargeSideCont
-ox: 25
-oy: 50

@@ -1,5 +1,0 @@
-index: 215
-type: SalmonGrilled
-height: 12
-ox: 22
-oy: 17

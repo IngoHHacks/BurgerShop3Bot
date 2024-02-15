@@ -1,3 +1,0 @@
-index: 789
-type: Mushrooms_NoodleBowl
-corner: (1, 4)

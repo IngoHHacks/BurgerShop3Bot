@@ -1,6 +1,0 @@
-index: 47
-type: Syrup
-adjusty: 10
-ox: 23
-oy: 43
-layer: 23

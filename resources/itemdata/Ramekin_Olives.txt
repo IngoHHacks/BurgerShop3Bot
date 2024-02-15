@@ -1,3 +1,0 @@
-index: 699
-type: Ramekin_Olives
-corner: (2, -1)

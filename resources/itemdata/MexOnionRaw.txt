@@ -1,5 +1,0 @@
-index: 112
-type: MexOnionRaw
-ox: 20
-oy: 13
-layer: 11

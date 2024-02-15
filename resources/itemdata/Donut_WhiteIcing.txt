@@ -1,5 +1,0 @@
-index: 547
-type: Donut_WhiteIcing
-absx: -1
-absy: -2
-layer: 3

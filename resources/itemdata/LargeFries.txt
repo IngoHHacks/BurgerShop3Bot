@@ -1,4 +1,0 @@
-index: 251
-type: LargeFries
-ox: 25
-oy: 50

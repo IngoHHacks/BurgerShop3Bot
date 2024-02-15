@@ -1,3 +1,0 @@
-index: 805
-type: Noodles_NoodleBowl
-corner: (1, -11)

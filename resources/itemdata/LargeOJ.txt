@@ -1,4 +1,0 @@
-index: 243
-type: LargeOJ
-ox: 17
-oy: 54

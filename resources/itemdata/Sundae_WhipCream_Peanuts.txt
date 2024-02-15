@@ -1,3 +1,0 @@
-index: 581
-type: Sundae_WhipCream_Peanuts
-corner: (1, 0)

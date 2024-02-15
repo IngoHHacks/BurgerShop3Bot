@@ -1,6 +1,0 @@
-index: 221
-type: MexRice_Cooked
-ox: 25
-oy: 19
-corner: (18, 2)
-layer: 16

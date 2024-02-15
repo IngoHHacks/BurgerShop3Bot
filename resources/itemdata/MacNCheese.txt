@@ -1,4 +1,0 @@
-index: 624
-type: MacNCheese
-ox: 32
-oy: 32

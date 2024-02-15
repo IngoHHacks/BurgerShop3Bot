@@ -1,5 +1,0 @@
-index: 95
-type: TacoShell
-ox: 20
-oy: 25
-layer: 0

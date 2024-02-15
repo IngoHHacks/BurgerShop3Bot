@@ -1,8 +1,0 @@
-index: 40
-type: BlueBerries
-ox: 13
-oy: 15
-height: 8
-layer: 40
-absx: 10
-absy: -5

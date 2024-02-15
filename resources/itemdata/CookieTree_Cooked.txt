@@ -1,4 +1,0 @@
-index: 512
-type: CookieTree_Cooked
-ox: 27
-oy: 14

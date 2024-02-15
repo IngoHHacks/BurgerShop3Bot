@@ -1,4 +1,0 @@
-index: 741
-type: Soysauce_Saucer
-absx: 2
-absy: 2

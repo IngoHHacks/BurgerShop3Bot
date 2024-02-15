@@ -1,6 +1,0 @@
-index: 388
-type: BurritoCheese1
-adjusty: 15
-ox: 23
-oy: 16
-layer: 5

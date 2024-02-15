@@ -1,5 +1,0 @@
-index: 593
-type: Breadslice_DinnerToasted
-ox: 11
-oy: 23
-layer: 30

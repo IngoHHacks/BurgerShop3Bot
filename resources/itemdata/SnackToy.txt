@@ -1,7 +1,0 @@
-index: 17
-type: SnackToy
-adjustx: 6
-adjusty: -2
-ox: 16
-oy: 35
-layer: 1

@@ -1,3 +1,0 @@
-index: 774
-type: ThickNoodles_Ramen_Overhang
-corner: (1, 10)

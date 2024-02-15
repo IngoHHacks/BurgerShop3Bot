@@ -1,8 +1,0 @@
-parent: 53
-index: 3
-type: Cheese
-adjusty: 3
-ox: 26
-oy: 11
-height: 4
-layer: 9

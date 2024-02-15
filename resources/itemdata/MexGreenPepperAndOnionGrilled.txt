@@ -1,5 +1,0 @@
-index: 448
-type: MexGreenPepperAndOnionGrilled
-ox: 20
-oy: 16
-layer: 12

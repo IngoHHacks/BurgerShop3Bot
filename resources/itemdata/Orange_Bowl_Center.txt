@@ -1,3 +1,0 @@
-index: 346
-type: Orange_Bowl_Center
-corner: (19, -15)

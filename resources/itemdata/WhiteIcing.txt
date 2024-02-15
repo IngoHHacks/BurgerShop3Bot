@@ -1,5 +1,0 @@
-index: 195
-type: WhiteIcing
-absx: 0
-absy: -1
-layer: 3

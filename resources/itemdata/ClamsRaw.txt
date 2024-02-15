@@ -1,4 +1,0 @@
-index: 137
-type: ClamsRaw
-ox: 25
-oy: 23

@@ -1,2 +1,0 @@
-index: 419
-type: MexCheese_TacoSalad

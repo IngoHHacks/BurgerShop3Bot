@@ -1,4 +1,0 @@
-index: 538
-type: CookieTree_Sprinkles
-absx: 7
-absy: -3

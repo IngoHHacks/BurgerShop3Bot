@@ -1,3 +1,0 @@
-index: 611
-type: Spaghetti_TomatoSauce
-corner: (13, -5)

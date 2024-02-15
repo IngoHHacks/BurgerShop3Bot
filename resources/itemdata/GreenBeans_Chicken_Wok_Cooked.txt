@@ -1,3 +1,0 @@
-index: 820
-type: GreenBeans_Chicken_Wok_Cooked
-corner: (-2, 0)

@@ -1,3 +1,0 @@
-index: 830
-type: Rice_Steak_Wok_Cooked
-corner: (-3, 1)

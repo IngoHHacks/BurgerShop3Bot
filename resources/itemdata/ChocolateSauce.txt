@@ -1,2 +1,0 @@
-index: 190
-type: ChocolateSauce

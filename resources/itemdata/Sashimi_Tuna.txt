@@ -1,5 +1,0 @@
-index: 737
-type: Sashimi_Tuna
-ox: 17
-oy: 17
-height: 2

@@ -1,8 +1,0 @@
-index: 41
-type: Strawberries
-ox: 18
-oy: 18
-height: 7
-layer: 40
-absx: 5
-absy: -10

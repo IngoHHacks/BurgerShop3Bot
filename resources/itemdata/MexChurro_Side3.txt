@@ -1,7 +1,0 @@
-index: 445
-type: MexChurro_Side3
-absx: -3
-absy: -11
-ox: 17
-oy: 14
-layer: 1

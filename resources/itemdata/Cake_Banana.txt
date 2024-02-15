@@ -1,6 +1,0 @@
-index: 456
-type: Cake_Banana
-ox: 12
-oy: 16
-height: 8
-layer: 5

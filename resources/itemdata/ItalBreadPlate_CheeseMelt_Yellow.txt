@@ -1,3 +1,0 @@
-index: 683
-type: ItalBreadPlate_CheeseMelt_Yellow
-layer: 11

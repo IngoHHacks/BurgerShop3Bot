@@ -1,4 +1,0 @@
-index: 484
-type: OldSundae_LargeStrawberry
-ox: 18
-oy: 49

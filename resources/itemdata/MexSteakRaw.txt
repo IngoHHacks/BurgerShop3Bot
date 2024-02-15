@@ -1,5 +1,0 @@
-index: 114
-type: MexSteakRaw
-ox: 28
-oy: 16
-layer: 0

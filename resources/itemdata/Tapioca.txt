@@ -1,5 +1,0 @@
-index: 144
-type: Tapioca
-ox: 18
-oy: 18
-corner: (8, -3)

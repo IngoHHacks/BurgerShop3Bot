@@ -1,3 +1,0 @@
-index: 608
-type: Spaghetti_Mussels
-corner: (12, -13)

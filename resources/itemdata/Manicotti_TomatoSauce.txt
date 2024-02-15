@@ -1,3 +1,0 @@
-index: 632
-type: Manicotti_TomatoSauce
-corner: (3, 2)

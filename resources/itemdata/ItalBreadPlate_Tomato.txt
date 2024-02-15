@@ -1,5 +1,0 @@
-index: 686
-type: ItalBreadPlate_Tomato
-ox: 10
-oy: 9
-layer: 13

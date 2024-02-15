@@ -1,5 +1,0 @@
-index: 344
-type: Lemon_Sashimi
-ox: 7
-oy: 8
-corner: (-2, 0)

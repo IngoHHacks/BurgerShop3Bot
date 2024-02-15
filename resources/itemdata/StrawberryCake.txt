@@ -1,5 +1,0 @@
-index: 82
-type: StrawberryCake
-ox: 21
-oy: 30
-height: 24

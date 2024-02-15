@@ -1,3 +1,0 @@
-index: 764
-type: GreenOnions_Ramen
-corner: (5, 4)

@@ -1,8 +1,0 @@
-index: 853
-type: SaladTomatoOld
-ox: 19
-oy: 14
-absx: 6
-absy: 0
-corner: (1, -7)
-layer: 8

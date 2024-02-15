@@ -1,3 +1,0 @@
-index: 187
-type: Ranch
-layer: 2001

@@ -1,4 +1,0 @@
-index: 129
-type: Basil
-ox: 21
-oy: 18

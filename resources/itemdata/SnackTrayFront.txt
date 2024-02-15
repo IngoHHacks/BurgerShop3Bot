@@ -1,5 +1,0 @@
-index: 843
-type: SnackTrayFront
-layer: 0
-ox: 43
-oy: 29

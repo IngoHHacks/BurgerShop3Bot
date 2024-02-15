@@ -1,3 +1,0 @@
-index: 781
-type: Mushrooms_RiceBowl
-corner: (1, 4)

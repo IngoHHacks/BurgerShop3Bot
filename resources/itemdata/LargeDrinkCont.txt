@@ -1,4 +1,0 @@
-index: 26
-type: LargeDrinkCont
-ox: 17
-oy: 54

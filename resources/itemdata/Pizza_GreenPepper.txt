@@ -1,4 +1,0 @@
-index: 650
-type: Pizza_GreenPepper
-corner: (10, 2)
-layer: 3

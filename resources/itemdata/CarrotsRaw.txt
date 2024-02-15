@@ -1,6 +1,0 @@
-index: 70
-type: CarrotsRaw
-ox: 26
-oy: 15
-height: 10
-layer: 1

@@ -1,7 +1,0 @@
-index: 298
-type: SaladCheese
-ox: 25
-oy: 8
-absx: 4
-absy: 7
-layer: 2

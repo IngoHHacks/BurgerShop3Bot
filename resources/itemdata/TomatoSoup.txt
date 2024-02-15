@@ -1,7 +1,0 @@
-index: 163
-type: TomatoSoup
-ox: 27
-oy: 31
-absx: 3
-absy: 3
-layer: 1

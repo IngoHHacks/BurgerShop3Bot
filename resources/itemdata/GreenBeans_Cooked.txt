@@ -1,5 +1,0 @@
-index: 229
-type: GreenBeans_Cooked
-ox: 22
-oy: 22
-corner: (21, -2)

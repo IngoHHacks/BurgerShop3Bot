@@ -1,5 +1,0 @@
-index: 284
-type: PlateMedium
-ox: 36
-oy: 16
-layer: 0

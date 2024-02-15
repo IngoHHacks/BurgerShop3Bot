@@ -1,4 +1,0 @@
-index: 427
-type: MexChicken_Nacho
-corner: (13, -8)
-layer: 6

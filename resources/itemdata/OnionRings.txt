@@ -1,5 +1,0 @@
-index: 172
-type: OnionRings
-ox: 23
-oy: 22
-layer: 1

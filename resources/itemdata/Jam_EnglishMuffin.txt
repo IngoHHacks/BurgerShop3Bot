@@ -1,4 +1,0 @@
-index: 312
-type: Jam_EnglishMuffin
-ox: 11
-oy: 6

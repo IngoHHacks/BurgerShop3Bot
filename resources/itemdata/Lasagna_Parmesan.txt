@@ -1,3 +1,0 @@
-index: 628
-type: Lasagna_Parmesan
-corner: (-9, 1)

@@ -1,4 +1,0 @@
-index: 726
-type: Maki_Tuna
-absx: 6
-absy: 2

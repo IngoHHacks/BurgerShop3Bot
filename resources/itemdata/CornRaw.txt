@@ -1,5 +1,0 @@
-index: 72
-type: CornRaw
-ox: 26
-oy: 15
-layer: 2

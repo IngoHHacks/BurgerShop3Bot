@@ -1,5 +1,0 @@
-index: 735
-type: Sashimi_Lettuce
-ox: 19
-oy: 16
-height: 2

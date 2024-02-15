@@ -1,4 +1,0 @@
-index: 528
-type: ChocCookieTree_Cooked
-ox: 27
-oy: 14

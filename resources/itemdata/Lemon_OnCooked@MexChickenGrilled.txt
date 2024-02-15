@@ -1,4 +1,0 @@
-parent: 342
-index: 197
-type: MexChickenGrilled
-adjusty: -5

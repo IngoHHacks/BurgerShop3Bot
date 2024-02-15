@@ -1,4 +1,0 @@
-index: 9
-type: Mushrooms
-ox: 24
-oy: 12

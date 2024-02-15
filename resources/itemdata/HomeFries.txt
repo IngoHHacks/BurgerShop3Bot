@@ -1,7 +1,0 @@
-index: 56
-type: HomeFries
-adjustx: 8
-adjusty: -7
-ox: 16
-oy: 15
-layer: 3

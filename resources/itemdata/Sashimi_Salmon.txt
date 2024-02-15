@@ -1,5 +1,0 @@
-index: 736
-type: Sashimi_Salmon
-ox: 16
-oy: 17
-height: 2

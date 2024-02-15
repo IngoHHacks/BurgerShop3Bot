@@ -1,4 +1,0 @@
-index: 64
-type: ChickenStrip
-ox: 22
-oy: 17

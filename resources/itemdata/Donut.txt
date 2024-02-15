@@ -1,6 +1,0 @@
-index: 94
-type: Donut
-ox: 18
-oy: 20
-height: 10
-layer: 1

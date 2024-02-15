@@ -1,4 +1,0 @@
-index: 753
-type: ThickNoodles_Plate
-ox: 19
-oy: 19

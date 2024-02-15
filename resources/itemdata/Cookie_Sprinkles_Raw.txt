@@ -1,5 +1,0 @@
-index: 503
-type: Cookie_Sprinkles_Raw
-ox: 12
-oy: 12
-layer: -1

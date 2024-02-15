@@ -1,4 +1,0 @@
-parent: 285
-index: 284
-type: PlateMedium
-adjusty: -3

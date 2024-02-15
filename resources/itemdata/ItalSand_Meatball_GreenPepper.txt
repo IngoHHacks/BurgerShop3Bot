@@ -1,5 +1,0 @@
-index: 670
-type: ItalSand_Meatball_GreenPepper
-absx: 11
-absy: 18
-layer: 3

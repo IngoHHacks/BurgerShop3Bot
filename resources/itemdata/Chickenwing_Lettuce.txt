@@ -1,4 +1,0 @@
-index: 710
-type: Chickenwing_Lettuce
-ox: 21
-oy: 8

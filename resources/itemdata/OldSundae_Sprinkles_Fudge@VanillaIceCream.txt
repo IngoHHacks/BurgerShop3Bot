@@ -1,5 +1,0 @@
-parent: 486
-index: 115
-type: VanillaIceCream
-absx: 5
-absy: 15

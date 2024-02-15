@@ -1,2 +1,0 @@
-index: 580
-type: Sundae_VanillaIceCream

@@ -1,5 +1,0 @@
-parent: 853
-index: 648
-type: Pizza_Pepperoni_Cooked
-corner: (-2, -7)
-layer: 9

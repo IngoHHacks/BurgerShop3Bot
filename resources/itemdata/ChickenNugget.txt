@@ -1,4 +1,0 @@
-index: 15
-type: ChickenNugget
-ox: 16
-oy: 12

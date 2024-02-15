@@ -1,4 +1,0 @@
-index: 645
-type: Pizza_Chicken_Cooked
-corner: (8, -2)
-layer: 6

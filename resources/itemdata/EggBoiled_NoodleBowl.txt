@@ -1,3 +1,0 @@
-index: 806
-type: EggBoiled_NoodleBowl
-corner: (28, 5)

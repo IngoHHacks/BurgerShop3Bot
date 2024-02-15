@@ -1,9 +1,0 @@
-index: 418
-type: MexBeans_TacoSalad
-adjustx: 4
-adjusty: 5
-absx: 25
-absy: -12
-layer: 1
-ox: 18
-oy: 18

@@ -1,3 +1,0 @@
-index: 792
-type: EggFried_ThickNoodleBowl_Overhang
-corner: (24, 2)

@@ -1,3 +1,0 @@
-index: 185
-type: ItalianDressing
-layer: 2001

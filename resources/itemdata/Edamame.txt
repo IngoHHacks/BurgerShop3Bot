@@ -1,5 +1,0 @@
-index: 148
-type: Edamame
-ox: 24
-oy: 17
-height: 5

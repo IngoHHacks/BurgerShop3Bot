@@ -1,3 +1,0 @@
-index: 715
-type: Hotsauce_Icon
-layer: 2001

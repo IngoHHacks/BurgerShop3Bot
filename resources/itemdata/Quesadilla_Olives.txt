@@ -1,4 +1,0 @@
-index: 439
-type: Quesadilla_Olives
-ox: 16
-oy: 11

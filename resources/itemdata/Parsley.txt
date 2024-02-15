@@ -1,7 +1,0 @@
-index: 66
-type: Parsley
-adjustx: -6
-ox: 23
-oy: 22
-absy: -3
-layer: 1

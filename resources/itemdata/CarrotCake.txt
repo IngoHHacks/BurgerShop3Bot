@@ -1,5 +1,0 @@
-index: 84
-type: CarrotCake
-ox: 22
-oy: 30
-height: 26

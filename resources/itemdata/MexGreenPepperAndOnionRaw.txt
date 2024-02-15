@@ -1,5 +1,0 @@
-index: 447
-type: MexGreenPepperAndOnionRaw
-ox: 20
-oy: 16
-layer: 12

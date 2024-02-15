@@ -1,4 +1,0 @@
-index: 13
-type: Carrot
-ox: 18
-oy: 13

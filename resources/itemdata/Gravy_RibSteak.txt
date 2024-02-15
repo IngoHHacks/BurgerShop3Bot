@@ -1,4 +1,0 @@
-index: 306
-type: Gravy_RibSteak
-absx: 8
-absy: 5

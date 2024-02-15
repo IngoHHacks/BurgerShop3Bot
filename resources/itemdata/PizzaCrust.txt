@@ -1,4 +1,0 @@
-index: 139
-type: PizzaCrust
-ox: 29
-oy: 14

@@ -1,5 +1,0 @@
-parent: 249
-index: 126
-type: Breadslice
-absx: 5
-absy: 5

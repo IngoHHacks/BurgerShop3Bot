@@ -1,3 +1,0 @@
-index: 676
-type: ItalSand_Meatball_Sauce
-layer: 6

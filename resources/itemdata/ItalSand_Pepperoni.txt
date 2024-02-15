@@ -1,7 +1,0 @@
-index: 667
-type: ItalSand_Pepperoni
-ox: 38
-oy: 12
-absx: 6
-absy: 16
-layer: 4

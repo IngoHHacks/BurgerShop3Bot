@@ -1,5 +1,0 @@
-index: 201
-type: MexOnionGrilled
-ox: 20
-oy: 13
-layer: 11

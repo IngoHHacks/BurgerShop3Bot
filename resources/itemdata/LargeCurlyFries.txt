@@ -1,4 +1,0 @@
-index: 255
-type: LargeCurlyFries
-ox: 25
-oy: 50

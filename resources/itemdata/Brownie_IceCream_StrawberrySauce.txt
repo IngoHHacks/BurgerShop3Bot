@@ -1,2 +1,0 @@
-index: 586
-type: Brownie_IceCream_StrawberrySauce

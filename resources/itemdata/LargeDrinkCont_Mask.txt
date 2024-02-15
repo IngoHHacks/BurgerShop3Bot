@@ -1,5 +1,0 @@
-index: 334
-type: LargeDrinkCont_Mask
-layer: 10
-ox: 17
-oy: 54

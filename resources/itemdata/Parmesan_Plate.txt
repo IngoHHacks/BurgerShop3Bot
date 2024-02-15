@@ -1,3 +1,0 @@
-index: 639
-type: Parmesan_Plate
-corner: (18, 6)

@@ -1,4 +1,0 @@
-index: 32
-type: Treat
-ox: 17
-oy: 14

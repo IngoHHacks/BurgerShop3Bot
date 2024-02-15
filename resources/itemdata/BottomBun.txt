@@ -1,7 +1,0 @@
-index: 0
-type: BottomBun
-adjusty: 0
-ox: 22
-oy: 14
-height: 10
-layer: 2

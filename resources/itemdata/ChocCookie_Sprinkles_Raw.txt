@@ -1,5 +1,0 @@
-index: 519
-type: ChocCookie_Sprinkles_Raw
-ox: 12
-oy: 12
-layer: -1

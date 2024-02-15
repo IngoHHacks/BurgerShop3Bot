@@ -1,4 +1,0 @@
-index: 281
-type: TomatoConveyor
-ox: 26
-oy: 15

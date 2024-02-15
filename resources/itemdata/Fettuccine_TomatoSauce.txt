@@ -1,3 +1,0 @@
-index: 615
-type: Fettuccine_TomatoSauce
-corner: (13, -7)

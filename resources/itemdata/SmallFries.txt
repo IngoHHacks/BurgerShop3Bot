@@ -1,4 +1,0 @@
-index: 250
-type: SmallFries
-ox: 20
-oy: 39

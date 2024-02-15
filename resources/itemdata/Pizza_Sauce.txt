@@ -1,4 +1,0 @@
-index: 653
-type: Pizza_Sauce
-corner: (5, 2)
-layer: 1

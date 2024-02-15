@@ -1,4 +1,0 @@
-parent: 610
-index: 133
-type: Meatball
-corner: (14, 7)

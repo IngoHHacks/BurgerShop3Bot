@@ -1,5 +1,0 @@
-index: 836
-type: SnackNugget
-ox: 6
-oy: 22
-layer: 6

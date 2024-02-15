@@ -1,2 +1,0 @@
-index: 587
-type: Brownie_StrawberrySauce

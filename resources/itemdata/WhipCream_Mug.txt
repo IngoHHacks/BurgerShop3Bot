@@ -1,5 +1,0 @@
-index: 328
-type: WhipCream_Mug
-absx: 7
-absy: -10
-layer: 2

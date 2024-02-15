@@ -1,3 +1,0 @@
-index: 661
-type: ItalSand_Cheese_American
-layer: 1

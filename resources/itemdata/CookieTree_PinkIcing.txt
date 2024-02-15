@@ -1,4 +1,0 @@
-index: 540
-type: CookieTree_PinkIcing
-absx: 5
-absy: 1

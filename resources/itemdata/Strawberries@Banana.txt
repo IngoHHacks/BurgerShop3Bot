@@ -1,5 +1,0 @@
-parent: 41
-index: 42
-type: Banana
-absx: 12
-absy: -6

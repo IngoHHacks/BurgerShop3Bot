@@ -1,4 +1,0 @@
-index: 407
-type: MexBeans_Soup
-corner: (2, -2)
-layer: 4

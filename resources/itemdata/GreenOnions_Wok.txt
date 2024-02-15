@@ -1,3 +1,0 @@
-index: 833
-type: GreenOnions_Wok
-corner: (21, 3)

@@ -1,3 +1,0 @@
-index: 606
-type: Spaghetti_Clams_Basil
-corner: (12, -3)

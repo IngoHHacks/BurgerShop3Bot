@@ -1,4 +1,0 @@
-parent: 342
-index: 230
-type: GreenBeans_Boiled
-corner: (-10, -4)

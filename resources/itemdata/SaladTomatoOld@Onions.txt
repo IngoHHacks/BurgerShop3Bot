@@ -1,5 +1,0 @@
-parent: 853
-index: 8
-type: Onions
-corner: (-2, -5)
-layer: 9

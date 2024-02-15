@@ -1,4 +1,0 @@
-index: 425
-type: MexBeef_Nacho
-corner: (12, -8)
-layer: 4

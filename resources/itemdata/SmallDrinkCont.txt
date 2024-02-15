@@ -1,4 +1,0 @@
-index: 25
-type: SmallDrinkCont
-ox: 23
-oy: 48

@@ -1,3 +1,0 @@
-index: 816
-type: TapiocaPudding_Mask
-corner: (2, 0)

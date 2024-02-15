@@ -1,5 +1,0 @@
-parent: 624
-index: 60
-type: SplitTopRoll
-absx: 7
-absy: 5

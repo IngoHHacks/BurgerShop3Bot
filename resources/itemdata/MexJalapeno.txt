@@ -1,4 +1,0 @@
-index: 102
-type: MexJalapeno
-ox: 18
-oy: 11

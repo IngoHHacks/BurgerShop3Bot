@@ -1,8 +1,0 @@
-index: 457
-type: Cake_Strawberries
-ox: 18
-oy: 18
-layer: 40
-absx: 5
-absy: -10
-height: 7

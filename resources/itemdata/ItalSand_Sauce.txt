@@ -1,5 +1,0 @@
-index: 675
-type: ItalSand_Sauce
-absx: 8
-absy: 19
-layer: 2

@@ -1,8 +1,0 @@
-index: 317
-type: Syrup_Waffle
-ox: 24
-oy: 9
-absx: 4
-absy: 2
-height: 3
-layer: 23

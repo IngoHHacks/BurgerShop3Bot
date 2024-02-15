@@ -1,7 +1,0 @@
-index: 663
-type: ItalSand_GreenPepper
-ox: 24
-oy: 9
-absx: 13
-absy: 7
-layer: 8

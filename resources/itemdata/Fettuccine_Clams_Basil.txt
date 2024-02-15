@@ -1,3 +1,0 @@
-index: 617
-type: Fettuccine_Clams_Basil
-corner: (8, -4)

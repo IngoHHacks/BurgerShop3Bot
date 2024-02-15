@@ -1,5 +1,0 @@
-index: 814
-type: Pudding_Rice
-ox: 24
-oy: 10
-corner: (2, -1)

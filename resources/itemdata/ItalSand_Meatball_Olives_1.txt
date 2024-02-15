@@ -1,5 +1,0 @@
-index: 671
-type: ItalSand_Meatball_Olives_1
-absx: 10
-absy: 20
-layer: 9

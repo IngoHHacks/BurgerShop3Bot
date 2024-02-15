@@ -1,3 +1,0 @@
-index: 603
-type: Spaghetti_Basil
-corner: (22, -4)

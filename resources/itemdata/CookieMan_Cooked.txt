@@ -1,4 +1,0 @@
-index: 508
-type: CookieMan_Cooked
-ox: 27
-oy: 13

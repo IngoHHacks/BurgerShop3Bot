@@ -1,4 +1,0 @@
-index: 136
-type: MacaroniRaw
-ox: 20
-oy: 52

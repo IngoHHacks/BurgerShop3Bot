@@ -1,5 +1,0 @@
-index: 101
-type: MexChurro
-ox: 17
-oy: 14
-layer: 1

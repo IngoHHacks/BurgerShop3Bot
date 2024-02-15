@@ -1,4 +1,0 @@
-index: 160
-type: Egg
-ox: 10
-oy: 11

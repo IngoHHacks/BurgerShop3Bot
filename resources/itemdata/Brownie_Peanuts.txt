@@ -1,2 +1,0 @@
-index: 589
-type: Brownie_Peanuts

@@ -1,7 +1,0 @@
-index: 53
-type: EggFried
-adjusty: 0
-ox: 22
-oy: 15
-height: 9
-layer: 1

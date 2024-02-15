@@ -1,4 +1,0 @@
-index: 33
-type: Menu
-ox: 16
-oy: 45

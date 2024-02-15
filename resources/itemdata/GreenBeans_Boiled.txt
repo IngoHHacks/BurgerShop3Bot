@@ -1,4 +1,0 @@
-index: 230
-type: GreenBeans_Boiled
-ox: 28
-oy: 21

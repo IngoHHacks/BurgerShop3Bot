@@ -1,3 +1,0 @@
-index: 701
-type: Ramekin_Ketchup
-corner: (2, 2)

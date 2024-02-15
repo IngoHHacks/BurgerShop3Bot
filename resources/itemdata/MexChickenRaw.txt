@@ -1,5 +1,0 @@
-index: 108
-type: MexChickenRaw
-ox: 29
-oy: 20
-layer: 0

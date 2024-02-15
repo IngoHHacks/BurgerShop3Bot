@@ -1,7 +1,0 @@
-index: 299
-type: SaladGreenOnions
-ox: 21
-oy: 10
-absx: 6
-absy: 5
-layer: 3

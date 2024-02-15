@@ -1,5 +1,0 @@
-parent: 677
-index: 104
-type: MexOlives
-absx: -4
-absy: -8

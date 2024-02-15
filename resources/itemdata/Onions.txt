@@ -1,5 +1,0 @@
-index: 8
-type: Onions
-ox: 26
-oy: 10
-layer: 3

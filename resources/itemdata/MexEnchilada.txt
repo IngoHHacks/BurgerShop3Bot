@@ -1,4 +1,0 @@
-index: 107
-type: MexEnchilada
-ox: 21
-oy: 15

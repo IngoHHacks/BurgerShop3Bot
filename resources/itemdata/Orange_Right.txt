@@ -1,4 +1,0 @@
-index: 348
-type: Orange_Right
-ox: 8
-oy: 17

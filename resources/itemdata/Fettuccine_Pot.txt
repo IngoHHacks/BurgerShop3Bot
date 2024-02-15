@@ -1,4 +1,0 @@
-index: 613
-type: Fettuccine_Pot
-ox: 22
-oy: 26
