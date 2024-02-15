@@ -99,24 +99,17 @@ public:
 };
 
 struct ItemData {
+    int id;
+    std::string name;
     std::string type;
-    int index;
-    int adjustX;
-    int adjustY;
-    int oX;
-    int oY;
-    int absX;
-    int absY;
-    int height;
-    int cornerX;
-    int cornerY;
-    int layer;
-    std::vector<ItemData> subItems;
+    std::string oven = "";
+    std::string pot = "";
+    std::string pan = "";
 
-    ItemData() : index(-1), adjustX(0), adjustY(0), oX(0), oY(0), absX(0), absY(0), height(0), cornerX(0), cornerY(0),
-                 layer(0) {
-        subItems = {};
-    }
+    ItemData(int id, const std::string &name, const std::string &type, const std::string &oven, const std::string &pot,
+             const std::string &pan) : id(id), name(name), type(type), oven(oven), pot(pot), pan(pan) {}
+
+    ItemData() : id(-1), name(""), type("") {}
 };
 
 struct Point {

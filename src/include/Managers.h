@@ -84,10 +84,9 @@ class ItemManager {
 public:
     static std::vector<std::string> itemNames;
     static std::unordered_map<int, ItemData> itemData;
+    static std::unordered_map<std::string, ItemData> itemDataByName;
 
-    static bool LoadItemNames(const std::string &filename);
-
-    static bool LoadData(const std::string &folder);
+    static bool LoadItems(const std::string &filename);
 
     static std::string GetItemName(int id);
 
